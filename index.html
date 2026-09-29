@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kalpheon Research</title>
-<meta name="description" content="Kalpheon Daily Report. 매크로와 사이클을 통합한 일간 리서치 노트">
+<meta name="description" content="Kalpheon Daily Report. 매크로와 사이클을 통합한 일간 리서치 노트 / Integrated macro and cycle daily research note">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="theme-color" content="#0F1E33">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +23,17 @@ body{background:var(--canvas);color:var(--ink);font-family:'Noto Sans KR',sans-s
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
 .wrap{max-width:920px;margin:0 auto;padding:0 22px;}
 a{color:inherit;}
-header.top{border-bottom:1px solid var(--rule);padding:26px 0 20px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;}
+header.top{border-bottom:1px solid var(--rule);padding:26px 0 20px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;}
 .brand{display:flex;align-items:center;gap:11px;}
 .brand svg{width:32px;flex:none;}
 .bw{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.14em;font-size:19px;line-height:1;}
 .bs{font-family:'Jost',sans-serif;font-weight:500;letter-spacing:.38em;font-size:9px;color:var(--gold-ink);margin-top:4px;}
+.tools{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:20px;overflow:hidden;background:#fff;}
+.lang button{border:0;background:none;padding:6px 13px;font:inherit;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;line-height:1;}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff;}
+.lang button:not([aria-pressed="true"]):hover{background:var(--gold-bg);color:var(--ink);}
+.lang button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
 .asof{font-size:12px;color:var(--muted);text-align:right;}
 .asof strong{color:var(--ink);font-weight:600;}
 
@@ -64,11 +70,13 @@ a.row{display:grid;grid-template-columns:110px 1fr auto 16px;gap:12px;align-item
 a.row:hover .rd{color:var(--gold-ink);}
 .rd{font-family:'Noto Serif KR',serif;font-weight:600;}
 .rs{color:var(--ink-2);}
-.rs .lvt{font-weight:700;}
+.lvt{font-weight:700;}
 .lvt.red{color:var(--red);}.lvt.amber{color:var(--amber);}.lvt.green{color:var(--green);}
 .rp{color:var(--muted);font-size:12px;white-space:nowrap;}
 .chev{color:var(--gold);font-size:20px;line-height:1;text-align:right;}
 a.row:hover .chev{color:var(--gold-ink);}
+.tag{display:inline-block;margin-left:6px;padding:0 7px;border:1px solid var(--rule);border-radius:10px;font-size:11px;font-weight:500;color:var(--muted);}
+.lhead .tag{border-color:rgba(255,255,255,.3);color:#AEB9CB;}
 @media (max-width:560px){a.row{grid-template-columns:96px 1fr 16px;}.rp{display:none;}}
 button.more{margin-top:14px;background:none;border:1px solid var(--rule);border-radius:3px;padding:8px 16px;font:inherit;font-size:12.5px;color:var(--ink-2);cursor:pointer;}
 button.more:hover{border-color:var(--gold);}
@@ -89,98 +97,167 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="#0F1E33" stroke-width="4"/><path d="M37 26V74M37 52L66 26M49 47L68 74" stroke="#0F1E33" stroke-width="8" fill="none"/></svg>
       <div><div class="bw">KALPHEON</div><div class="bs">RESEARCH</div></div>
     </div>
-    <div class="asof" id="asof"></div>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="ko" aria-pressed="false">KO</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <div class="asof" id="asof"></div>
+    </div>
   </header>
 
-  <p class="intro">매크로 지표와 밸류에이션 사이클을 하나로 묶은 일간 리서치 노트입니다. 매일 자동으로 갱신됩니다.</p>
+  <p class="intro" id="intro"></p>
 
-  <div id="latest"><div class="state"><b>불러오는 중</b>최신 리포트를 확인하고 있습니다.</div></div>
-  <noscript><div class="state"><b>자바스크립트가 꺼져 있습니다</b>리포트 목록을 보려면 자바스크립트를 켜 주세요.</div></noscript>
+  <div id="latest"></div>
 
   <section class="archive" id="archive" hidden>
-    <h2>지난 리포트</h2>
+    <h2 id="archTitle"></h2>
     <div id="list"></div>
-    <button class="more" id="more" type="button" hidden>더 보기</button>
+    <button class="more" id="more" type="button" hidden></button>
   </section>
 
-  <section class="disclaimer">
-    <strong>이용 안내</strong><br>
-    본 사이트의 리포트는 정보 제공 및 교육 목적의 개인 연구 노트이며, 특정 종목·상품의 매수·매도 권유나 투자 자문이 아닙니다. 작성자 개인의 견해로 소속 기관의 입장과 무관합니다. 리포트는 자동화 도구로 생성되어 수치·해석에 오류가 있을 수 있으며, 투자 판단과 그 결과의 책임은 이용자 본인에게 있습니다. 각 지표의 출처와 권리는 개별 리포트에 표기된 제공처에 있습니다.
-  </section>
+  <section class="disclaimer" id="disc"></section>
 
   <footer>
-    <span>© 2026 Kalpheon Research. All rights reserved.</span>
-    <span>정보 제공 목적, 투자 자문 아님</span>
+    <span id="copy"></span>
+    <span id="fnote"></span>
   </footer>
 </div>
 
 <script>
 (function () {
-  var PAGE = 30, shown = 0, rest = [];
+  var PAGE = 30, shown = 0, rest = [], rows = [], state = 'loading';
+  var UI = {
+    ko: {
+      title: 'Kalpheon Research',
+      intro: '매크로 지표와 밸류에이션 사이클을 하나로 묶은 일간 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신됩니다.',
+      latest: '최신 리포트', score: '종합 경고 스코어', cyc: '사이클 위치 P', y10: '美10년물', fg: '공포탐욕', asof: '기준',
+      cta: '오늘 전체 리포트 보기', warn: '일부 지표 전일값 유지: ', arch: '지난 리포트', more: '더 보기', sc: '종합', koOnly: '',
+      loadT: '불러오는 중', loadB: '최신 리포트를 확인하고 있습니다.',
+      emptyT: '아직 발행된 리포트가 없습니다', emptyB: '첫 리포트가 올라오면 이곳에 표시됩니다.',
+      errT: '리포트 목록을 불러오지 못했습니다', errB: '사이트 주소로 접속했는지 확인하고 새로고침해 주세요. 파일을 직접 열면 목록이 표시되지 않습니다.',
+      disc: '<strong>이용 안내</strong><br>본 사이트의 리포트는 정보 제공 및 교육 목적의 개인 연구 노트이며, 특정 종목·상품의 매수·매도 권유나 투자 자문이 아닙니다. 작성자 개인의 견해로 소속 기관의 입장과 무관합니다. 리포트는 자동화 도구로 생성되어 수치·해석에 오류가 있을 수 있으며, 투자 판단과 그 결과의 책임은 이용자 본인에게 있습니다. 각 지표의 출처와 권리는 개별 리포트에 표기된 제공처에 있습니다. 본 사이트는 배포가 제한되는 지역의 이용자를 대상으로 하지 않습니다.',
+      copy: '© 2026 Kalpheon Research. All rights reserved.', fnote: '정보 제공 목적, 투자 자문 아님'
+    },
+    en: {
+      title: 'Kalpheon Research',
+      intro: 'A daily research note combining macro indicators and the valuation cycle. Updated automatically every business day before the open.',
+      latest: 'Latest report', score: 'Composite Warning Score', cyc: 'Cycle Position P', y10: 'US 10Y', fg: 'Fear & Greed', asof: 'as of',
+      cta: "Read today's full report", warn: 'Some indicators carried over: ', arch: 'Past reports', more: 'Show more', sc: 'Score', koOnly: 'Korean only',
+      loadT: 'Loading', loadB: 'Checking for the latest report.',
+      emptyT: 'No reports published yet', emptyB: 'The first report will appear here once it is published.',
+      errT: 'Could not load the report list', errB: 'Please open the site by its web address and refresh. The list does not appear when the file is opened directly.',
+      disc: '<strong>Notice</strong><br>Reports on this site are personal research notes for information and educational purposes only. They are not a recommendation to buy or sell any security or product, nor investment advice. The views are the author\'s own and are unrelated to those of any affiliated institution. Reports are generated with automated tools, so figures and interpretations may contain errors. Investment decisions and their consequences are the sole responsibility of the reader. Sources and rights for each indicator belong to the providers cited in each report. This site is not directed at users in jurisdictions where distribution is restricted.',
+      copy: '© 2026 Kalpheon Research. All rights reserved.', fnote: 'For information only, not investment advice'
+    }
+  };
+  var lang = 'ko';
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
-  function lvc(l) { return l === '위험' ? 'red' : l === '주의' ? 'amber' : 'green'; }
+  function lvc(score) { score = Number(score); return score >= 67 ? 'red' : score >= 34 ? 'amber' : 'green'; }
   function dot(s) { return String(s).replace(/-/g, '.'); }
   function ok(e) { return e && /^\d{4}-\d{2}-\d{2}$/.test(e.date); }
   function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
-  function state(title, body) {
-    var box = document.getElementById('latest'); clear(box);
-    var d = el('div', 'state'); d.appendChild(el('b', null, title)); d.appendChild(document.createTextNode(body)); box.appendChild(d);
+  function T(k) { return UI[lang][k]; }
+  function detect() {
+    var s = null; try { s = localStorage.getItem('kp_lang'); } catch (x) {}
+    if (s === 'ko' || s === 'en') return s;
+    return /^ko/i.test(navigator.language || '') ? 'ko' : 'en';
+  }
+  // 리포트 항목을 현재 언어 기준으로 정리 (영문판이 없는 옛 항목은 한글로 대체)
+  var STAGE_EN = {'자산 가격 이상':'Displacement','현명한 투자자':'Smart Money','기관투자자':'Institutions','대중 참여':'Public Participation','1차 하락':'First Pullback','언론 보도 증가':'Media Attention','새로운 논리 탄생':'New Paradigm','현실 부정':'Denial','탐욕':'Greed','열정(정점)':'Euphoria (Peak)'};
+  function lvEn(sc) { sc = Number(sc); return sc >= 67 ? 'Danger' : sc >= 34 ? 'Caution' : 'Safe'; }
+  function view(e) {
+    if (lang === 'en' && e.en) return { level: e.en.level, stage: e.en.stage, verdict: e.en.verdict, stale: e.en.stale || [], href: 'reports/daily/en/' + e.date + '.html', koOnly: false };
+    if (lang === 'en') return { level: lvEn(e.score), stage: STAGE_EN[e.stage] || e.stage, verdict: e.verdict, stale: [], href: 'reports/daily/' + e.date + '.html', koOnly: true };
+    return { level: e.level, stage: e.stage, verdict: e.verdict, stale: e.stale || [], href: 'reports/daily/' + e.date + '.html', koOnly: false };
+  }
+  function box(title, body) {
+    var b = document.getElementById('latest'); clear(b);
+    var d = el('div', 'state'); d.appendChild(el('b', null, title)); d.appendChild(document.createTextNode(body)); b.appendChild(d);
   }
   function mini(label, value) { var m = el('div'); m.appendChild(el('div', 'k', label)); m.appendChild(el('div', 'v', value)); return m; }
 
   function latest(e) {
-    var box = document.getElementById('latest'); clear(box);
+    var v = view(e), b = document.getElementById('latest'); clear(b);
     var a = el('div', 'latest');
-    var h = el('div', 'lhead'); h.appendChild(el('b', null, '최신 리포트')); h.appendChild(el('span', null, dot(e.date))); a.appendChild(h);
+    var h = el('div', 'lhead'); h.appendChild(el('b', null, T('latest'))); h.appendChild(el('span', null, dot(e.date))); a.appendChild(h);
+    if (v.koOnly) h.firstChild.appendChild(el('span', 'tag', T('koOnly')));
     var g = el('div', 'lgrid');
-    var m1 = el('div'); m1.appendChild(el('div', 'k', '종합 경고 스코어'));
+    var m1 = el('div'); m1.appendChild(el('div', 'k', T('score')));
     var b1 = el('div', 'big', String(Number(e.score))); b1.appendChild(el('small', null, '/100')); m1.appendChild(b1);
-    m1.appendChild(el('span', 'lv ' + lvc(e.level), String(e.level))); g.appendChild(m1);
-    var m2 = el('div'); m2.appendChild(el('div', 'k', '사이클 위치 P'));
+    m1.appendChild(el('span', 'lv ' + lvc(e.score), String(v.level))); g.appendChild(m1);
+    var m2 = el('div'); m2.appendChild(el('div', 'k', T('cyc')));
     var b2 = el('div', 'big', String(Number(e.p))); b2.appendChild(el('small', null, '%')); m2.appendChild(b2);
-    m2.appendChild(el('div', 'sm', String(e.stage))); g.appendChild(m2);
+    m2.appendChild(el('div', 'sm', String(v.stage))); g.appendChild(m2);
     var m3 = el('div', 'lmini');
     m3.appendChild(mini('VIX', Number(e.vix).toFixed(2)));
-    m3.appendChild(mini('공포탐욕', String(Number(e.fg))));
-    m3.appendChild(mini('美10년물', Number(e.y10).toFixed(2) + '%'));
+    m3.appendChild(mini(T('fg'), String(Number(e.fg))));
+    m3.appendChild(mini(T('y10'), Number(e.y10).toFixed(2) + '%'));
     g.appendChild(m3); a.appendChild(g);
-    if (e.verdict) a.appendChild(el('p', 'verdict', e.verdict));
+    if (v.verdict) a.appendChild(el('p', 'verdict', v.verdict));
     var names = [];
-    (e.stale || []).forEach(function (n) { n = String(n).replace(/ 등락$/, ''); if (names.indexOf(n) < 0) names.push(n); });
+    v.stale.forEach(function (n) { n = String(n).replace(/ (등락|change)$/, ''); if (names.indexOf(n) < 0) names.push(n); });
     var foot = el('div', 'lfoot');
-    if (names.length) foot.appendChild(el('div', 'warn', '일부 지표 전일값 유지: ' + names.join(', ')));
-    var c = el('a', 'cta'); c.href = 'reports/daily/' + e.date + '.html';
-    c.appendChild(el('span', null, '오늘 전체 리포트 보기')); c.appendChild(el('span', 'arr', '→'));
+    if (names.length) foot.appendChild(el('div', 'warn', T('warn') + names.join(', ')));
+    var c = el('a', 'cta'); c.href = v.href;
+    c.appendChild(el('span', null, T('cta'))); c.appendChild(el('span', 'arr', '→'));
     foot.appendChild(c); a.appendChild(foot);
-    box.appendChild(a);
-    document.getElementById('asof').innerHTML = '';
-    var s = el('strong', null, dot(e.date)); var w = document.getElementById('asof'); w.appendChild(s); w.appendChild(document.createTextNode(' 기준'));
+    b.appendChild(a);
+    var w = document.getElementById('asof'); clear(w);
+    w.appendChild(el('strong', null, dot(e.date))); w.appendChild(document.createTextNode(' ' + T('asof')));
   }
 
-  function more() {
-    var list = document.getElementById('list');
-    rest.slice(shown, shown + PAGE).forEach(function (e) {
-      var a = el('a', 'row'); a.href = 'reports/daily/' + e.date + '.html';
+  function rowsFor(list) {
+    var out = document.getElementById('list');
+    list.forEach(function (e) {
+      var v = view(e), a = el('a', 'row'); a.href = v.href;
       a.appendChild(el('span', 'rd', dot(e.date)));
-      var s = el('span', 'rs'); s.appendChild(document.createTextNode('종합 ' + Number(e.score) + ' '));
-      s.appendChild(el('span', 'lvt ' + lvc(e.level), String(e.level))); s.appendChild(document.createTextNode(' · ' + e.stage));
+      var s = el('span', 'rs'); s.appendChild(document.createTextNode(T('sc') + ' ' + Number(e.score) + ' '));
+      s.appendChild(el('span', 'lvt ' + lvc(e.score), String(v.level))); s.appendChild(document.createTextNode(' · ' + v.stage));
+      if (v.koOnly) s.appendChild(el('span', 'tag', T('koOnly')));
       a.appendChild(s); a.appendChild(el('span', 'rp', 'P ' + Number(e.p) + '%')); a.appendChild(el('span', 'chev', '›'));
-      list.appendChild(a);
+      out.appendChild(a);
     });
+  }
+  function more() {
+    rowsFor(rest.slice(shown, shown + PAGE));
     shown = Math.min(rest.length, shown + PAGE);
     document.getElementById('more').hidden = shown >= rest.length;
   }
 
+  function render() {
+    document.documentElement.lang = lang;
+    document.title = T('title');
+    document.getElementById('intro').textContent = T('intro');
+    document.getElementById('disc').innerHTML = T('disc');
+    document.getElementById('copy').textContent = T('copy');
+    document.getElementById('fnote').textContent = T('fnote');
+    document.getElementById('archTitle').textContent = T('arch');
+    document.getElementById('more').textContent = T('more');
+    Array.prototype.forEach.call(document.querySelectorAll('.lang button'), function (bt) { bt.setAttribute('aria-pressed', bt.getAttribute('data-lang') === lang ? 'true' : 'false'); });
+    var list = document.getElementById('list'); clear(list); shown = 0;
+    if (state === 'loading') { box(T('loadT'), T('loadB')); document.getElementById('archive').hidden = true; return; }
+    if (state === 'error') { box(T('errT'), T('errB')); document.getElementById('archive').hidden = true; return; }
+    if (!rows.length) { box(T('emptyT'), T('emptyB')); document.getElementById('archive').hidden = true; return; }
+    latest(rows[0]); rest = rows.slice(1);
+    document.getElementById('archive').hidden = !rest.length;
+    if (rest.length) more();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.lang button'), function (bt) {
+    bt.addEventListener('click', function () {
+      lang = bt.getAttribute('data-lang');
+      try { localStorage.setItem('kp_lang', lang); } catch (x) {}
+      render();
+    });
+  });
+  document.getElementById('more').addEventListener('click', more);
+
+  lang = detect(); render();
   fetch('reports/index.json', { cache: 'no-store' })
     .then(function (r) { if (r.status === 404) return null; if (!r.ok) throw new Error('load'); return r.json(); })
-    .then(function (m) {
-      var rows = m && m.reports ? m.reports.filter(ok) : [];
-      if (!rows.length) { state('아직 발행된 리포트가 없습니다', '첫 리포트가 올라오면 이곳에 표시됩니다.'); return; }
-      latest(rows[0]); rest = rows.slice(1);
-      if (rest.length) { document.getElementById('archive').hidden = false; more(); }
-    })
-    .catch(function () { state('리포트 목록을 불러오지 못했습니다', '사이트 주소로 접속했는지 확인하고 새로고침해 주세요. 파일을 직접 열면 목록이 표시되지 않습니다.'); });
-  document.getElementById('more').addEventListener('click', more);
+    .then(function (m) { rows = m && m.reports ? m.reports.filter(ok) : []; state = 'ready'; render(); })
+    .catch(function () { state = 'error'; render(); });
 })();
 </script>
 </body>
