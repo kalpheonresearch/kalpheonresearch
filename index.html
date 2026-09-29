@@ -33,9 +33,7 @@ header.top{border-bottom:1px solid var(--rule);padding:26px 0 20px;display:flex;
 
 .intro{padding:26px 0 6px;font-size:13px;color:var(--ink-2);max-width:640px;}
 
-a.latest{display:block;text-decoration:none;color:#fff;background:var(--ink);border-radius:4px;padding:22px 24px 20px;margin-top:18px;}
-a.latest:hover{outline:2px solid var(--gold);outline-offset:2px;}
-a.latest:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.latest{display:block;color:#fff;background:var(--ink);border-radius:4px;padding:24px 26px 22px;margin-top:18px;}
 .lhead{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#AEB9CB;margin-bottom:14px;}
 .lhead b{color:#E6D6AE;font-weight:600;}
 .lgrid{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:26px;align-items:start;}
@@ -49,14 +47,16 @@ a.latest:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 .lmini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
 .lmini .v{font-family:'Noto Serif KR',serif;font-weight:700;font-size:20px;}
 .verdict{margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-size:13.5px;line-height:1.75;color:#E4E8F0;}
-.warn{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:3px 11px;border:1px solid rgba(231,192,122,.45);border-radius:20px;font-size:12px;color:#E7C07A;font-weight:600;}
+.lfoot{display:flex;align-items:center;justify-content:space-between;gap:14px 20px;flex-wrap:wrap;margin-top:20px;}
+.warn{display:inline-flex;align-items:center;gap:7px;padding:4px 12px;border:1px solid rgba(231,192,122,.45);border-radius:20px;font-size:12px;color:#E7C07A;font-weight:600;}
 .warn::before{content:"";width:6px;height:6px;border-radius:50%;background:#E7C07A;flex:none;}
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;min-height:50px;padding:13px 20px;background:var(--gold);color:var(--ink);border-radius:3px;font-size:15px;font-weight:700;letter-spacing:.01em;transition:background .15s,transform .1s;}
-.cta .arr{font-size:18px;line-height:1;transition:transform .15s;}
-a.latest:hover .cta{background:#C9A96B;}
-a.latest:hover .cta .arr{transform:translateX(4px);}
-a.latest:active .cta{transform:translateY(1px);}
-@media (min-width:701px){.cta{display:inline-flex;justify-content:flex-start;padding:12px 26px;}}
+a.cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-left:auto;min-height:50px;padding:13px 30px;background:var(--gold);color:var(--ink);border-radius:3px;font-size:15px;font-weight:700;letter-spacing:.01em;text-decoration:none;transition:background .15s,transform .1s;}
+a.cta .arr{font-size:18px;line-height:1;transition:transform .15s;}
+a.cta:hover{background:#C9A96B;}
+a.cta:hover .arr{transform:translateX(4px);}
+a.cta:active{transform:translateY(1px);}
+a.cta:focus-visible{outline:3px solid #F1E3BE;outline-offset:2px;}
+@media (max-width:700px){.lfoot{flex-direction:column;align-items:stretch;}a.cta{margin-left:0;width:100%;}.warn{align-self:flex-start;}}
 
 section.archive{padding:34px 0 30px;}
 section.archive h2{font-family:'Noto Serif KR',serif;font-size:15px;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--ink);}
@@ -75,8 +75,9 @@ button.more:hover{border-color:var(--gold);}
 .state{margin-top:18px;padding:26px 22px;border:1px dashed var(--rule);border-radius:4px;color:var(--ink-2);font-size:13.5px;}
 .state b{display:block;font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink);margin-bottom:4px;}
 
-.disclaimer{margin:0 0 4px;padding:14px 16px;border:1px solid var(--rule);background:var(--gold-bg);border-radius:3px;font-size:11.5px;color:var(--ink-2);line-height:1.7;}
+.disclaimer{margin:34px 0 4px;padding:14px 16px;border:1px solid var(--rule);background:var(--gold-bg);border-radius:3px;font-size:11.5px;color:var(--ink-2);line-height:1.7;}
 .disclaimer strong{color:var(--ink);}
+section.archive:not([hidden]) + .disclaimer{margin-top:0;}
 footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
 </style>
 </head>
@@ -91,7 +92,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     <div class="asof" id="asof"></div>
   </header>
 
-  <p class="intro">매크로 지표와 밸류에이션 사이클을 하나로 묶은 일간 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신됩니다.</p>
+  <p class="intro">매크로 지표와 밸류에이션 사이클을 하나로 묶은 일간 리서치 노트입니다. 매일 자동으로 갱신됩니다.</p>
 
   <div id="latest"><div class="state"><b>불러오는 중</b>최신 리포트를 확인하고 있습니다.</div></div>
   <noscript><div class="state"><b>자바스크립트가 꺼져 있습니다</b>리포트 목록을 보려면 자바스크립트를 켜 주세요.</div></noscript>
@@ -129,7 +130,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
 
   function latest(e) {
     var box = document.getElementById('latest'); clear(box);
-    var a = el('a', 'latest'); a.href = 'reports/daily/' + e.date + '.html';
+    var a = el('div', 'latest');
     var h = el('div', 'lhead'); h.appendChild(el('b', null, '최신 리포트')); h.appendChild(el('span', null, dot(e.date))); a.appendChild(h);
     var g = el('div', 'lgrid');
     var m1 = el('div'); m1.appendChild(el('div', 'k', '종합 경고 스코어'));
@@ -146,8 +147,11 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     if (e.verdict) a.appendChild(el('p', 'verdict', e.verdict));
     var names = [];
     (e.stale || []).forEach(function (n) { n = String(n).replace(/ 등락$/, ''); if (names.indexOf(n) < 0) names.push(n); });
-    if (names.length) a.appendChild(el('div', 'warn', '일부 지표 전일값 유지: ' + names.join(', ')));
-    var c = el('div', 'cta'); c.appendChild(el('span', null, '오늘 전체 리포트 보기')); c.appendChild(el('span', 'arr', '→')); a.appendChild(c);
+    var foot = el('div', 'lfoot');
+    if (names.length) foot.appendChild(el('div', 'warn', '일부 지표 전일값 유지: ' + names.join(', ')));
+    var c = el('a', 'cta'); c.href = 'reports/daily/' + e.date + '.html';
+    c.appendChild(el('span', null, '오늘 전체 리포트 보기')); c.appendChild(el('span', 'arr', '→'));
+    foot.appendChild(c); a.appendChild(foot);
     box.appendChild(a);
     document.getElementById('asof').innerHTML = '';
     var s = el('strong', null, dot(e.date)); var w = document.getElementById('asof'); w.appendChild(s); w.appendChild(document.createTextNode(' 기준'));
