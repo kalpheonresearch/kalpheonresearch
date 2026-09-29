@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kalpheon Research</title>
-<meta name="description" content="Kalpheon Daily Research. 매크로와 사이클을 통합한 일간 리서치 노트">
+<meta name="description" content="Kalpheon Daily Report. 매크로와 사이클을 통합한 일간 리서치 노트">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="theme-color" content="#0F1E33">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,19 +49,27 @@ a.latest:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 .lmini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
 .lmini .v{font-family:'Noto Serif KR',serif;font-weight:700;font-size:20px;}
 .verdict{margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-size:13.5px;line-height:1.75;color:#E4E8F0;}
-.warn{margin-top:10px;font-size:12px;color:#E7C07A;font-weight:600;}
-.cta{margin-top:14px;font-size:13px;font-weight:600;color:#E6D6AE;}
+.warn{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:3px 11px;border:1px solid rgba(231,192,122,.45);border-radius:20px;font-size:12px;color:#E7C07A;font-weight:600;}
+.warn::before{content:"";width:6px;height:6px;border-radius:50%;background:#E7C07A;flex:none;}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;min-height:50px;padding:13px 20px;background:var(--gold);color:var(--ink);border-radius:3px;font-size:15px;font-weight:700;letter-spacing:.01em;transition:background .15s,transform .1s;}
+.cta .arr{font-size:18px;line-height:1;transition:transform .15s;}
+a.latest:hover .cta{background:#C9A96B;}
+a.latest:hover .cta .arr{transform:translateX(4px);}
+a.latest:active .cta{transform:translateY(1px);}
+@media (min-width:701px){.cta{display:inline-flex;justify-content:flex-start;padding:12px 26px;}}
 
 section.archive{padding:34px 0 30px;}
 section.archive h2{font-family:'Noto Serif KR',serif;font-size:15px;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--ink);}
-a.row{display:grid;grid-template-columns:110px 1fr auto;gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--rule);text-decoration:none;font-size:13px;}
+a.row{display:grid;grid-template-columns:110px 1fr auto 16px;gap:12px;align-items:center;padding:13px 0;min-height:48px;border-bottom:1px solid var(--rule);text-decoration:none;font-size:13px;}
 a.row:hover .rd{color:var(--gold-ink);}
 .rd{font-family:'Noto Serif KR',serif;font-weight:600;}
 .rs{color:var(--ink-2);}
 .rs .lvt{font-weight:700;}
 .lvt.red{color:var(--red);}.lvt.amber{color:var(--amber);}.lvt.green{color:var(--green);}
 .rp{color:var(--muted);font-size:12px;white-space:nowrap;}
-@media (max-width:560px){a.row{grid-template-columns:96px 1fr;}.rp{display:none;}}
+.chev{color:var(--gold);font-size:20px;line-height:1;text-align:right;}
+a.row:hover .chev{color:var(--gold-ink);}
+@media (max-width:560px){a.row{grid-template-columns:96px 1fr 16px;}.rp{display:none;}}
 button.more{margin-top:14px;background:none;border:1px solid var(--rule);border-radius:3px;padding:8px 16px;font:inherit;font-size:12.5px;color:var(--ink-2);cursor:pointer;}
 button.more:hover{border-color:var(--gold);}
 .state{margin-top:18px;padding:26px 22px;border:1px dashed var(--rule);border-radius:4px;color:var(--ink-2);font-size:13.5px;}
@@ -136,8 +144,10 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     m3.appendChild(mini('美10년물', Number(e.y10).toFixed(2) + '%'));
     g.appendChild(m3); a.appendChild(g);
     if (e.verdict) a.appendChild(el('p', 'verdict', e.verdict));
-    if (e.stale && e.stale.length) a.appendChild(el('div', 'warn', '일부 지표 전일값 유지: ' + e.stale.join(', ')));
-    a.appendChild(el('div', 'cta', '리포트 열기'));
+    var names = [];
+    (e.stale || []).forEach(function (n) { n = String(n).replace(/ 등락$/, ''); if (names.indexOf(n) < 0) names.push(n); });
+    if (names.length) a.appendChild(el('div', 'warn', '일부 지표 전일값 유지: ' + names.join(', ')));
+    var c = el('div', 'cta'); c.appendChild(el('span', null, '오늘 전체 리포트 보기')); c.appendChild(el('span', 'arr', '→')); a.appendChild(c);
     box.appendChild(a);
     document.getElementById('asof').innerHTML = '';
     var s = el('strong', null, dot(e.date)); var w = document.getElementById('asof'); w.appendChild(s); w.appendChild(document.createTextNode(' 기준'));
@@ -150,7 +160,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       a.appendChild(el('span', 'rd', dot(e.date)));
       var s = el('span', 'rs'); s.appendChild(document.createTextNode('종합 ' + Number(e.score) + ' '));
       s.appendChild(el('span', 'lvt ' + lvc(e.level), String(e.level))); s.appendChild(document.createTextNode(' · ' + e.stage));
-      a.appendChild(s); a.appendChild(el('span', 'rp', 'P ' + Number(e.p) + '%'));
+      a.appendChild(s); a.appendChild(el('span', 'rp', 'P ' + Number(e.p) + '%')); a.appendChild(el('span', 'chev', '›'));
       list.appendChild(a);
     });
     shown = Math.min(rest.length, shown + PAGE);
