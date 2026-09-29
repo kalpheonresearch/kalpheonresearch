@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalpheon Investment</title>
+<meta name="description" content="Kalpheon Daily Report. 매크로와 사이클을 통합한 일간 리서치 노트">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#0F1E33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@500&family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F1E33; --ink-2:#3A4A63; --muted:#6B7280; --rule:#E7E3D8; --canvas:#FCFCFB;
+  --gold:#B8975A; --gold-ink:#8A6B2F; --gold-bg:#F6F0E4;
+  --red:#A13D2E; --amber:#8A6A1E; --green:#2F6650;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden;}
+body{background:var(--canvas);color:var(--ink);font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.6;
+  font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+.wrap{max-width:920px;margin:0 auto;padding:0 22px;}
+a{color:inherit;}
+header.top{border-bottom:1px solid var(--rule);padding:26px 0 20px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;}
+.brand{display:flex;align-items:center;gap:11px;}
+.brand svg{width:32px;flex:none;}
+.bw{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.14em;font-size:19px;line-height:1;}
+.bs{font-family:'Jost',sans-serif;font-weight:500;letter-spacing:.38em;font-size:9px;color:var(--gold-ink);margin-top:4px;}
+.asof{font-size:12px;color:var(--muted);text-align:right;}
+.asof strong{color:var(--ink);font-weight:600;}
+
+.intro{padding:26px 0 6px;font-size:13px;color:var(--ink-2);max-width:640px;}
+
+a.latest{display:block;text-decoration:none;color:#fff;background:var(--ink);border-radius:4px;padding:22px 24px 20px;margin-top:18px;}
+a.latest:hover{outline:2px solid var(--gold);outline-offset:2px;}
+a.latest:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.lhead{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#AEB9CB;margin-bottom:14px;}
+.lhead b{color:#E6D6AE;font-weight:600;}
+.lgrid{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:26px;align-items:start;}
+@media (max-width:700px){.lgrid{grid-template-columns:1fr 1fr;}.lmini{grid-column:1/-1;}}
+.k{font-size:12px;color:#AEB9CB;margin-bottom:2px;}
+.big{font-family:'Noto Serif KR',serif;font-weight:700;font-size:38px;line-height:1.15;}
+.big small{font-size:14px;color:#AEB9CB;font-weight:500;margin-left:3px;}
+.lv{display:inline-block;font-size:12px;font-weight:700;padding:1px 10px;border-radius:20px;margin-top:4px;}
+.lv.red{background:#D9594A;color:#fff;}.lv.amber{background:#D4A64A;color:#0F1E33;}.lv.green{background:#4FA37E;color:#0F1E33;}
+.sm{font-size:13px;color:#E6D6AE;margin-top:4px;font-weight:500;}
+.lmini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.lmini .v{font-family:'Noto Serif KR',serif;font-weight:700;font-size:20px;}
+.verdict{margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-size:13.5px;line-height:1.75;color:#E4E8F0;}
+.warn{margin-top:10px;font-size:12px;color:#E7C07A;font-weight:600;}
+.cta{margin-top:14px;font-size:13px;font-weight:600;color:#E6D6AE;}
+
+section.archive{padding:34px 0 30px;}
+section.archive h2{font-family:'Noto Serif KR',serif;font-size:15px;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--ink);}
+a.row{display:grid;grid-template-columns:110px 1fr auto;gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--rule);text-decoration:none;font-size:13px;}
+a.row:hover .rd{color:var(--gold-ink);}
+.rd{font-family:'Noto Serif KR',serif;font-weight:600;}
+.rs{color:var(--ink-2);}
+.rs .lvt{font-weight:700;}
+.lvt.red{color:var(--red);}.lvt.amber{color:var(--amber);}.lvt.green{color:var(--green);}
+.rp{color:var(--muted);font-size:12px;white-space:nowrap;}
+@media (max-width:560px){a.row{grid-template-columns:96px 1fr;}.rp{display:none;}}
+button.more{margin-top:14px;background:none;border:1px solid var(--rule);border-radius:3px;padding:8px 16px;font:inherit;font-size:12.5px;color:var(--ink-2);cursor:pointer;}
+button.more:hover{border-color:var(--gold);}
+.state{margin-top:18px;padding:26px 22px;border:1px dashed var(--rule);border-radius:4px;color:var(--ink-2);font-size:13.5px;}
+.state b{display:block;font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink);margin-bottom:4px;}
+
+.disclaimer{margin:0 0 4px;padding:14px 16px;border:1px solid var(--rule);background:var(--gold-bg);border-radius:3px;font-size:11.5px;color:var(--ink-2);line-height:1.7;}
+.disclaimer strong{color:var(--ink);}
+footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="#0F1E33" stroke-width="4"/><path d="M37 26V74M37 52L66 26M49 47L68 74" stroke="#0F1E33" stroke-width="8" fill="none"/></svg>
+      <div><div class="bw">KALPHEON</div><div class="bs">INVESTMENT</div></div>
+    </div>
+    <div class="asof" id="asof"></div>
+  </header>
+
+  <p class="intro">매크로 지표와 밸류에이션 사이클을 하나로 묶은 일간 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신됩니다.</p>
+
+  <div id="latest"><div class="state"><b>불러오는 중</b>최신 리포트를 확인하고 있습니다.</div></div>
+  <noscript><div class="state"><b>자바스크립트가 꺼져 있습니다</b>리포트 목록을 보려면 자바스크립트를 켜 주세요.</div></noscript>
+
+  <section class="archive" id="archive" hidden>
+    <h2>지난 리포트</h2>
+    <div id="list"></div>
+    <button class="more" id="more" type="button" hidden>더 보기</button>
+  </section>
+
+  <section class="disclaimer">
+    <strong>이용 안내</strong><br>
+    본 사이트의 리포트는 정보 제공 및 교육 목적의 개인 연구 노트이며, 특정 종목·상품의 매수·매도 권유나 투자 자문이 아닙니다. 작성자 개인의 견해로 소속 기관의 입장과 무관합니다. 리포트는 자동화 도구로 생성되어 수치·해석에 오류가 있을 수 있으며, 투자 판단과 그 결과의 책임은 이용자 본인에게 있습니다. 각 지표의 출처와 권리는 개별 리포트에 표기된 제공처에 있습니다.
+  </section>
+
+  <footer>
+    <span>© 2026 Kalpheon Investment. All rights reserved.</span>
+    <span>정보 제공 목적, 투자 자문 아님</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var PAGE = 30, shown = 0, rest = [];
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function lvc(l) { return l === '위험' ? 'red' : l === '주의' ? 'amber' : 'green'; }
+  function dot(s) { return String(s).replace(/-/g, '.'); }
+  function ok(e) { return e && /^\d{4}-\d{2}-\d{2}$/.test(e.date); }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+  function state(title, body) {
+    var box = document.getElementById('latest'); clear(box);
+    var d = el('div', 'state'); d.appendChild(el('b', null, title)); d.appendChild(document.createTextNode(body)); box.appendChild(d);
+  }
+  function mini(label, value) { var m = el('div'); m.appendChild(el('div', 'k', label)); m.appendChild(el('div', 'v', value)); return m; }
+
+  function latest(e) {
+    var box = document.getElementById('latest'); clear(box);
+    var a = el('a', 'latest'); a.href = 'reports/daily/' + e.date + '.html';
+    var h = el('div', 'lhead'); h.appendChild(el('b', null, '최신 리포트')); h.appendChild(el('span', null, dot(e.date))); a.appendChild(h);
+    var g = el('div', 'lgrid');
+    var m1 = el('div'); m1.appendChild(el('div', 'k', '종합 경고 스코어'));
+    var b1 = el('div', 'big', String(Number(e.score))); b1.appendChild(el('small', null, '/100')); m1.appendChild(b1);
+    m1.appendChild(el('span', 'lv ' + lvc(e.level), String(e.level))); g.appendChild(m1);
+    var m2 = el('div'); m2.appendChild(el('div', 'k', '사이클 위치 P'));
+    var b2 = el('div', 'big', String(Number(e.p))); b2.appendChild(el('small', null, '%')); m2.appendChild(b2);
+    m2.appendChild(el('div', 'sm', String(e.stage))); g.appendChild(m2);
+    var m3 = el('div', 'lmini');
+    m3.appendChild(mini('VIX', Number(e.vix).toFixed(2)));
+    m3.appendChild(mini('공포탐욕', String(Number(e.fg))));
+    m3.appendChild(mini('美10년물', Number(e.y10).toFixed(2) + '%'));
+    g.appendChild(m3); a.appendChild(g);
+    if (e.verdict) a.appendChild(el('p', 'verdict', e.verdict));
+    if (e.stale && e.stale.length) a.appendChild(el('div', 'warn', '일부 지표 전일값 유지: ' + e.stale.join(', ')));
+    a.appendChild(el('div', 'cta', '리포트 열기'));
+    box.appendChild(a);
+    document.getElementById('asof').innerHTML = '';
+    var s = el('strong', null, dot(e.date)); var w = document.getElementById('asof'); w.appendChild(s); w.appendChild(document.createTextNode(' 기준'));
+  }
+
+  function more() {
+    var list = document.getElementById('list');
+    rest.slice(shown, shown + PAGE).forEach(function (e) {
+      var a = el('a', 'row'); a.href = 'reports/daily/' + e.date + '.html';
+      a.appendChild(el('span', 'rd', dot(e.date)));
+      var s = el('span', 'rs'); s.appendChild(document.createTextNode('종합 ' + Number(e.score) + ' '));
+      s.appendChild(el('span', 'lvt ' + lvc(e.level), String(e.level))); s.appendChild(document.createTextNode(' · ' + e.stage));
+      a.appendChild(s); a.appendChild(el('span', 'rp', 'P ' + Number(e.p) + '%'));
+      list.appendChild(a);
+    });
+    shown = Math.min(rest.length, shown + PAGE);
+    document.getElementById('more').hidden = shown >= rest.length;
+  }
+
+  fetch('reports/index.json', { cache: 'no-store' })
+    .then(function (r) { if (r.status === 404) return null; if (!r.ok) throw new Error('load'); return r.json(); })
+    .then(function (m) {
+      var rows = m && m.reports ? m.reports.filter(ok) : [];
+      if (!rows.length) { state('아직 발행된 리포트가 없습니다', '첫 리포트가 올라오면 이곳에 표시됩니다.'); return; }
+      latest(rows[0]); rest = rows.slice(1);
+      if (rest.length) { document.getElementById('archive').hidden = false; more(); }
+    })
+    .catch(function () { state('리포트 목록을 불러오지 못했습니다', '사이트 주소로 접속했는지 확인하고 새로고침해 주세요. 파일을 직접 열면 목록이 표시되지 않습니다.'); });
+  document.getElementById('more').addEventListener('click', more);
+})();
+</script>
+</body>
+</html>
