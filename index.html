@@ -153,6 +153,7 @@ h3.sub{font-family:var(--serif);font-size:15px;margin:22px 0 8px;}
 .ngs.g{background:#DDEFE4;color:#245A41;}
 .ngs.y{background:#FBF0CC;color:#6E5410;}
 .ngs.o{background:#FBE5D2;color:#8A4210;}
+.ngx{margin:10px auto 0;max-width:210px;font-size:11.5px;line-height:1.6;color:var(--muted);text-align:left;}
 .nlg{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin-top:20px;font-size:11.5px;color:var(--muted);}
 .nlg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
 @media (max-width:400px){.ngv{font-size:20px;}.near{padding:18px 14px 16px;}}
@@ -312,7 +313,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       first: '첫 리포트', same: '직전 리포트와 동일', vs: '직전 리포트 대비 ',
       names: { cape: 'CAPE', bi: '버핏지표', fg: '공포탐욕', aaii: 'AAII 약세', odte: '0DTE', vix: 'VIX', spread: '10Y-2Y' },
       th: { cape: '32 이상', bi: '200% 이상', fg: '25 이하', aaii: '50% 이상', odte: '65% 이상', vix: '30 이상', spread: '0 이하' },
-      nearT: '적색 전환까지 가까운 지표', nearN: '검은 표시가 현재 위치이며, 맨 위 빨간 구간에 닿으면 적색입니다. 색 구간은 적색 기준 대비 근접도이고, 10Y-2Y는 +1%p를 0%로 놓고 계산합니다.', nearRed: '적색 기준 ', nearZ: { g: '여유', y: '접근 중', o: '임박' }, nearLg: ['여유 (70% 미만)', '접근 중 (70~90%)', '임박 (90% 이상)', '적색 도달'], nearLeft: ' 남음', nearPct: '%p', nearPt: 'pt',
+      nearT: '적색 전환까지 가까운 지표', nearN: '검은 표시가 현재 위치이며, 맨 위 빨간 구간에 닿으면 적색입니다. 색 구간은 적색 기준 대비 근접도이고, 10Y-2Y는 +1%p를 0%로 놓고 계산합니다.', nearRed: '적색 기준 ', nearZ: { g: '여유', y: '접근 중', o: '임박' }, nearLg: ['여유 (70% 미만)', '접근 중 (70~90%)', '임박 (90% 이상)', '적색 도달'], nearLeft: ' 남음', nearPct: '%p', nearPt: 'pt', nearHint: { aaii: '미국 개인투자자협회가 매주 묻는 "6개월 뒤 주가 전망" 설문에서 약세 응답 비율입니다. 높을수록 투자자가 비관적이라는 뜻이고, 50% 이상이면 적색입니다. 극단적 비관은 바닥 근처에서 자주 나와 반등 신호로도 함께 봅니다.', odte: '만기가 당일인 옵션(0 Days To Expiry)이 S&P 500 옵션 거래에서 차지하는 비중입니다. 높을수록 단기 베팅과 레버리지가 시장을 좌우한다는 뜻이고, 65% 이상이면 적색입니다. 충격이 오면 변동성이 크게 증폭될 수 있습니다.' },
       trendT: '사이클 위치 트렌드', trendL: '발행된 리포트의 실제 기록만 이어서 그립니다. 리포트가 쌓일수록 길어집니다.',
       segP: '사이클 위치 P', segS: '종합 스코어', days: '일 기록', building: '기록이 쌓이는 중입니다', capBand: '금색 띠는 현재 단계의 구간입니다. ', capBasis: '발행일 기준, 휴장일은 건너뜁니다.',
       zoneS: '안전', zoneC: '주의', zoneD: '위험',
@@ -353,7 +354,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       first: 'First report', same: 'Same as previous report', vs: ' vs previous report',
       names: { cape: 'CAPE', bi: 'Buffett Ind.', fg: 'Fear & Greed', aaii: 'AAII bears', odte: '0DTE', vix: 'VIX', spread: '10Y-2Y' },
       th: { cape: '32 or above', bi: '200% or above', fg: '25 or below', aaii: '50% or above', odte: '65% or above', vix: '30 or above', spread: '0 or below' },
-      nearT: 'Indicators closest to turning red', nearN: 'The black mark is the current position; reaching the red zone at the top means the indicator is red. Colored zones show closeness to the red threshold, and for 10Y-2Y, +1pp is treated as 0%.', nearRed: 'Red at ', nearZ: { g: 'Comfortable', y: 'Approaching', o: 'Imminent' }, nearLg: ['Comfortable (under 70%)', 'Approaching (70-90%)', 'Imminent (90%+)', 'Red reached'], nearLeft: ' to go', nearPct: 'pp', nearPt: ' pts',
+      nearT: 'Indicators closest to turning red', nearN: 'The black mark is the current position; reaching the red zone at the top means the indicator is red. Colored zones show closeness to the red threshold, and for 10Y-2Y, +1pp is treated as 0%.', nearRed: 'Red at ', nearZ: { g: 'Comfortable', y: 'Approaching', o: 'Imminent' }, nearLg: ['Comfortable (under 70%)', 'Approaching (70-90%)', 'Imminent (90%+)', 'Red reached'], nearLeft: ' to go', nearPct: 'pp', nearPt: ' pts', nearHint: { aaii: 'Share of bearish answers in the AAII weekly survey on where stocks will be in six months. Higher means investors are more pessimistic; 50% or above is red. Extreme pessimism often appears near bottoms, so it is also read as a rebound hint.', odte: 'Share of options expiring the same day (0 Days To Expiry) in S&P 500 options trading. Higher means short-term bets and leverage drive the market; 65% or above is red. A shock can amplify volatility sharply.' },
       trendT: 'Cycle Position trend', trendL: 'Drawn only from actual published reports. The line gets longer as reports accumulate.',
       segP: 'Cycle Position P', segS: 'Composite score', days: ' days recorded', building: 'Records are still building up', capBand: 'The gold band is the current stage range. ', capBasis: 'By publication date; market holidays are skipped.',
       zoneS: 'Safe', zoneC: 'Caution', zoneD: 'Danger',
@@ -572,6 +573,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       col.appendChild(el('div', 'ngr', T('nearRed') + T('th')[o.k]));
       col.appendChild(el('div', 'ngd', rem));
       col.appendChild(el('span', 'ngs ' + z, label));
+      var hint = (T('nearHint') || {})[o.k]; if (hint) col.appendChild(el('p', 'ngx', hint));
       grid.appendChild(col);
     });
     w.appendChild(grid);
