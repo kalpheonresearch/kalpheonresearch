@@ -122,14 +122,31 @@ section.blk{padding:38px 0 6px;}
 section.blk > h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;padding-top:12px;border-top:2px solid var(--ink);}
 section.blk > .lead{font-size:12.5px;color:var(--muted);margin:0 0 16px;max-width:640px;}
 h3.sub{font-family:var(--serif);font-size:15px;margin:22px 0 8px;}
-.near{margin-top:26px;padding:18px 20px;background:var(--wash);border-radius:8px;}
+.near{margin-top:26px;padding:20px 22px 18px;background:#FCFAF5;border:1px solid #EAE5D8;border-radius:12px;}
 .near h3{margin:0 0 4px;font-family:var(--serif);font-size:16px;}
-.near p.note{margin:0 0 12px;font-size:12px;color:var(--muted);}
-.nr{margin-top:12px;}
-.nrh{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;}
-.nrh span:last-child{color:var(--muted);font-size:12.5px;}
-.bar{height:6px;border-radius:3px;background:var(--rule);margin-top:6px;overflow:hidden;}
-.bar div{height:100%;background:var(--gold);border-radius:3px;}
+.near p.note{margin:0;font-size:12px;color:var(--muted);max-width:560px;}
+.ng{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px;}
+.ngc{text-align:center;}
+.ngn{font-size:12.5px;color:var(--ink-2);}
+.ngv{font-size:24px;font-weight:500;line-height:1.3;margin:2px 0 10px;}
+.gauge{position:relative;height:176px;width:56px;margin:0 auto;}
+.gz{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.gz i{display:block;}
+.gz .zr{height:9.09%;background:#E2806F;}
+.gz .zo{height:9.09%;background:#EDA66B;}
+.gz .zy{height:18.18%;background:#F0D27E;}
+.gz .zg{flex:1;background:#9CCFB0;}
+.gm{position:absolute;left:-7px;right:-7px;height:3px;margin-bottom:-1.5px;background:var(--ink);border-radius:2px;}
+.gd{position:absolute;left:50%;width:10px;height:10px;margin:0 0 -5px -5px;background:var(--ink);border-radius:50%;}
+.ngr{font-size:12px;color:var(--muted);margin-top:10px;}
+.ngd{font-size:14px;font-weight:600;margin:2px 0 6px;}
+.ngs{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;}
+.ngs.g{background:#DDEFE4;color:#245A41;}
+.ngs.y{background:#FBF0CC;color:#6E5410;}
+.ngs.o{background:#FBE5D2;color:#8A4210;}
+.nlg{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin-top:20px;font-size:11.5px;color:var(--muted);}
+.nlg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
+@media (max-width:400px){.ngv{font-size:20px;}.near{padding:18px 14px 16px;}}
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:22px;overflow:hidden;background:#fff;margin-bottom:12px;}
 .seg button{border:0;background:none;min-height:40px;padding:0 16px;font:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;}
 .seg button[aria-pressed="true"]{background:var(--ink);color:#fff;}
@@ -278,7 +295,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   var UI = {
     ko: {
       title: 'Kalpheon Research',
-      nav: [['#top', '투데이'], ['#trend', '트랜드'], ['#archive', '기록 저장소'], ['#about', 'About'], ['#method', '방법론']],
+      nav: [['#top', '오늘'], ['#trend', '추이'], ['#archive', '아카이브'], ['#about', 'About'], ['#method', '방법론']],
       intro: '미국 시장이 사이클의 어디쯤인지, 매크로 지표와 밸류에이션을 하나로 묶어 매일 숫자로 기록하는 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신됩니다.',
       latest: '최신 리포트', verdict: '오늘의 판정', cyc: '사이클 위치 (민스키 모델)', prevP: '직전', asof: '기준',
       cta: '오늘 전체 리포트 읽기', share: '공유', copyBtn: '링크 복사', copied: '링크를 복사했습니다',
@@ -286,7 +303,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       first: '첫 리포트', same: '직전 리포트와 동일', vs: '직전 리포트 대비 ',
       names: { cape: 'CAPE', bi: '버핏지표', fg: '공포탐욕', aaii: 'AAII 약세', odte: '0DTE', vix: 'VIX', spread: '10Y-2Y' },
       th: { cape: '32 이상', bi: '200% 이상', fg: '25 이하', aaii: '50% 이상', odte: '65% 이상', vix: '30 이상', spread: '0 이하' },
-      nearT: '적색 전환까지 가까운 지표', nearN: '막대가 100%에 닿으면 적색입니다. 10Y-2Y는 +1%p를 0%로 놓고 계산합니다.', nearRed: '적색 기준 ',
+      nearT: '적색 전환까지 가까운 지표', nearN: '검은 표시가 현재 위치이며, 맨 위 빨간 구간에 닿으면 적색입니다. 색 구간은 적색 기준 대비 근접도이고, 10Y-2Y는 +1%p를 0%로 놓고 계산합니다.', nearRed: '적색 기준 ', nearZ: { g: '여유', y: '접근 중', o: '임박' }, nearLg: ['여유 (70% 미만)', '접근 중 (70~90%)', '임박 (90% 이상)', '적색 도달'], nearLeft: ' 남음', nearPct: '%p', nearPt: 'pt',
       trendT: '사이클 위치 추이', trendL: '발행된 리포트의 실제 기록만 이어서 그립니다. 리포트가 쌓일수록 길어집니다.',
       segP: '사이클 위치 P', segS: '종합 스코어', days: '일 기록', building: '기록이 쌓이는 중입니다', capBand: '금색 띠는 현재 단계의 구간입니다. ', capBasis: '발행일 기준, 휴장일은 건너뜁니다.',
       zoneS: '안전', zoneC: '주의', zoneD: '위험',
@@ -327,7 +344,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       first: 'First report', same: 'Same as previous report', vs: ' vs previous report',
       names: { cape: 'CAPE', bi: 'Buffett Ind.', fg: 'Fear & Greed', aaii: 'AAII bears', odte: '0DTE', vix: 'VIX', spread: '10Y-2Y' },
       th: { cape: '32 or above', bi: '200% or above', fg: '25 or below', aaii: '50% or above', odte: '65% or above', vix: '30 or above', spread: '0 or below' },
-      nearT: 'Indicators closest to turning red', nearN: 'A bar reaching 100% means the indicator is red. For 10Y-2Y, +1pp is treated as 0%.', nearRed: 'Red at ',
+      nearT: 'Indicators closest to turning red', nearN: 'The black mark is the current position; reaching the red zone at the top means the indicator is red. Colored zones show closeness to the red threshold, and for 10Y-2Y, +1pp is treated as 0%.', nearRed: 'Red at ', nearZ: { g: 'Comfortable', y: 'Approaching', o: 'Imminent' }, nearLg: ['Comfortable (under 70%)', 'Approaching (70-90%)', 'Imminent (90%+)', 'Red reached'], nearLeft: ' to go', nearPct: 'pp', nearPt: ' pts',
       trendT: 'Cycle Position trend', trendL: 'Drawn only from actual published reports. The line gets longer as reports accumulate.',
       segP: 'Cycle Position P', segS: 'Composite score', days: ' days recorded', building: 'Records are still building up', capBand: 'The gold band is the current stage range. ', capBasis: 'By publication date; market holidays are skipped.',
       zoneS: 'Safe', zoneC: 'Caution', zoneD: 'Danger',
@@ -495,6 +512,17 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     $('miniP').textContent = 'P ' + Number(e.p) + '%'; $('miniD').textContent = dot(e.date) + ' ' + T('asof');
   }
 
+  function nearRemain(k, v) {
+    v = Number(v);
+    var d = (k === 'fg' || k === 'spread') ? v - RED[k] : RED[k] - v;
+    return Math.max(0, d);
+  }
+  function nearFmt(k, d) {
+    var n = Math.round(d * 10) / 10, pct = (k === 'bi' || k === 'aaii' || k === 'odte' || k === 'spread');
+    return String(n) + T(pct ? 'nearPct' : 'nearPt') + T('nearLeft');
+  }
+  function nearZone(c) { return c >= 0.9 ? 'o' : c >= 0.7 ? 'y' : 'g'; }
+
   function near(e) {
     var b = $('nearBox'); clear(b);
     if (!e.sig) return;
@@ -502,11 +530,28 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       .sort(function (x, y) { return y.c - x.c; }).slice(0, 3);
     if (!list.length) return;
     var w = el('div', 'near'); w.appendChild(el('h3', null, T('nearT'))); w.appendChild(el('p', 'note', T('nearN')));
+    var grid = el('div', 'ng');
     list.forEach(function (o) {
-      var r = el('div', 'nr'), h = el('div', 'nrh');
-      h.appendChild(el('span', null, T('names')[o.k] + ' ' + fmtSig(o.k, o.v))); h.appendChild(el('span', null, T('nearRed') + T('th')[o.k]));
-      r.appendChild(h); var bar = el('div', 'bar'), fill = el('div'); fill.style.width = Math.round(o.c * 100) + '%'; bar.appendChild(fill); r.appendChild(bar); w.appendChild(r);
+      var z = nearZone(o.c), label = T('nearZ')[z], rem = nearFmt(o.k, nearRemain(o.k, o.v));
+      var col = el('div', 'ngc');
+      col.appendChild(el('div', 'ngn', T('names')[o.k]));
+      col.appendChild(el('div', 'ngv', fmtSig(o.k, o.v)));
+      var g = el('div', 'gauge'); g.setAttribute('role', 'img');
+      g.setAttribute('aria-label', T('names')[o.k] + ' ' + fmtSig(o.k, o.v) + ', ' + label + ', ' + T('nearRed') + T('th')[o.k] + ', ' + rem);
+      var gz = el('div', 'gz'); ['zr', 'zo', 'zy', 'zg'].forEach(function (c) { gz.appendChild(el('i', c)); }); g.appendChild(gz);
+      var pos = (Math.max(0, Math.min(1, o.c)) / 1.1 * 100).toFixed(2) + '%';
+      var gm = el('div', 'gm'); gm.style.bottom = pos; g.appendChild(gm);
+      var gd = el('div', 'gd'); gd.style.bottom = pos; g.appendChild(gd);
+      col.appendChild(g);
+      col.appendChild(el('div', 'ngr', T('nearRed') + T('th')[o.k]));
+      col.appendChild(el('div', 'ngd', rem));
+      col.appendChild(el('span', 'ngs ' + z, label));
+      grid.appendChild(col);
     });
+    w.appendChild(grid);
+    var lg = el('div', 'nlg'), cols = ['#9CCFB0', '#F0D27E', '#EDA66B', '#E2806F'];
+    T('nearLg').forEach(function (t, i) { var sp = el('span'); var sw = el('i'); sw.style.background = cols[i]; sp.appendChild(sw); sp.appendChild(document.createTextNode(t)); lg.appendChild(sp); });
+    w.appendChild(lg);
     b.appendChild(w);
   }
 
