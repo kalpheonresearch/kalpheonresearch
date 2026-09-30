@@ -77,6 +77,15 @@ nav.nav a:hover{color:var(--gold-ink);}
 .hgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:28px 36px;align-items:start;}
 @media (max-width:820px){.hgrid{grid-template-columns:1fr;}}
 .k{font-size:12px;color:#AEB9CB;margin-bottom:2px;}
+.k.gkl{font-size:13px;font-weight:600;color:#E6D6AE;margin-bottom:8px;}
+.gauge-h{display:block;width:100%;max-width:280px;height:auto;}
+.gnum{font-family:var(--serif);font-weight:700;font-size:54px;fill:#fff;}
+.glv{font-family:var(--serif);font-weight:700;font-size:19px;}
+.glv.green{fill:#8CCBA8;}.glv.amber{fill:#E7C07A;}.glv.red{fill:#F0907F;}
+.gtick{font-size:11px;fill:#AEB9CB;}
+.gdelta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:12px;}
+.klink{font-size:12.5px;color:#E6D6AE;text-decoration:underline;text-underline-offset:3px;}
+.klink:hover{color:#fff;}
 .hlrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;}
 .lvw{font-family:var(--serif);font-weight:700;font-size:60px;line-height:1.08;}
 .lvw.green{color:#8CCBA8;}.lvw.amber{color:#E7C07A;}.lvw.red{color:#F0907F;}
@@ -295,21 +304,21 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   var UI = {
     ko: {
       title: 'Kalpheon Research',
-      nav: [['#top', '오늘'], ['#trend', '추이'], ['#archive', '아카이브'], ['#about', 'About'], ['#method', '방법론']],
+      nav: [['#top', '투데이'], ['#trend', '트렌드'], ['#archive', '보관 저장소'], ['#about', 'About'], ['#method', '방법론']],
       intro: '미국 시장이 사이클의 어디쯤인지, 매크로 지표와 밸류에이션을 하나로 묶어 매일 숫자로 기록하는 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신됩니다.',
-      latest: '최신 리포트', verdict: '오늘의 판정', cyc: '사이클 위치 (민스키 모델)', prevP: '직전', asof: '기준',
+      latest: '최신 리포트', verdict: '오늘의 Kalpheon Index', idxLink: '지수 소개 · 내 글에 붙이기', cyc: '사이클 위치 (민스키 모델)', prevP: '직전', asof: '기준',
       cta: '오늘 전체 리포트 읽기', share: '공유', copyBtn: '링크 복사', copied: '링크를 복사했습니다',
       falsify: '이 판단이 틀렸다는 신호', warn: '일부 지표 전일값 유지: ', koOnly: '',
       first: '첫 리포트', same: '직전 리포트와 동일', vs: '직전 리포트 대비 ',
       names: { cape: 'CAPE', bi: '버핏지표', fg: '공포탐욕', aaii: 'AAII 약세', odte: '0DTE', vix: 'VIX', spread: '10Y-2Y' },
       th: { cape: '32 이상', bi: '200% 이상', fg: '25 이하', aaii: '50% 이상', odte: '65% 이상', vix: '30 이상', spread: '0 이하' },
       nearT: '적색 전환까지 가까운 지표', nearN: '검은 표시가 현재 위치이며, 맨 위 빨간 구간에 닿으면 적색입니다. 색 구간은 적색 기준 대비 근접도이고, 10Y-2Y는 +1%p를 0%로 놓고 계산합니다.', nearRed: '적색 기준 ', nearZ: { g: '여유', y: '접근 중', o: '임박' }, nearLg: ['여유 (70% 미만)', '접근 중 (70~90%)', '임박 (90% 이상)', '적색 도달'], nearLeft: ' 남음', nearPct: '%p', nearPt: 'pt',
-      trendT: '사이클 위치 추이', trendL: '발행된 리포트의 실제 기록만 이어서 그립니다. 리포트가 쌓일수록 길어집니다.',
+      trendT: '사이클 위치 트렌드', trendL: '발행된 리포트의 실제 기록만 이어서 그립니다. 리포트가 쌓일수록 길어집니다.',
       segP: '사이클 위치 P', segS: '종합 스코어', days: '일 기록', building: '기록이 쌓이는 중입니다', capBand: '금색 띠는 현재 단계의 구간입니다. ', capBasis: '발행일 기준, 휴장일은 건너뜁니다.',
       zoneS: '안전', zoneC: '주의', zoneD: '위험',
       cardT: '판정 이력 요약', cardL: '이 사이트에 발행된 리포트만 기계적으로 집계합니다. 적중률이 아니라 신호가 얼마나 움직였는지를 보여 줍니다.',
       cRec: '기록 일수', cLv: '판정 등급이 바뀐 횟수', cSt: '사이클 단계가 바뀐 횟수', cSig: '신호등 색이 바뀐 횟수', cConf: '하강 확인 신호 발생일', cConfN: '5개 이상 적색과 10Y-2Y 재역전', cRange: 'P 최저 ~ 최고', sinceLabel: '집계 시작',
-      archT: '리포트 아카이브', archL: '날짜를 누르면 그날의 리포트로 이동합니다.', legend: '리포트 발행일', listT: '지난 리포트', more: '더 보기', sc: '종합',
+      archT: '리포트 보관 저장소', archL: '날짜를 누르면 그날의 리포트로 이동합니다.', legend: '리포트 발행일', listT: '지난 리포트', more: '더 보기', sc: '종합',
       wd: ['일', '월', '화', '수', '목', '금', '토'], month: function (y, m) { return y + '년 ' + m + '월'; },
       loadT: '불러오는 중', loadB: '최신 리포트를 확인하고 있습니다.',
       emptyT: '아직 발행된 리포트가 없습니다', emptyB: '첫 리포트가 올라오면 이곳에 표시됩니다.',
@@ -338,7 +347,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       title: 'Kalpheon Research',
       nav: [['#top', 'Today'], ['#trend', 'Trend'], ['#archive', 'Archive'], ['#about', 'About'], ['#method', 'Methodology']],
       intro: 'A daily research note that records, in numbers, where the US market sits in its cycle by combining macro indicators and valuation. Updated automatically every business day before the open.',
-      latest: 'Latest report', verdict: "Today's verdict", cyc: 'Cycle Position (Minsky model)', prevP: 'previous', asof: 'as of',
+      latest: 'Latest report', verdict: "Today's Kalpheon Index", idxLink: 'About the index · Embed it', cyc: 'Cycle Position (Minsky model)', prevP: 'previous', asof: 'as of',
       cta: "Read today's full report", share: 'Share', copyBtn: 'Copy link', copied: 'Link copied',
       falsify: 'What would prove this wrong', warn: 'Some indicators carried over: ', koOnly: 'Korean only',
       first: 'First report', same: 'Same as previous report', vs: ' vs previous report',
@@ -452,6 +461,24 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     else { var x = document.createElement('textarea'); x.value = url; document.body.appendChild(x); x.select(); try { document.execCommand('copy'); done(); } catch (e) { window.prompt('', url); } document.body.removeChild(x); }
   }
 
+  function gaugeSvg(score, level) {
+    var cx = 120, cy = 122, r = 92, sc = Math.max(0, Math.min(100, Number(score)));
+    function pt(x) { var t = Math.PI * (1 - x / 100); return [cx + r * Math.cos(t), cy - r * Math.sin(t)]; }
+    function arcD(a, b) { var p = pt(a), q = pt(b); return 'M' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ' A' + r + ' ' + r + ' 0 0 1 ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1); }
+    var aria = lang === 'ko' ? 'Kalpheon Index ' + sc + '/100, ' + level : 'Kalpheon Index ' + sc + ' out of 100, ' + level;
+    var s = svgEl('svg', { viewBox: '0 0 240 156', 'class': 'gauge-h', role: 'img', 'aria-label': aria });
+    [[0, 32.4, '#4FA37E'], [34.6, 65.4, '#D4A64A'], [67.6, 100, '#D9594A']].forEach(function (z) {
+      s.appendChild(svgEl('path', { d: arcD(z[0], z[1]), fill: 'none', stroke: z[2], 'stroke-width': '16' }));
+    });
+    var m = pt(sc);
+    s.appendChild(svgEl('circle', { cx: m[0].toFixed(1), cy: m[1].toFixed(1), r: '9.5', fill: '#FFFFFF', stroke: '#0F1E33', 'stroke-width': '3.5' }));
+    var n = svgEl('text', { x: '120', y: '110', 'text-anchor': 'middle', 'class': 'gnum' }); n.textContent = String(sc); s.appendChild(n);
+    var l = svgEl('text', { x: '120', y: '136', 'text-anchor': 'middle', 'class': 'glv ' + lvc(sc) }); l.textContent = String(level); s.appendChild(l);
+    var t0 = svgEl('text', { x: '28', y: '150', 'text-anchor': 'middle', 'class': 'gtick' }); t0.textContent = '0'; s.appendChild(t0);
+    var t1 = svgEl('text', { x: '212', y: '150', 'text-anchor': 'middle', 'class': 'gtick' }); t1.textContent = '100'; s.appendChild(t1);
+    return s;
+  }
+
   function hero(e, prev) {
     var v = view(e), b = $('latest'); clear(b);
     var a = el('article', 'latest');
@@ -461,13 +488,12 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     var g = el('div', 'hgrid');
     // left: verdict
     var L = el('div');
-    L.appendChild(el('div', 'k', T('verdict')));
-    var row = el('div', 'hlrow');
-    row.appendChild(el('span', 'lvw ' + lvc(e.score), String(v.level)));
-    var sc = el('span', 'sc', String(Number(e.score))); sc.appendChild(el('small', null, '/100')); row.appendChild(sc);
+    L.appendChild(el('div', 'k gkl', T('verdict')));
+    L.appendChild(gaugeSvg(e.score, v.level));
     var dcls = 'flat', dtxt = T('first');
     if (prev) { var df = Number(e.score) - Number(prev.score); dcls = df === 0 ? 'flat' : df > 0 ? 'up' : 'down'; dtxt = df === 0 ? T('same') : (lang === 'ko' ? T('vs') + (df > 0 ? '+' : '') + df : (df > 0 ? '+' : '') + df + T('vs')); }
-    row.appendChild(el('span', 'chip ' + dcls, dtxt));
+    var row = el('div', 'gdelta'); row.appendChild(el('span', 'chip ' + dcls, dtxt));
+    var kl = el('a', 'klink', T('idxLink')); kl.href = lang === 'ko' ? 'kalpheon-index/' : 'kalpheon-index/en/'; row.appendChild(kl);
     L.appendChild(row);
     if (v.verdict) L.appendChild(el('p', 'oneline', oneLine(v.verdict)));
     var acts = el('div', 'acts');
