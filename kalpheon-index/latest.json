@@ -1,7 +1,7 @@
 {
  "name": "Kalpheon Index",
- "date": "2026-09-30",
- "market_asof": "2026-09-30",
+ "date": "2026-10-01",
+ "market_asof": "2026-10-01",
  "score": 50,
  "scale": "0-100 (higher = more warning signals)",
  "zone": "caution",
@@ -9,7 +9,7 @@
   "ko": "주의",
   "en": "Caution"
  },
- "cycle_position_pct": 72,
+ "cycle_position_pct": 73,
  "stage": {
   "ko": "새로운 논리 탄생",
   "en": "New Paradigm"
@@ -25,11 +25,11 @@
    "status": "red"
   },
   "fg": {
-   "value": 32,
+   "value": 31,
    "status": "yellow"
   },
   "aaii": {
-   "value": 48.1,
+   "value": 46.5,
    "status": "yellow"
   },
   "odte": {
@@ -55,8 +55,8 @@
   "page_en": "https://kalpheonresearch.com/kalpheon-index/en/",
   "badge_ko": "https://kalpheonresearch.com/kalpheon-index/badge.svg",
   "badge_en": "https://kalpheonresearch.com/kalpheon-index/badge-en.svg",
-  "report_ko": "https://kalpheonresearch.com/reports/daily/2026-09-30.html",
-  "report_en": "https://kalpheonresearch.com/reports/daily/en/2026-09-30.html"
+  "report_ko": "https://kalpheonresearch.com/reports/daily/2026-10-01.html",
+  "report_en": "https://kalpheonresearch.com/reports/daily/en/2026-10-01.html"
  },
  "source": "Kalpheon Research",
  "attribution": "Please cite as: Kalpheon Index, Kalpheon Research, with a link to the page URL.",
