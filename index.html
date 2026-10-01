@@ -256,9 +256,6 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     </div>
     <div class="chart" id="chart"></div>
     <p class="cap" id="chartCap"></p>
-    <h3 class="sub" id="cardTitle"></h3>
-    <p class="cap" id="cardLead" style="margin-top:0"></p>
-    <table class="sc2"><tbody id="cardRows"></tbody></table>
   </section>
 
   <section class="blk" id="archive" hidden>
@@ -317,8 +314,6 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       trendT: '사이클 위치 트렌드', trendL: '발행된 리포트의 실제 기록만 이어서 그립니다. 리포트가 쌓일수록 길어집니다.',
       segP: '사이클 위치 P', segS: '종합 스코어', days: '일 기록', building: '기록이 쌓이는 중입니다', capBand: '금색 띠는 현재 단계의 구간입니다. ', capBasis: '발행일 기준, 휴장일은 건너뜁니다.',
       zoneS: '안전', zoneC: '주의', zoneD: '위험',
-      cardT: '판정 이력 요약', cardL: '이 사이트에 발행된 리포트만 기계적으로 집계합니다. 적중률이 아니라 신호가 얼마나 움직였는지를 보여 줍니다.',
-      cRec: '기록 일수', cLv: '판정 등급이 바뀐 횟수', cSt: '사이클 단계가 바뀐 횟수', cSig: '신호등 색이 바뀐 횟수', cConf: '하강 확인 신호 발생일', cConfN: '5개 이상 적색과 10Y-2Y 재역전', cRange: 'P 최저 ~ 최고', sinceLabel: '집계 시작',
       archT: '리포트 보관 저장소', archL: '날짜를 누르면 그날의 리포트로 이동합니다.', legend: '리포트 발행일', listT: '지난 리포트', more: '더 보기', sc: '종합',
       wd: ['일', '월', '화', '수', '목', '금', '토'], month: function (y, m) { return y + '년 ' + m + '월'; },
       loadT: '불러오는 중', loadB: '최신 리포트를 확인하고 있습니다.',
@@ -358,8 +353,6 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       trendT: 'Cycle Position trend', trendL: 'Drawn only from actual published reports. The line gets longer as reports accumulate.',
       segP: 'Cycle Position P', segS: 'Composite score', days: ' days recorded', building: 'Records are still building up', capBand: 'The gold band is the current stage range. ', capBasis: 'By publication date; market holidays are skipped.',
       zoneS: 'Safe', zoneC: 'Caution', zoneD: 'Danger',
-      cardT: 'Track record summary', cardL: 'A mechanical count over reports published on this site. It shows how much the signals have moved, not a hit rate.',
-      cRec: 'Days recorded', cLv: 'Verdict level changes', cSt: 'Cycle stage changes', cSig: 'Signal color changes', cConf: 'Days with downturn confirmation', cConfN: '5+ red and a 10Y-2Y re-inversion', cRange: 'P low to high', sinceLabel: 'Since',
       archT: 'Report archive', archL: 'Select a date to open that day\'s report.', legend: 'Report published', listT: 'Past reports', more: 'Show more', sc: 'Score',
       wd: ['S', 'M', 'T', 'W', 'T', 'F', 'S'], month: function (y, m) { return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][m - 1] + ' ' + y; },
       loadT: 'Loading', loadB: 'Checking for the latest report.',
@@ -617,21 +610,6 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     box.appendChild(s);
     var n = rows.length;
     $('chartCap').textContent = (n < 3 ? T('building') + ' (' + n + T('days') + '). ' : n + T('days') + '. ') + (trendKey === 'p' ? T('capBand') : '') + T('capBasis');
-    // scorecard
-    var A = asc(), lvCh = 0, stCh = 0, sgCh = 0, conf = 0, pmin = 101, pmax = -1;
-    A.forEach(function (d, i) {
-      pmin = Math.min(pmin, Number(d.p)); pmax = Math.max(pmax, Number(d.p));
-      if (d.sig) { var reds = 0; SIGS.forEach(function (k) { if (d.sig[k] && d.sig[k][1] === 'red') reds++; }); if (reds >= 5 && d.sig.spread && d.sig.spread[1] === 'red') conf++; }
-      if (!i) return; var pv = A[i - 1];
-      if (lvClass(d.score) !== lvClass(pv.score)) lvCh++;
-      if (d.stage !== pv.stage) stCh++;
-      if (d.sig && pv.sig) SIGS.forEach(function (k) { if (d.sig[k] && pv.sig[k] && d.sig[k][1] !== pv.sig[k][1]) sgCh++; });
-    });
-    var body = $('cardRows'); clear(body);
-    $('cardTitle').textContent = T('cardT'); $('cardLead').textContent = T('cardL');
-    var hasSig = A.filter(function (d) { return d.sig; }).length;
-    var lines = [[T('sinceLabel'), dot(A[0].date)], [T('cRec'), String(A.length)], [T('cLv'), String(lvCh)], [T('cSt'), String(stCh)], [T('cSig'), hasSig > 1 ? String(sgCh) : '-'], [T('cConf') + ' (' + T('cConfN') + ')', hasSig ? String(conf) : '-'], [T('cRange'), pmin + '% ~ ' + pmax + '%']];
-    lines.forEach(function (l) { var tr = el('tr'); tr.appendChild(el('th', null, l[0])); tr.appendChild(el('td', null, l[1])); body.appendChild(tr); });
   }
 
   function calendar() {
