@@ -1,6 +1,6 @@
 {
  "name": "Kalpheon Index",
- "date": "2026-10-02",
+ "date": "2026-10-01",
  "market_asof": "2026-10-01",
  "score": 50,
  "scale": "0-100 (higher = more warning signals)",
@@ -55,8 +55,8 @@
   "page_en": "https://kalpheonresearch.com/kalpheon-index/en/",
   "badge_ko": "https://kalpheonresearch.com/kalpheon-index/badge.svg",
   "badge_en": "https://kalpheonresearch.com/kalpheon-index/badge-en.svg",
-  "report_ko": "https://kalpheonresearch.com/reports/daily/2026-10-02.html",
-  "report_en": "https://kalpheonresearch.com/reports/daily/en/2026-10-02.html"
+  "report_ko": "https://kalpheonresearch.com/reports/daily/2026-10-01.html",
+  "report_en": "https://kalpheonresearch.com/reports/daily/en/2026-10-01.html"
  },
  "source": "Kalpheon Research",
  "attribution": "Please cite as: Kalpheon Index, Kalpheon Research, with a link to the page URL.",
