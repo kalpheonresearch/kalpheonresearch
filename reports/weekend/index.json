@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-03",
+ "updated": "2026-10-04",
  "reports": [
+  {
+   "date": "2026-10-04",
+   "mode": "sun",
+   "daily_asof": "2026-10-02",
+   "market_asof": "2026-10-02",
+   "title": "약한 고용 이후 FOMC 의사록이 금리 경로를 가를까",
+   "summary": "9월 고용이 2.9만 명 증가에 그쳐 금리 인상 기대가 크게 줄었지만 10년물 금리는 여전히 높은 구간입니다. 다음 주는 ISM 서비스업과 수요일 FOMC 의사록이 핵심입니다.",
+   "falsify": "VIX가 30을 넘고 AAII 약세가 50%를 넘거나 10Y-2Y 스프레드가 0 이하로 내려가면 '주의' 판정이 낙관적이었다는 신호입니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 73,
+   "stage": "새로운 논리 탄생",
+   "items": 2,
+   "sig": {
+    "cape": [
+     41.07,
+     "red"
+    ],
+    "bi": [
+     234.1,
+     "red"
+    ],
+    "fg": [
+     31,
+     "yellow"
+    ],
+    "aaii": [
+     46.5,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     15.97,
+     "green"
+    ],
+    "spread": [
+     0.46,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "After weak jobs, will FOMC minutes steer the rate path",
+    "summary": "September payrolls rose only 29,000, sharply cutting rate-hike expectations, yet the 10-year yield remains elevated. ISM services on Monday and the FOMC minutes on Wednesday are the key events.",
+    "falsify": "VIX above 30 with AAII bears above 50%, or a 10Y-2Y spread at or below 0, would signal the Caution assessment was too optimistic.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-03",
    "mode": "sat",
