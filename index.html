@@ -50,7 +50,9 @@ nav.nav{display:flex;gap:2px;order:3;width:100%;overflow-x:auto;-webkit-overflow
 nav.nav::-webkit-scrollbar{display:none;}
 nav.nav a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px 0 0;font-size:13.5px;font-weight:600;color:var(--ink-2);text-decoration:none;}
 nav.nav a:hover{color:var(--gold-ink);}
-@media (min-width:760px){nav.nav{order:0;width:auto;margin-left:auto;margin-right:6px;}nav.nav a{padding:0 12px;}}
+nav.nav a.hasnew{position:relative;padding-right:30px;}
+.newb{position:absolute;top:5px;right:3px;font-family:'Jost',var(--sans);font-weight:500;font-size:8.5px;letter-spacing:.06em;line-height:1;padding:3px 5px 2px;border-radius:8px;background:var(--gold-ink);color:#fff;pointer-events:none;}
+@media (min-width:760px){nav.nav{order:0;width:auto;margin-left:auto;margin-right:6px;}nav.nav a{padding:0 12px;}nav.nav a.hasnew{padding-right:32px;}.newb{right:5px;}}
 .lang{display:inline-flex;border:1px solid var(--rule);border-radius:22px;overflow:hidden;background:#fff;}
 .lang button{border:0;background:none;min-width:48px;min-height:40px;padding:0 14px;font:inherit;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;line-height:1;}
 .lang button[aria-pressed="true"]{background:var(--ink);color:#fff;}
@@ -130,6 +132,10 @@ button.ghost:hover{background:rgba(255,255,255,.1);}
 section.blk{padding:38px 0 6px;}
 section.blk > h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;padding-top:12px;border-top:2px solid var(--ink);}
 section.blk > .lead{font-size:12.5px;color:var(--muted);margin:0 0 16px;max-width:640px;}
+section.contact{padding-bottom:10px;}
+a.mailbtn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1px solid var(--ink);border-radius:24px;background:#fff;color:var(--ink);font-size:14px;font-weight:600;text-decoration:none;word-break:break-all;}
+a.mailbtn:hover{background:var(--ink);color:#fff;}
+a.mailbtn svg{width:18px;height:18px;flex:none;}
 h3.sub{font-family:var(--serif);font-size:15px;margin:22px 0 8px;}
 .near{margin-top:26px;padding:20px 22px 18px;background:#FCFAF5;border:1px solid #EAE5D8;border-radius:12px;}
 .near h3{margin:0 0 4px;font-family:var(--serif);font-size:16px;}
@@ -287,6 +293,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   <section class="blk" id="about"></section>
   <section class="blk" id="method"></section>
   <section class="disclaimer" id="notice"></section>
+  <section class="blk contact" id="contact"></section>
 
   <footer>
     <span id="copy"></span>
@@ -303,12 +310,14 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   var WKMODE = { sat: 'Weekend Brief', sun: 'Week Ahead' };
   var SIGS = ['cape', 'bi', 'fg', 'aaii', 'odte', 'vix', 'spread'];
   var RED = { cape: 32, bi: 200, fg: 25, aaii: 50, odte: 65, vix: 30, spread: 0 };
+  var NEW_BADGE_UNTIL = '2027-01-04';   // 메뉴의 NEW 배지를 이 날짜(포함)까지만 표시. 계속 표시하려면 빈 문자열('')로 두면 됨
+  function newBadgeOn() { return !NEW_BADGE_UNTIL || new Date().toISOString().slice(0, 10) <= NEW_BADGE_UNTIL; }
   var ABOUT = { name: '', contactUrl: '', contactLabel: '' };   // name: 운영자 이름 표시(비우면 숨김). contactUrl: 문의 링크(이메일 주소는 푸시 안전장치에 걸리므로 폼이나 프로필 링크 권장)
   var STAGE_EN = { '자산 가격 이상': 'Displacement', '현명한 투자자': 'Smart Money', '기관투자자': 'Institutions', '대중 참여': 'Public Participation', '1차 하락': 'First Pullback', '언론 보도 증가': 'Media Attention', '새로운 논리 탄생': 'New Paradigm', '현실 부정': 'Denial', '탐욕': 'Greed', '열정(정점)': 'Euphoria (Peak)' };
   var UI = {
     ko: {
       title: 'Kalpheon Research',
-      nav: [['#top', '투데이'], ['#trend', '트렌드'], ['#archive', '보관 저장소'], ['#about', 'About'], ['#method', '방법론']],
+      nav: [['#top', '투데이'], ['#trend', '트렌드'], ['/portfolio-balancing/', '포트폴리오 밸런싱', 'NEW'], ['#archive', '보관 저장소'], ['#about', 'About'], ['#method', '방법론']],
       intro: '미국 시장이 사이클의 어디쯤인지, 매크로 지표와 밸류에이션을 하나로 묶어 매일 숫자로 기록하는 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신되며, 주말에는 토요일 Weekend Brief와 일요일 Week Ahead를 발행합니다.',
       latest: '최신 리포트', verdict: '오늘의 Kalpheon Index', idxLink: '지수 소개 · 내 글에 붙이기', cyc: '사이클 위치 (민스키 모델)', prevP: '직전', asof: '기준',
       cta: '오늘 전체 리포트 읽기', share: '공유', copyBtn: '링크 복사', copied: '링크를 복사했습니다',
@@ -328,6 +337,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       aboutT: 'About',
       about: '<p><b>' + 'Kalpheon Research' + '</b>는 시장이 사이클의 어디쯤인지를 감정이 아니라 숫자로 읽기 위해 만든 일간 리서치 노트입니다.</p><p>운영자는 금융 업계에서 12년간 일하며 근본적인 질문을 던지는 일을 좋아하게 되었습니다. 통계의 관점으로 노이즈를 걷어내고, 검증 가능한 사실과 데이터에 기반해 접근하는 리서치를 즐깁니다. 그 호기심이 확신으로 바뀌는 과정이 Kalpheon의 리서치입니다.</p><p>지표 수집과 문장 작성은 자동화 도구가 하고, 점수와 신호등, 사이클 위치는 고정된 계산 규칙이 냅니다. 사람이 그날의 숫자를 임의로 고치지 않습니다.</p>',
       contact: '문의',
+      contactT: '문의', contactL: '제안, 오류 제보, 협업 문의는 이메일로 보내 주세요.', mailAria: '이메일로 문의하기',
       lensT: '읽는 관점', lensL: '매일 같은 네 개의 렌즈로 읽습니다.',
       lens: [['버핏·멍거', '버핏지표 200% 초과는 경계 신호, 금리가 높을수록 안전마진 기준도 높아집니다.'], ['하워드 막스', '사이클은 펀더멘털이 아니라 심리가 만듭니다.'], ['레이 달리오', '부채, 화폐, 정치, 기술 사이클은 반복됩니다.'], ['로버트 실러', '극단적 밸류에이션은 평균으로 회귀합니다. 시점은 몰라도 방향은 반복됩니다.']],
       methT: '방법론', methL: '모든 숫자는 고정된 규칙으로 계산합니다.',
@@ -341,13 +351,12 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       dN: '당일 값을 확인하지 못한 지표는 전일 값을 유지하고 리포트 상단에 표시합니다. AAII는 주간, 0DTE는 수시 발표라 새 발표 전까지 직전 값을 이어 씁니다. 하강 국면의 1차 확인 신호는 7개 중 5개 이상이 동시에 적색이고 10Y-2Y가 재역전될 때입니다.',
       srcT: '데이터 출처', srcN: 'CAPE(GuruFocus, multpl.com), 버핏지표(GuruFocus, The Motley Fool), VIX(CBOE), 공포탐욕지수(CNN), AAII 심리조사(AAII), 0DTE 비중(Cboe, OCC), 10Y-2Y(FRED), 미국 10년물(U.S. Treasury), MOVE(ICE BofA), 국채 경매(TreasuryDirect), 부채 지표(FRED, CBO).',
       noticeT: '이용 안내',
-      notice: ['본 사이트의 리포트는 정보 제공 및 교육 목적의 개인 연구 노트이며, 특정 종목·상품의 매수·매도 권유나 투자 자문이 아닙니다. 작성자 개인의 견해로 소속 기관의 입장과 무관합니다. 리포트는 자동화 도구로 생성되어 수치·해석에 오류가 있을 수 있으며, 투자 판단과 그 결과의 책임은 이용자 본인에게 있습니다. 각 지표의 출처와 권리는 개별 리포트에 표기된 제공처에 있습니다. 본 사이트는 배포가 제한되는 지역의 이용자를 대상으로 하지 않습니다.',
-        '언어는 접속 국가를 기준으로 자동 선택됩니다(한국은 한글, 그 외는 영어). 국가 확인을 위해 IP 기반 국가 조회 서비스에 요청이 전송될 수 있으며, 이 사이트는 방문자의 IP 주소를 직접 저장하지 않습니다. 상단의 KO/EN 버튼으로 언제든 바꿀 수 있고, 선택은 브라우저에 저장됩니다.'],
+      notice: ['본 사이트의 리포트는 정보 제공 및 교육 목적의 개인 연구 노트이며, 특정 종목·상품의 매수·매도 권유나 투자 자문이 아닙니다. 작성자 개인의 견해로 소속 기관의 입장과 무관합니다. 리포트는 자동화 도구로 생성되어 수치·해석에 오류가 있을 수 있으며, 투자 판단과 그 결과의 책임은 이용자 본인에게 있습니다. 각 지표의 출처와 권리는 개별 리포트에 표기된 제공처에 있습니다. 본 사이트는 배포가 제한되는 지역의 이용자를 대상으로 하지 않습니다.'],
       copy: '© 2026 Kalpheon Research. All rights reserved.', fnote: '정보 제공 목적, 투자 자문 아님'
     },
     en: {
       title: 'Kalpheon Research',
-      nav: [['#top', 'Today'], ['#trend', 'Trend'], ['#archive', 'Archive'], ['#about', 'About'], ['#method', 'Methodology']],
+      nav: [['#top', 'Today'], ['#trend', 'Trend'], ['/portfolio-balancing/en/', 'Portfolio Balancing', 'NEW'], ['#archive', 'Archive'], ['#about', 'About'], ['#method', 'Methodology']],
       intro: 'A daily research note that records, in numbers, where the US market sits in its cycle by combining macro indicators and valuation. Updated automatically every business day before the open, with a Weekend Brief on Saturday and a Week Ahead on Sunday.',
       latest: 'Latest report', verdict: "Today's Kalpheon Index", idxLink: 'About the index · Embed it', cyc: 'Cycle Position (Minsky model)', prevP: 'previous', asof: 'as of',
       cta: "Read today's full report", share: 'Share', copyBtn: 'Copy link', copied: 'Link copied',
@@ -367,6 +376,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       aboutT: 'About',
       about: '<p><b>Kalpheon Research</b> is a daily research note built to read where the market sits in its cycle from numbers rather than emotion.</p><p>The author has spent 12 years in the financial industry, developing a habit of asking fundamental questions. Through a statistical lens, the operator strips away noise and builds every view on verifiable facts and data. Research is where that curiosity turns into conviction.</p><p>Automated tools collect the indicators and write the commentary, while fixed calculation rules produce the scores, signal colors and cycle position. Nobody edits the day\'s numbers by hand.</p>',
       contact: 'Contact',
+      contactT: 'Contact', contactL: 'For suggestions, error reports or collaboration, send us an email.', mailAria: 'Send an email',
       lensT: 'How the reports are read', lensL: 'Every day through the same four lenses.',
       lens: [['Buffett & Munger', 'A Buffett Indicator above 200% is a warning sign, and higher rates raise the bar for a margin of safety.'], ['Howard Marks', 'Cycles are driven by psychology, not fundamentals.'], ['Ray Dalio', 'Debt, monetary, political and technology cycles repeat.'], ['Robert Shiller', 'Extreme valuations revert to the mean. The timing is unknowable, but the direction repeats.']],
       methT: 'Methodology', methL: 'Every number is calculated by fixed rules.',
@@ -380,8 +390,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       dN: 'An indicator that cannot be confirmed for the day keeps its previous value and is flagged at the top of the report. AAII is weekly and 0DTE is reported irregularly, so the last value carries over until a new release. The first confirmation of a downturn phase is five or more of the seven indicators red at the same time together with a re-inversion of 10Y-2Y.',
       srcT: 'Data sources', srcN: 'CAPE (GuruFocus, multpl.com), Buffett Indicator (GuruFocus, The Motley Fool), VIX (CBOE), Fear & Greed Index (CNN), AAII sentiment survey (AAII), 0DTE share (Cboe, OCC), 10Y-2Y (FRED), US 10-year yield (U.S. Treasury), MOVE (ICE BofA), Treasury auctions (TreasuryDirect), debt indicators (FRED, CBO).',
       noticeT: 'Notice',
-      notice: ['Reports on this site are personal research notes for information and educational purposes only. They are not a recommendation to buy or sell any security or product, nor investment advice. The views are the author\'s own and are unrelated to those of any affiliated institution. Reports are generated with automated tools, so figures and interpretations may contain errors. Investment decisions and their consequences are the sole responsibility of the reader. Sources and rights for each indicator belong to the providers cited in each report. This site is not directed at users in jurisdictions where distribution is restricted.',
-        'The language is chosen automatically from the country you connect from (Korean for Korea, English elsewhere). To check the country, a request may be sent to an IP-based country lookup service, and this site does not store visitors\' IP addresses itself. You can switch at any time with the KO/EN buttons at the top, and your choice is saved in your browser.'],
+      notice: ['Reports on this site are personal research notes for information and educational purposes only. They are not a recommendation to buy or sell any security or product, nor investment advice. The views are the author\'s own and are unrelated to those of any affiliated institution. Reports are generated with automated tools, so figures and interpretations may contain errors. Investment decisions and their consequences are the sole responsibility of the reader. Sources and rights for each indicator belong to the providers cited in each report. This site is not directed at users in jurisdictions where distribution is restricted.'],
       copy: '© 2026 Kalpheon Research. All rights reserved.', fnote: 'For information only, not investment advice'
     }
   };
@@ -684,7 +693,11 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     document.documentElement.lang = lang; document.title = T('title');
     $('intro').textContent = T('intro');
     var nav = $('nav'); clear(nav);
-    T('nav').forEach(function (n) { var a = el('a', null, n[1]); a.href = n[0]; nav.appendChild(a); });
+    T('nav').forEach(function (n) {
+      var a = el('a', null, n[1]); a.href = n[0];
+      if (n[2] && newBadgeOn()) { a.className = 'hasnew'; a.appendChild(el('span', 'newb', n[2])); }
+      nav.appendChild(a);
+    });
     $('copy').textContent = T('copy'); $('fnote').textContent = T('fnote');
     Array.prototype.forEach.call(document.querySelectorAll('.lang button'), function (bt) { bt.setAttribute('aria-pressed', bt.getAttribute('data-lang') === lang ? 'true' : 'false'); });
     var ab = $('about'); ab.innerHTML = '';
@@ -710,6 +723,12 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     me.appendChild(el('h3', 'sub', T('srcT'))); var sn = el('div', 'prose'); var sp = el('p'); sp.textContent = T('srcN'); sn.appendChild(sp); me.appendChild(sn);
     var nt = $('notice'); nt.innerHTML = ''; nt.appendChild(el('strong', null, T('noticeT')));
     T('notice').forEach(function (t) { nt.appendChild(el('p', null, t)); });
+    var ct = $('contact'); ct.innerHTML = '';
+    ct.appendChild(el('h2', null, T('contactT'))); ct.appendChild(el('p', 'lead', T('contactL')));
+    var addr = ['kalpheon.investment', 'gmail.com'].join('@');   // 주소를 조각으로 조립해 소스에 이메일 문자열이 그대로 남지 않게 함(스팸 수집 방지)
+    var mb = el('a', 'mailbtn'); mb.href = 'mailto:' + addr; mb.setAttribute('aria-label', T('mailAria') + ': ' + addr);
+    mb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>';
+    mb.appendChild(document.createTextNode(addr)); ct.appendChild(mb);
     $('archTitle').textContent = T('archT'); $('archLead').textContent = T('archL'); $('legend').textContent = T('legend'); $('legendWk').textContent = T('wkLegend'); $('legendWk').hidden = !wrows.length;
     $('listTitle').textContent = T('listT'); $('more').textContent = T('more');
   }
