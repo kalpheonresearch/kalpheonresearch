@@ -217,6 +217,16 @@ table.th td:first-child{font-weight:600;color:var(--ink);}
 .disclaimer p:last-child{margin:0;}
 footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.wkc{display:block;margin-top:16px;padding:16px 20px;border:1px solid #EAE5D8;border-left:3px solid var(--gold);border-radius:8px;background:#FCFAF5;text-decoration:none;color:inherit;}
+.wkc:hover{border-color:var(--gold);background:var(--gold-bg);}
+.wkc .wk1{display:flex;gap:4px 10px;align-items:baseline;flex-wrap:wrap;font-size:12px;color:var(--muted);}
+.wkc .wkm{font-weight:700;color:var(--gold-ink);}
+.wkc .wkt{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.5;margin:4px 0 2px;}
+.wkc .wks{font-size:13px;color:var(--ink-2);}
+.wkb{display:inline-block;margin-right:8px;padding:0 8px;border-radius:10px;background:var(--gold-bg);color:var(--gold-ink);font-size:11px;font-weight:700;white-space:nowrap;}
+.cal a.d.wk::after{background:var(--ink-2);}
+.legend.wkl{margin-top:4px;}
+.legend.wkl::before{background:var(--ink-2);}
 </style>
 </head>
 <body>
@@ -245,6 +255,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
 
   <p class="intro" id="intro"></p>
   <div id="latest"></div>
+  <div id="wkBox"></div>
   <div id="nearBox"></div>
 
   <section class="blk" id="trend" hidden>
@@ -270,6 +281,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
         </div>
         <div class="cal" id="cal"></div>
         <div class="legend" id="legend"></div>
+        <div class="legend wkl" id="legendWk" hidden></div>
       </div>
       <div>
         <h3 class="sub" id="listTitle" style="margin-top:0"></h3>
@@ -293,8 +305,9 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
 <script>
 (function () {
   'use strict';
-  var PAGE = 30, shown = 0, rest = [], rows = [], state = 'loading', lang = 'ko', trendKey = 'p', calYM = null;
+  var PAGE = 30, shown = 0, rest = [], rows = [], wrows = [], state = 'loading', lang = 'ko', trendKey = 'p', calYM = null;
   var BANDS = [[0, 8], [8, 20], [20, 35], [35, 48], [48, 55], [55, 65], [65, 78], [78, 88], [88, 95], [95, 101]];
+  var WKMODE = { sat: 'Weekend Brief', sun: 'Week Ahead' };
   var SIGS = ['cape', 'bi', 'fg', 'aaii', 'odte', 'vix', 'spread'];
   var RED = { cape: 32, bi: 200, fg: 25, aaii: 50, odte: 65, vix: 30, spread: 0 };
   var ABOUT = { name: '', contactUrl: '', contactLabel: '' };   // name: 운영자 이름 표시(비우면 숨김). contactUrl: 문의 링크(이메일 주소는 푸시 안전장치에 걸리므로 폼이나 프로필 링크 권장)
@@ -303,7 +316,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     ko: {
       title: 'Kalpheon Research',
       nav: [['#top', '투데이'], ['#trend', '트렌드'], ['#archive', '보관 저장소'], ['#about', 'About'], ['#method', '방법론']],
-      intro: '미국 시장이 사이클의 어디쯤인지, 매크로 지표와 밸류에이션을 하나로 묶어 매일 숫자로 기록하는 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신됩니다.',
+      intro: '미국 시장이 사이클의 어디쯤인지, 매크로 지표와 밸류에이션을 하나로 묶어 매일 숫자로 기록하는 리서치 노트입니다. 매 영업일 새벽에 자동으로 갱신되며, 주말에는 토요일 Weekend Brief와 일요일 Week Ahead를 발행합니다.',
       latest: '최신 리포트', verdict: '오늘의 Kalpheon Index', idxLink: '지수 소개 · 내 글에 붙이기', cyc: '사이클 위치 (민스키 모델)', prevP: '직전', asof: '기준',
       cta: '오늘 전체 리포트 읽기', share: '공유', copyBtn: '링크 복사', copied: '링크를 복사했습니다',
       falsify: '이 판단이 틀렸다는 신호', warn: '일부 지표 전일값 유지: ', koOnly: '',
@@ -314,7 +327,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       trendT: '사이클 위치 트렌드', trendL: '발행된 리포트의 실제 기록만 이어서 그립니다. 리포트가 쌓일수록 길어집니다.',
       segP: '사이클 위치 P', segS: '종합 스코어', days: '일 기록', building: '기록이 쌓이는 중입니다', capBand: '금색 띠는 현재 단계의 구간입니다. ', capBasis: '발행일 기준, 휴장일은 건너뜁니다.',
       zoneS: '안전', zoneC: '주의', zoneD: '위험',
-      archT: '리포트 보관 저장소', archL: '날짜를 누르면 그날의 리포트로 이동합니다.', legend: '리포트 발행일', listT: '지난 리포트', more: '더 보기', sc: '종합',
+      archT: '리포트 보관 저장소', archL: '날짜를 누르면 그날의 리포트로 이동합니다.', legend: '리포트 발행일', wkLegend: '주말 리포트(Weekend Brief, Week Ahead)', wkNew: '최신 주말 리포트', wkAsof: '수치 기준: 데일리 ', listT: '지난 리포트', more: '더 보기', sc: '종합',
       wd: ['일', '월', '화', '수', '목', '금', '토'], month: function (y, m) { return y + '년 ' + m + '월'; },
       loadT: '불러오는 중', loadB: '최신 리포트를 확인하고 있습니다.',
       emptyT: '아직 발행된 리포트가 없습니다', emptyB: '첫 리포트가 올라오면 이곳에 표시됩니다.',
@@ -342,7 +355,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     en: {
       title: 'Kalpheon Research',
       nav: [['#top', 'Today'], ['#trend', 'Trend'], ['#archive', 'Archive'], ['#about', 'About'], ['#method', 'Methodology']],
-      intro: 'A daily research note that records, in numbers, where the US market sits in its cycle by combining macro indicators and valuation. Updated automatically every business day before the open.',
+      intro: 'A daily research note that records, in numbers, where the US market sits in its cycle by combining macro indicators and valuation. Updated automatically every business day before the open, with a Weekend Brief on Saturday and a Week Ahead on Sunday.',
       latest: 'Latest report', verdict: "Today's Kalpheon Index", idxLink: 'About the index · Embed it', cyc: 'Cycle Position (Minsky model)', prevP: 'previous', asof: 'as of',
       cta: "Read today's full report", share: 'Share', copyBtn: 'Copy link', copied: 'Link copied',
       falsify: 'What would prove this wrong', warn: 'Some indicators carried over: ', koOnly: 'Korean only',
@@ -353,7 +366,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       trendT: 'Cycle Position trend', trendL: 'Drawn only from actual published reports. The line gets longer as reports accumulate.',
       segP: 'Cycle Position P', segS: 'Composite score', days: ' days recorded', building: 'Records are still building up', capBand: 'The gold band is the current stage range. ', capBasis: 'By publication date; market holidays are skipped.',
       zoneS: 'Safe', zoneC: 'Caution', zoneD: 'Danger',
-      archT: 'Report archive', archL: 'Select a date to open that day\'s report.', legend: 'Report published', listT: 'Past reports', more: 'Show more', sc: 'Score',
+      archT: 'Report archive', archL: 'Select a date to open that day\'s report.', legend: 'Report published', wkLegend: 'Weekend report (Weekend Brief, Week Ahead)', wkNew: 'Latest weekend report', wkAsof: 'Figures from daily report ', listT: 'Past reports', more: 'Show more', sc: 'Score',
       wd: ['S', 'M', 'T', 'W', 'T', 'F', 'S'], month: function (y, m) { return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][m - 1] + ' ' + y; },
       loadT: 'Loading', loadB: 'Checking for the latest report.',
       emptyT: 'No reports published yet', emptyB: 'The first report will appear here once it is published.',
@@ -424,6 +437,24 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   function svgEl(tag, attrs) { var e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (var k in attrs) { e.setAttribute(k, attrs[k]); } return e; }
 
   // 리포트 항목을 현재 언어 기준으로 정리 (영문판이 없는 옛 항목은 한글로 대체)
+  function wkView(e) {
+    var hasEn = lang === 'en' && e.en;
+    return { mode: WKMODE[e.mode] || 'Weekend', title: hasEn ? e.en.title : e.title, summary: hasEn ? e.en.summary : e.summary,
+      href: 'reports/weekend/' + (hasEn ? 'en/' : '') + e.date + '.html', koOnly: lang === 'en' && !e.en };
+  }
+  function wkCard() {
+    var box = $('wkBox'); clear(box);
+    if (!wrows.length || !rows.length || wrows[0].date < rows[0].date) return;
+    var w = wrows[0], v = wkView(w), a = el('a', 'wkc'); a.href = v.href;
+    var h = el('div', 'wk1'); h.appendChild(el('span', 'wkm', T('wkNew') + ' · ' + v.mode)); h.appendChild(el('span', null, dot(w.date)));
+    if (w.daily_asof) h.appendChild(el('span', null, T('wkAsof') + dot(w.daily_asof)));
+    if (v.koOnly) h.appendChild(el('span', 'tag', T('koOnly')));
+    a.appendChild(h); a.appendChild(el('div', 'wkt', v.title || '')); if (v.summary) a.appendChild(el('div', 'wks', v.summary));
+    box.appendChild(a);
+  }
+  function mergedRest() {
+    return rows.slice(1).concat(wrows).sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : (a.wk ? 1 : -1); });
+  }
   function view(e) {
     var base = lang === 'en' ? 'reports/daily/en/' : 'reports/daily/';
     if (lang === 'en' && e.en) return { level: e.en.level, stage: e.en.stage, verdict: e.en.verdict, falsify: e.en.falsify, stale: e.en.stale || [], href: base + e.date + '.html', koOnly: false };
@@ -615,7 +646,9 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   function calendar() {
     var A = asc(); if (!A.length) return;
     var has = {}; A.forEach(function (d) { has[d.date] = d; });
-    var first = A[0].date.slice(0, 7), lastM = A[A.length - 1].date.slice(0, 7);
+    wrows.forEach(function (w) { if (!has[w.date]) has[w.date] = w; });
+    var allD = A.map(function (d) { return d.date; }).concat(wrows.map(function (w) { return w.date; })).sort();
+    var first = allD[0].slice(0, 7), lastM = allD[allD.length - 1].slice(0, 7);
     if (!calYM || calYM < first || calYM > lastM) calYM = lastM;
     var y = Number(calYM.slice(0, 4)), m = Number(calYM.slice(5, 7));
     $('calTitle').textContent = T('month')(y, m);
@@ -628,7 +661,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     var latestDate = A[A.length - 1].date;
     for (var d = 1; d <= days; d++) {
       var key = calYM + '-' + (d < 10 ? '0' + d : d), ent = has[key];
-      if (ent) { var a = el('a', 'd' + (key === latestDate ? ' cur' : ''), String(d)); a.href = view(ent).href; a.setAttribute('aria-label', dot(key)); g.appendChild(a); }
+      if (ent) { var a = el('a', 'd' + (ent.wk ? ' wk' : '') + (key === latestDate ? ' cur' : ''), String(d)); a.href = ent.wk ? wkView(ent).href : view(ent).href; a.setAttribute('aria-label', dot(key)); g.appendChild(a); }
       else g.appendChild(el('div', 'd', String(d)));
     }
   }
@@ -636,6 +669,14 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   function rowsFor(list) {
     var out = $('list');
     list.forEach(function (e) {
+      if (e.wk) {
+        var wv = wkView(e), wa = el('a', 'row'); wa.href = wv.href;
+        wa.appendChild(el('span', 'rd', dot(e.date)));
+        var ws = el('span', 'rs'); ws.appendChild(el('span', 'wkb', wv.mode)); ws.appendChild(document.createTextNode(wv.title || ''));
+        if (wv.koOnly) ws.appendChild(el('span', 'tag', T('koOnly')));
+        wa.appendChild(ws); wa.appendChild(el('span', 'rp', '')); wa.appendChild(el('span', 'chev', '\u203a'));
+        out.appendChild(wa); return;
+      }
       var v = view(e), a = el('a', 'row'); a.href = v.href;
       a.appendChild(el('span', 'rd', dot(e.date)));
       var s = el('span', 'rs'); s.appendChild(document.createTextNode(T('sc') + ' ' + Number(e.score) + ' '));
@@ -681,21 +722,21 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     me.appendChild(el('h3', 'sub', T('srcT'))); var sn = el('div', 'prose'); var sp = el('p'); sp.textContent = T('srcN'); sn.appendChild(sp); me.appendChild(sn);
     var nt = $('notice'); nt.innerHTML = ''; nt.appendChild(el('strong', null, T('noticeT')));
     T('notice').forEach(function (t) { nt.appendChild(el('p', null, t)); });
-    $('archTitle').textContent = T('archT'); $('archLead').textContent = T('archL'); $('legend').textContent = T('legend');
+    $('archTitle').textContent = T('archT'); $('archLead').textContent = T('archL'); $('legend').textContent = T('legend'); $('legendWk').textContent = T('wkLegend'); $('legendWk').hidden = !wrows.length;
     $('listTitle').textContent = T('listT'); $('more').textContent = T('more');
   }
 
   function render() {
     statics();
     var list = $('list'); clear(list); shown = 0;
-    $('nearBox').innerHTML = '';
+    $('nearBox').innerHTML = ''; $('wkBox').innerHTML = '';
     var arch = $('archive');
     if (state === 'loading') { box(T('loadT'), T('loadB')); $('trend').hidden = true; arch.hidden = true; return; }
     if (state === 'error') { box(T('errT'), T('errB')); $('trend').hidden = true; arch.hidden = true; return; }
     if (!rows.length) { box(T('emptyT'), T('emptyB')); $('trend').hidden = true; arch.hidden = true; return; }
-    hero(rows[0], rows[1]); near(rows[0]);
+    hero(rows[0], rows[1]); near(rows[0]); wkCard();
     trend();
-    rest = rows.slice(1); arch.hidden = false; calendar();
+    rest = mergedRest(); arch.hidden = false; calendar();
     if (rest.length) { more(); } else { $('more').hidden = true; }
   }
 
@@ -725,10 +766,15 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   render();
   if (pref === 'ko' || pref === 'en') { geoDone = true; }
   else { kpCountry(function (cc) { lang = cc ? (cc === 'KR' ? 'ko' : 'en') : browserLang(); geoDone = true; go(); }); }
+  var wkP = fetch('reports/weekend/index.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (m) { wrows = m && m.reports ? m.reports.filter(ok).map(function (e) { e.wk = true; return e; }).sort(function (a, b) { return a.date < b.date ? 1 : -1; }) : []; })
+    .catch(function () { wrows = []; });
   fetch('reports/index.json', { cache: 'no-cache' })
     .then(function (r) { if (r.status === 404) return null; if (!r.ok) throw new Error('load'); return r.json(); })
     .then(function (m) { rows = m && m.reports ? m.reports.filter(ok).sort(function (a, b) { return a.date < b.date ? 1 : -1; }) : []; state = 'ready'; })
     .catch(function () { state = 'error'; })
+    .then(function () { return wkP; })
     .then(function () { dataDone = true; go(); });
 })();
 </script>
