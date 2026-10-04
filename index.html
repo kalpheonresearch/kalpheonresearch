@@ -217,12 +217,6 @@ table.th td:first-child{font-weight:600;color:var(--ink);}
 .disclaimer p:last-child{margin:0;}
 footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
-.wkc{display:block;margin-top:16px;padding:16px 20px;border:1px solid #EAE5D8;border-left:3px solid var(--gold);border-radius:8px;background:#FCFAF5;text-decoration:none;color:inherit;}
-.wkc:hover{border-color:var(--gold);background:var(--gold-bg);}
-.wkc .wk1{display:flex;gap:4px 10px;align-items:baseline;flex-wrap:wrap;font-size:12px;color:var(--muted);}
-.wkc .wkm{font-weight:700;color:var(--gold-ink);}
-.wkc .wkt{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.5;margin:4px 0 2px;}
-.wkc .wks{font-size:13px;color:var(--ink-2);}
 .wkb{display:inline-block;margin-right:8px;padding:0 8px;border-radius:10px;background:var(--gold-bg);color:var(--gold-ink);font-size:11px;font-weight:700;white-space:nowrap;}
 .cal a.d.wk::after{background:var(--ink-2);}
 .legend.wkl{margin-top:4px;}
@@ -255,7 +249,6 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
 
   <p class="intro" id="intro"></p>
   <div id="latest"></div>
-  <div id="wkBox"></div>
   <div id="nearBox"></div>
 
   <section class="blk" id="trend" hidden>
@@ -327,7 +320,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       trendT: '사이클 위치 트렌드', trendL: '발행된 리포트의 실제 기록만 이어서 그립니다. 리포트가 쌓일수록 길어집니다.',
       segP: '사이클 위치 P', segS: '종합 스코어', days: '일 기록', building: '기록이 쌓이는 중입니다', capBand: '금색 띠는 현재 단계의 구간입니다. ', capBasis: '발행일 기준, 휴장일은 건너뜁니다.',
       zoneS: '안전', zoneC: '주의', zoneD: '위험',
-      archT: '리포트 보관 저장소', archL: '날짜를 누르면 그날의 리포트로 이동합니다.', legend: '리포트 발행일', wkLegend: '주말 리포트(Weekend Brief, Week Ahead)', wkNew: '최신 주말 리포트', wkAsof: '수치 기준: 데일리 ', listT: '지난 리포트', more: '더 보기', sc: '종합',
+      archT: '리포트 보관 저장소', archL: '날짜를 누르면 그날의 리포트로 이동합니다.', legend: '리포트 발행일', wkLegend: '주말 리포트(Weekend Brief, Week Ahead)', ctaWk: '주말 리포트 읽기', listT: '지난 리포트', more: '더 보기', sc: '종합',
       wd: ['일', '월', '화', '수', '목', '금', '토'], month: function (y, m) { return y + '년 ' + m + '월'; },
       loadT: '불러오는 중', loadB: '최신 리포트를 확인하고 있습니다.',
       emptyT: '아직 발행된 리포트가 없습니다', emptyB: '첫 리포트가 올라오면 이곳에 표시됩니다.',
@@ -366,7 +359,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
       trendT: 'Cycle Position trend', trendL: 'Drawn only from actual published reports. The line gets longer as reports accumulate.',
       segP: 'Cycle Position P', segS: 'Composite score', days: ' days recorded', building: 'Records are still building up', capBand: 'The gold band is the current stage range. ', capBasis: 'By publication date; market holidays are skipped.',
       zoneS: 'Safe', zoneC: 'Caution', zoneD: 'Danger',
-      archT: 'Report archive', archL: 'Select a date to open that day\'s report.', legend: 'Report published', wkLegend: 'Weekend report (Weekend Brief, Week Ahead)', wkNew: 'Latest weekend report', wkAsof: 'Figures from daily report ', listT: 'Past reports', more: 'Show more', sc: 'Score',
+      archT: 'Report archive', archL: 'Select a date to open that day\'s report.', legend: 'Report published', wkLegend: 'Weekend report (Weekend Brief, Week Ahead)', ctaWk: 'Read the weekend report', listT: 'Past reports', more: 'Show more', sc: 'Score',
       wd: ['S', 'M', 'T', 'W', 'T', 'F', 'S'], month: function (y, m) { return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][m - 1] + ' ' + y; },
       loadT: 'Loading', loadB: 'Checking for the latest report.',
       emptyT: 'No reports published yet', emptyB: 'The first report will appear here once it is published.',
@@ -438,22 +431,15 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
 
   // 리포트 항목을 현재 언어 기준으로 정리 (영문판이 없는 옛 항목은 한글로 대체)
   function wkView(e) {
-    var hasEn = lang === 'en' && e.en;
-    return { mode: WKMODE[e.mode] || 'Weekend', title: hasEn ? e.en.title : e.title, summary: hasEn ? e.en.summary : e.summary,
-      href: 'reports/weekend/' + (hasEn ? 'en/' : '') + e.date + '.html', koOnly: lang === 'en' && !e.en };
+    var en = lang === 'en' && e.en;
+    return { mode: WKMODE[e.mode] || 'Weekend', title: en ? e.en.title : e.title,
+      level: en ? e.en.level : (lang === 'en' ? lvEn(e.score) : e.level),
+      stage: en ? e.en.stage : (lang === 'en' ? (STAGE_EN[e.stage] || e.stage) : e.stage),
+      verdict: en ? e.en.summary : e.summary, falsify: en ? e.en.falsify : e.falsify, stale: [],
+      href: 'reports/weekend/' + (en ? 'en/' : '') + e.date + '.html', koOnly: lang === 'en' && !e.en };
   }
-  function wkCard() {
-    var box = $('wkBox'); clear(box);
-    if (!wrows.length || !rows.length || wrows[0].date < rows[0].date) return;
-    var w = wrows[0], v = wkView(w), a = el('a', 'wkc'); a.href = v.href;
-    var h = el('div', 'wk1'); h.appendChild(el('span', 'wkm', T('wkNew') + ' · ' + v.mode)); h.appendChild(el('span', null, dot(w.date)));
-    if (w.daily_asof) h.appendChild(el('span', null, T('wkAsof') + dot(w.daily_asof)));
-    if (v.koOnly) h.appendChild(el('span', 'tag', T('koOnly')));
-    a.appendChild(h); a.appendChild(el('div', 'wkt', v.title || '')); if (v.summary) a.appendChild(el('div', 'wks', v.summary));
-    box.appendChild(a);
-  }
-  function mergedRest() {
-    return rows.slice(1).concat(wrows).sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : (a.wk ? 1 : -1); });
+  function allRows() {
+    return rows.concat(wrows).sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : (a.wk ? 1 : -1); });
   }
   function view(e) {
     var base = lang === 'en' ? 'reports/daily/en/' : 'reports/daily/';
@@ -504,10 +490,11 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     return s;
   }
 
-  function hero(e, prev) {
-    var v = view(e), b = $('latest'); clear(b);
+  function hero(e, prev, wv) {
+    var v = wv || view(e), b = $('latest'); clear(b);
     var a = el('article', 'latest');
     var h = el('div', 'lhead'); var hb = el('b', null, T('latest')); h.appendChild(hb);
+    if (v.mode) hb.appendChild(el('span', 'tag', v.mode));
     if (v.koOnly) hb.appendChild(el('span', 'tag', T('koOnly')));
     var asof = el('span', null, dot(e.date)); h.appendChild(asof); a.appendChild(h);
     var g = el('div', 'hgrid');
@@ -522,7 +509,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     L.appendChild(row);
     if (v.verdict) L.appendChild(el('p', 'oneline', oneLine(v.verdict)));
     var acts = el('div', 'acts');
-    var c = el('a', 'cta'); c.href = v.href; c.appendChild(el('span', null, T('cta')));
+    var c = el('a', 'cta'); c.href = v.href; c.appendChild(el('span', null, T(v.mode ? 'ctaWk' : 'cta')));
     var ar = svgEl('svg', { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', 'stroke-width': '2.4', 'aria-hidden': 'true' }); ar.appendChild(svgEl('path', { d: 'M5 12h14M13 6l6 6-6 6' })); c.appendChild(ar);
     acts.appendChild(c);
     var sh = el('button', 'ghost', T('copyBtn')); sh.type = 'button';
@@ -544,11 +531,12 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     var pf = el('div', 'pfoot'); pf.appendChild(el('span', null, String(v.stage) + ' (' + bd[0] + (lang === 'ko' ? '~' : '-') + hi + '%)'));
     if (prev) pf.appendChild(el('span', null, T('prevP') + ' ' + Number(prev.p) + '%'));
     pp.appendChild(pf); R.appendChild(pp);
-    if (e.sig) {
+    var SG = e.sig || (rows[0] && rows[0].sig) || null;
+    if (SG) {
       var sg = el('div', 'sigs');
       SIGS.forEach(function (k) {
-        if (!e.sig[k]) return;
-        var s = el('div', 'sg'); s.appendChild(el('i', e.sig[k][1])); s.appendChild(el('b', null, fmtSig(k, e.sig[k][0]))); s.appendChild(el('span', null, T('names')[k])); sg.appendChild(s);
+        if (!SG[k]) return;
+        var s = el('div', 'sg'); s.appendChild(el('i', SG[k][1])); s.appendChild(el('b', null, fmtSig(k, SG[k][0]))); s.appendChild(el('span', null, T('names')[k])); sg.appendChild(s);
       });
       R.appendChild(sg);
     }
@@ -658,7 +646,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
     T('wd').forEach(function (w) { g.appendChild(el('div', 'wd', w)); });
     var start = new Date(Date.UTC(y, m - 1, 1)).getUTCDay(), days = new Date(Date.UTC(y, m, 0)).getUTCDate();
     for (var i = 0; i < start; i++) g.appendChild(el('div'));
-    var latestDate = A[A.length - 1].date;
+    var latestDate = allD[allD.length - 1];
     for (var d = 1; d <= days; d++) {
       var key = calYM + '-' + (d < 10 ? '0' + d : d), ent = has[key];
       if (ent) { var a = el('a', 'd' + (ent.wk ? ' wk' : '') + (key === latestDate ? ' cur' : ''), String(d)); a.href = ent.wk ? wkView(ent).href : view(ent).href; a.setAttribute('aria-label', dot(key)); g.appendChild(a); }
@@ -729,14 +717,15 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   function render() {
     statics();
     var list = $('list'); clear(list); shown = 0;
-    $('nearBox').innerHTML = ''; $('wkBox').innerHTML = '';
+    $('nearBox').innerHTML = '';
     var arch = $('archive');
     if (state === 'loading') { box(T('loadT'), T('loadB')); $('trend').hidden = true; arch.hidden = true; return; }
     if (state === 'error') { box(T('errT'), T('errB')); $('trend').hidden = true; arch.hidden = true; return; }
     if (!rows.length) { box(T('emptyT'), T('emptyB')); $('trend').hidden = true; arch.hidden = true; return; }
-    hero(rows[0], rows[1]); near(rows[0]); wkCard();
+    var all = allRows(), top = all[0];
+    hero(top, all[1], top.wk ? wkView(top) : null); near(rows[0]);
     trend();
-    rest = mergedRest(); arch.hidden = false; calendar();
+    rest = all.slice(1); arch.hidden = false; calendar();
     if (rest.length) { more(); } else { $('more').hidden = true; }
   }
 
@@ -768,7 +757,7 @@ footer{border-top:1px solid var(--rule);margin-top:18px;padding:18px 0 26px;font
   else { kpCountry(function (cc) { lang = cc ? (cc === 'KR' ? 'ko' : 'en') : browserLang(); geoDone = true; go(); }); }
   var wkP = fetch('reports/weekend/index.json', { cache: 'no-cache' })
     .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (m) { wrows = m && m.reports ? m.reports.filter(ok).map(function (e) { e.wk = true; return e; }).sort(function (a, b) { return a.date < b.date ? 1 : -1; }) : []; })
+    .then(function (m) { wrows = m && m.reports ? m.reports.filter(ok).map(function (e) { e.wk = true; return e; }) : []; })
     .catch(function () { wrows = []; });
   fetch('reports/index.json', { cache: 'no-cache' })
     .then(function (r) { if (r.status === 404) return null; if (!r.ok) throw new Error('load'); return r.json(); })
