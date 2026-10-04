@@ -1,0 +1,56 @@
+{
+ "updated": "2026-10-03",
+ "reports": [
+  {
+   "date": "2026-10-03",
+   "mode": "sat",
+   "daily_asof": "2026-10-02",
+   "market_asof": "2026-10-02",
+   "title": "고용 부진에도 높은 금리와 유가가 월요일의 변수",
+   "summary": "주말 새 소식은 에너지 공급 대책과 중동 군사 배치, 그리고 높은 국채 금리가 중심입니다. 월요일에는 ISM 서비스업 지표와 수요일 물가 발표 기대가 시가를 좌우할 수 있습니다.",
+   "falsify": "월요일 VIX가 20을 넘거나 미국 10년물 금리가 5.40%를 웃돌면 이번 판단은 다시 점검해야 합니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 73,
+   "stage": "새로운 논리 탄생",
+   "items": 5,
+   "sig": {
+    "cape": [
+     41.07,
+     "red"
+    ],
+    "bi": [
+     234.1,
+     "red"
+    ],
+    "fg": [
+     31,
+     "yellow"
+    ],
+    "aaii": [
+     46.5,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     15.97,
+     "green"
+    ],
+    "spread": [
+     0.46,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Weak jobs, but high yields and oil set the tone for Monday",
+    "summary": "The weekend news centers on energy supply measures, a Middle East military buildup, and still-high Treasury yields. Monday's ISM services data and expectations for Wednesday's inflation report could drive the open.",
+    "falsify": "If the VIX closes above 20 or the US 10-year yield rises above 5.40% on Monday, this view needs to be reassessed.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  }
+ ]
+}
