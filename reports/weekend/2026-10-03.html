@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalpheon Weekend Brief | 2026년 10월 3일(토)</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230F1E33'/%3E%3Cpath d='M35 24V76M35 52L68 24M48 46L70 76' stroke='%23F7F4EC' stroke-width='10' fill='none'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0F1E33">
+<link rel="canonical" href="https://kalpheonresearch.com/reports/weekend/2026-10-03.html">
+<link rel="alternate" hreflang="ko" href="https://kalpheonresearch.com/reports/weekend/2026-10-03.html">
+<link rel="alternate" hreflang="en" href="https://kalpheonresearch.com/reports/weekend/en/2026-10-03.html">
+<link rel="alternate" hreflang="x-default" href="https://kalpheonresearch.com/reports/weekend/en/2026-10-03.html">
+<meta name="description" content="금요일 고용 부진으로 이번 달 금리 인상 기대는 사라졌지만 12월 인상 전망은 남아 있습니다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kalpheon Research">
+<meta property="og:title" content="Weekend Brief · 약한 고용 뒤 금리 인상 기대 후퇴, 원유가 월요일 변수">
+<meta property="og:description" content="금요일 고용 부진으로 이번 달 금리 인상 기대는 사라졌지만 12월 인상 전망은 남아 있습니다.">
+<meta property="og:url" content="https://kalpheonresearch.com/reports/weekend/2026-10-03.html">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weekend Brief · 약한 고용 뒤 금리 인상 기대 후퇴, 원유가 월요일 변수">
+<meta name="twitter:description" content="금요일 고용 부진으로 이번 달 금리 인상 기대는 사라졌지만 12월 인상 전망은 남아 있습니다.">
+<meta property="og:image" content="https://kalpheonresearch.com/reports/og/2026-10-03.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://kalpheonresearch.com/reports/og/2026-10-03.png">
+<style>html.kp-wait body{visibility:hidden}</style>
+<script>
+/* 접속 국가(IP) 기준 언어 자동 이동: 한국이면 한글판, 그 외는 영문판. 상단 KO/EN 선택(kp_lang)이 있으면 그 선택이 우선. */
+(function () {
+  var doc = document.documentElement, cur = doc.lang === 'en' ? 'en' : 'ko';
+  try {
+    if (location.hostname.replace(/^www\./, '') !== 'kalpheonresearch.com') return;
+    if (/bot|crawl|spider|slurp|facebookexternalhit|kakaotalk|twitterbot|yeti|daum|preview/i.test(navigator.userAgent || '')) return;
+  } catch (e) { return; }
+  function kpCountry(done) {
+    var KEY = 'kp_cc', TTL = 6 * 3600 * 1000;
+    try { var c = JSON.parse(localStorage.getItem(KEY) || 'null'); if (c && /^[A-Z]{2}$/.test(c.c) && Date.now() - c.t < TTL) { done(c.c); return; } } catch (e) {}
+    var src = [
+      { u: '/cdn-cgi/trace', p: function (t) { var m = /(?:^|\n)loc=([A-Z]{2})/.exec(t); return m ? m[1] : null; } },
+      { u: 'https://api.country.is/', p: function (t) { try { var x = JSON.parse(t).country; return /^[A-Z]{2}$/.test(x) ? x : null; } catch (e) { return null; } } },
+      { u: 'https://ipapi.co/country/', p: function (t) { t = String(t).trim(); return /^[A-Z]{2}$/.test(t) ? t : null; } }
+    ];
+    var i = 0, over = false, cap = null;
+    function end(cc) {
+      if (over) return; over = true; clearTimeout(cap);
+      if (cc) { try { localStorage.setItem(KEY, JSON.stringify({ c: cc, t: Date.now() })); } catch (e) {} }
+      done(cc);
+    }
+    cap = setTimeout(function () { end(null); }, 2600);
+    (function next() {
+      if (over) return;
+      if (i >= src.length || !window.fetch) { end(null); return; }
+      var s = src[i++], settled = false, ctl = window.AbortController ? new AbortController() : null;
+      function fail() { if (settled) return; settled = true; next(); }
+      var tm = setTimeout(function () { if (ctl) ctl.abort(); fail(); }, 1100);
+      fetch(s.u, { cache: 'no-store', credentials: 'omit', signal: ctl ? ctl.signal : undefined })
+        .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+        .then(function (t) { clearTimeout(tm); if (settled) return; var cc = s.p(t); if (cc) { settled = true; end(cc); } else { fail(); } })
+        .catch(function () { clearTimeout(tm); fail(); });
+    })();
+  }
+  var guard = null;
+  function release() { doc.className = doc.className.replace(/\s?kp-wait/, ''); clearTimeout(guard); }
+  function go(t) {
+    var a = document.querySelector('link[rel="alternate"][hreflang="' + t + '"]');
+    if (!a) { release(); return; }
+    try {
+      var to = a.href.replace(/^https?:\/\/[^\/]+/, '');
+      if (sessionStorage.getItem('kp_from') === to) { release(); return; }
+      sessionStorage.setItem('kp_from', location.pathname);
+    } catch (e) {}
+    location.replace(a.href + location.hash);
+  }
+  function decide(t) { if (t !== cur) { go(t); } else { release(); } }
+  var pref = null; try { pref = localStorage.getItem('kp_lang'); } catch (e) {}
+  if (pref === 'ko' || pref === 'en') {
+    if (pref !== cur) { doc.className += ' kp-wait'; guard = setTimeout(release, 2800); }
+    decide(pref); return;
+  }
+  doc.className += ' kp-wait';
+  guard = setTimeout(release, 2800);
+  kpCountry(function (cc) {
+    decide(cc ? (cc === 'KR' ? 'ko' : 'en') : (/^ko/i.test(navigator.language || '') ? 'ko' : 'en'));
+  });
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F1E33; --ink-2:#3A4A63; --muted:#6B7280; --rule:#E4E1D8; --wash:#F7F6F2; --paper:#FFFFFF;
+  --gold:#B8975A; --gold-ink:#8A6B2F; --gold-bg:#F6F0E4;
+  --red:#A13D2E; --red-bg:#F6EBE8; --amber:#8A6A1E; --amber-bg:#FBF3DF; --green:#2F6650; --green-bg:#EAF1EC;
+  --serif:'Noto Serif KR',Georgia,serif; --sans:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden;}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.6;font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px;}
+svg text{font-family:var(--sans);}
+
+/* hero */
+.hero{background:var(--ink);color:#fff;padding:22px 0 26px;padding-top:calc(22px + env(safe-area-inset-top,0px));}
+.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.14);}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand svg{width:40px;flex:none;}
+.bw{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.16em;font-size:20px;line-height:1;color:#F7F4EC;}
+.bs{font-size:11px;color:#C9B98A;margin-top:6px;}
+.meta{text-align:right;font-size:12px;color:#AEB9CB;line-height:1.7;}
+.meta strong{color:#fff;font-weight:600;}
+.langrow{margin-bottom:8px;}
+.langsw{display:inline-flex;border:1px solid rgba(255,255,255,.3);border-radius:20px;overflow:hidden;font-size:12px;font-weight:600;line-height:1;}
+.langsw b,.langsw a{padding:6px 13px;text-decoration:none;color:#AEB9CB;}
+.langsw b{background:rgba(255,255,255,.16);color:#fff;font-weight:600;}
+.langsw a:hover{background:rgba(255,255,255,.08);color:#fff;}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:2px 10px;border-radius:20px;margin-top:4px;}
+.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
+.status.ok{color:#8CCBA8;background:rgba(140,203,168,.12);}
+.status.warn{color:#E7C07A;background:rgba(231,192,122,.14);}
+.verdict{display:grid;grid-template-columns:220px 1fr 1.5fr;gap:28px;padding-top:20px;align-items:center;}
+@media (max-width:900px){.verdict{grid-template-columns:1fr 1fr;}.sigstrip{grid-column:1/-1;}}
+@media (max-width:520px){.verdict{grid-template-columns:1fr;}}
+.vlabel{font-size:12px;color:#AEB9CB;margin-bottom:4px;}
+.vbig{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1.1;}
+.vbig small{font-size:15px;color:#AEB9CB;font-weight:500;margin-left:4px;}
+.vsub{font-size:13px;color:#E6D6AE;margin-top:4px;font-weight:500;}
+.gauge svg{width:100%;max-width:220px;display:block;}
+.sigstrip{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+@media (max-width:520px){.sigstrip{grid-template-columns:repeat(4,1fr);row-gap:12px;}}
+.sg{text-align:center;}
+.sg i{display:block;width:14px;height:14px;border-radius:50%;margin:0 auto 6px;border:2px solid rgba(255,255,255,.25);}
+.sg i.red{background:#D9594A;border-color:#D9594A;} .sg i.yellow{background:#D4A64A;border-color:#D4A64A;} .sg i.green{background:#4FA37E;border-color:#4FA37E;}
+.sg b{display:block;font-size:13px;font-weight:600;}
+.sg span{display:block;font-size:11px;color:#AEB9CB;}
+.readline{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);}
+@media (max-width:760px){.readline{grid-template-columns:1fr;}}
+.readline div{background:var(--ink);padding:12px 16px;font-size:13.5px;line-height:1.7;color:#E4E8F0;}
+.readline strong{display:block;font-size:12px;color:#C9B98A;font-weight:600;margin-bottom:2px;}
+
+/* sections */
+section.sec{padding:34px 0 8px;}
+.sec > h2{font-family:var(--serif);font-size:19px;font-weight:700;margin:0 0 4px;padding-top:14px;border-top:2px solid var(--ink);}
+.sec > .lead{font-size:12.5px;color:var(--muted);margin:0 0 18px;}
+h3.sub{font-family:var(--serif);font-size:14.5px;font-weight:600;margin:22px 0 10px;}
+.grid2{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;}
+@media (max-width:860px){.grid2{grid-template-columns:1fr;}}
+.note{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:8px;}
+
+/* market kpis */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);margin-bottom:24px;}
+.kpi{padding:14px 16px 14px 0;border-right:1px solid var(--rule);margin-right:16px;}
+.kpi:last-child{border-right:none;margin-right:0;}
+@media (max-width:520px){.kpi{border-right:none;margin-right:0;border-bottom:1px solid var(--rule);}.kpi:last-child{border-bottom:none;}.meta{text-align:left;}.bi,.ci{border-right:none;margin-right:0;border-bottom:1px solid var(--rule);}}
+.kl{font-size:12px;color:var(--muted);font-weight:500;}
+.kv{font-family:var(--serif);font-size:27px;font-weight:700;line-height:1.2;margin-top:2px;}
+.fgl{font-size:13px;font-weight:700;margin-left:4px;}
+.fgl.red{color:var(--red);} .fgl.yellow{color:var(--amber);} .fgl.green{color:var(--green);}
+.bd{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:2px;margin-top:6px;}
+.bd.up{background:var(--red-bg);color:var(--red);} .bd.down{background:var(--green-bg);color:var(--green);} .bd.flat{background:#EFEEE9;color:var(--muted);}
+.spark{width:100%;height:auto;display:block;margin-top:8px;}
+.ks{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.55;}
+.lede{font-size:14px;line-height:1.85;color:var(--ink-2);margin:0;}
+.lede strong{color:var(--ink);font-weight:600;}
+table{border-collapse:collapse;width:100%;}
+table.snap{font-size:13px;}
+table.snap th{text-align:right;font-size:11px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--ink);padding:0 0 7px 10px;}
+table.snap th:first-child,table.snap td:first-child{text-align:left;padding-left:0;}
+table.snap td{text-align:right;padding:8px 0 8px 10px;border-bottom:1px solid var(--rule);}
+table.snap td:first-child{font-weight:600;}
+td.pos{color:var(--green);font-weight:600;} td.neg{color:var(--red);font-weight:600;}
+
+/* lens */
+table.lens{font-size:13px;}
+table.lens th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--ink);padding:0 12px 7px 0;}
+table.lens td{vertical-align:top;padding:12px 12px 12px 0;border-bottom:1px solid var(--rule);line-height:1.7;color:var(--ink-2);}
+table.lens td.who{width:30%;min-width:150px;}
+.who b{display:block;font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:600;}
+.who span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px;}
+
+/* cycle */
+.panel{border:1px solid var(--rule);border-radius:6px;padding:18px 20px;background:var(--paper);}
+.panel.wash{background:var(--wash);}
+.cnote{font-size:13px;line-height:1.75;color:var(--ink-2);}
+.rule-fixed{font-size:11.5px;color:var(--gold-ink);font-weight:600;margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule);}
+table.sig{font-size:12.8px;}
+table.sig th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--ink);padding:0 10px 7px 0;}
+table.sig td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+table.sig td.nm{font-weight:600;white-space:nowrap;}
+table.sig td.th{color:var(--muted);font-size:11.5px;white-space:nowrap;}
+table.sig td.st{color:var(--ink-2);font-size:12px;}
+.pill{display:inline-block;min-width:58px;text-align:center;font-weight:700;font-size:12.5px;padding:2px 8px;border-radius:20px;}
+.pill.red{background:var(--red-bg);color:var(--red);} .pill.yellow{background:var(--amber-bg);color:var(--amber);} .pill.green{background:var(--green-bg);color:var(--green);}
+@media (max-width:600px){table.sig td.th{display:none;}table.sig th.th{display:none;}}
+.minsky{width:100%;max-width:720px;display:block;margin:0 auto;}
+.minsky text{paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;}
+.phase{display:inline-block;font-family:var(--serif);font-weight:700;font-size:15px;color:var(--red);margin:10px 0 4px;}
+.eq{background:var(--wash);border:1px solid var(--rule);border-radius:6px;padding:12px 16px;font-size:13px;font-weight:600;text-align:center;margin:16px 0 12px;}
+.eq span{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:4px;}
+.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:12px;}
+.pc{border:1px solid var(--rule);border-radius:6px;padding:12px 14px;}
+.pc .h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
+.pc .n{font-weight:700;font-size:13px;}
+.pc .s{font-family:var(--serif);font-weight:700;font-size:17px;}
+.pc .w{font-size:11px;color:var(--gold-ink);font-weight:600;margin-bottom:4px;}
+.pc .b{font-size:11.8px;line-height:1.65;color:var(--ink-2);}
+.pfinal{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--red-bg);border-radius:6px;padding:12px 16px;margin-bottom:12px;}
+.pfinal .p{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--red);}
+.pfinal .t{flex:1;min-width:240px;font-size:12.3px;line-height:1.7;color:var(--ink-2);}
+.bandwrap{overflow-x:auto;}
+table.band{font-size:11px;min-width:640px;}
+table.band td{padding:6px 4px;text-align:center;border:1px solid var(--rule);color:var(--muted);}
+table.band td.on{background:var(--red);border-color:var(--red);color:#fff;font-weight:700;}
+
+/* history */
+.hist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:16px;}
+.hc{border-top:1px solid var(--ink);padding-top:10px;display:flex;flex-direction:column;}
+.hl{font-size:12px;color:var(--muted);font-weight:500;}
+.hv{font-family:var(--serif);font-size:22px;font-weight:700;margin:2px 0 8px;}
+.hc svg{width:100%;height:auto;display:block;margin-bottom:6px;}
+.hn{font-size:11px;color:var(--muted);line-height:1.55;}
+.hr{font-size:11px;color:var(--ink-2);line-height:1.6;margin-top:auto;padding-top:6px;border-top:1px dashed var(--rule);}
+table.cmp{font-size:12.5px;}
+table.cmp th{font-size:11px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--ink);padding:0 8px 7px;text-align:center;}
+table.cmp td{text-align:center;padding:8px;border-bottom:1px solid var(--rule);}
+table.cmp th:first-child,table.cmp td:first-child{text-align:left;padding-left:0;font-weight:600;}
+table.cmp td.now{background:var(--gold-bg);color:var(--ink);font-weight:700;}
+.asof{font-size:11px;color:var(--gold-ink);font-weight:600;margin-left:4px;}
+
+/* briefing */
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-top:1px solid var(--ink);}
+.bi{padding:14px 18px 14px 0;border-right:1px solid var(--rule);margin-right:18px;}
+.bi:last-child{border-right:none;margin-right:0;}
+.bt{font-family:var(--serif);font-weight:600;font-size:14px;line-height:1.5;}
+.bsrc{font-size:11px;color:var(--gold-ink);font-weight:600;margin:3px 0 6px;}
+.bb{font-size:12.8px;line-height:1.75;color:var(--ink-2);}
+.cal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);margin-top:22px;}
+.ci{padding:10px 16px 10px 0;font-size:12.3px;color:var(--ink-2);border-right:1px solid var(--rule);margin-right:16px;}
+.ci:last-child{border-right:none;margin-right:0;}
+.ci b{display:block;color:var(--gold-ink);font-size:12px;margin-bottom:2px;}
+
+/* reference */
+details.ref{border-top:2px solid var(--ink);margin-top:34px;padding-top:12px;}
+details.ref summary{font-family:var(--serif);font-size:17px;font-weight:700;cursor:pointer;}
+details.ref summary span{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400;margin-left:8px;}
+table.ref{font-size:12.3px;margin-top:14px;}
+table.ref th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--ink);padding:0 10px 7px 0;}
+table.ref td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.6;color:var(--ink-2);}
+table.ref td:first-child{font-weight:600;color:var(--ink);}
+table.ref td.lv{color:var(--gold-ink);font-weight:600;white-space:nowrap;}
+
+.disc{margin:34px 0 0;padding:14px 16px;background:var(--gold-bg);border-radius:4px;font-size:12px;line-height:1.75;color:var(--ink-2);}
+.disc strong{color:var(--ink);}
+.fail{font-size:12px;color:var(--red);font-weight:600;margin-top:14px;}
+footer{margin-top:16px;padding:14px 0 calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--rule);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+
+/* headline, report navigation, sticky mini header */
+.headline{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;padding-top:18px;}
+.hlv{font-family:var(--serif);font-weight:700;font-size:46px;line-height:1.1;}
+.hlv.safe{color:#8CCBA8;} .hlv.caution{color:#E7C07A;} .hlv.danger{color:#F0907F;}
+.hsc{font-size:20px;color:#E6D6AE;font-weight:500;}
+.hsc small{font-size:13px;color:#AEB9CB;margin-left:2px;}
+.hd{font-size:12px;font-weight:600;padding:3px 11px;border-radius:20px;background:rgba(255,255,255,.1);color:#E4E8F0;}
+.hd.up{color:#F0907F;background:rgba(240,144,127,.14);} .hd.down{color:#8CCBA8;background:rgba(140,203,168,.14);}
+@media (max-width:520px){.hlv{font-size:38px;}}
+a.brand{color:inherit;text-decoration:none;}
+@media (max-width:900px){.hero > .wrap{display:flex;flex-direction:column;}.hero > .wrap > .top{order:0;}.hero > .wrap > .headline{order:1;}.hero > .wrap > .readline{order:2;margin-top:14px;}.hero > .wrap > .verdict{order:3;}}
+.rnav{display:grid;grid-template-columns:1fr auto 1fr auto;gap:8px;padding:14px 0 0;}
+.rnav.b{padding:22px 0 0;}
+.rnav.b .share{display:none;}
+.rn{display:flex;flex-direction:column;justify-content:center;min-height:44px;padding:6px 14px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1.3;}
+.rn:hover{border-color:var(--gold);background:var(--gold-bg);}
+.rn:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+.rn[hidden]{display:none;}
+.rn.mid,.rn.share{align-items:center;}
+.rn .rk{font-size:11.5px;color:var(--muted);font-weight:500;}
+.rn .rd{font-size:13px;font-weight:700;}
+.rn.next{text-align:right;align-items:flex-end;}
+@media (max-width:640px){.rnav{grid-template-columns:1fr 1fr;}.rn.mid{grid-column:1;}.rn.share{grid-column:2;}}
+.flinks{display:inline-flex;gap:4px;flex-wrap:wrap;}
+.flinks a{color:inherit;text-decoration:underline;text-underline-offset:2px;padding:8px 8px 8px 0;}
+.mini{position:fixed;top:0;left:0;right:0;z-index:30;background:var(--ink);color:#fff;padding-top:env(safe-area-inset-top,0px);transform:translateY(-110%);transition:transform .18s ease;box-shadow:0 1px 0 rgba(255,255,255,.14);}
+.mini.on{transform:none;}
+@media (prefers-reduced-motion:reduce){.mini{transition:none;}}
+.mini-in{display:flex;align-items:center;gap:14px;height:48px;}
+.mini-in svg{width:24px;height:24px;flex:none;}
+.mini-lv{font-family:var(--serif);font-weight:700;font-size:16px;}
+.mini-lv.safe{color:#8CCBA8;} .mini-lv.caution{color:#E7C07A;} .mini-lv.danger{color:#F0907F;}
+.mini-p{font-size:13px;color:#E6D6AE;font-weight:600;}
+.mini-d{margin-left:auto;font-size:12px;color:#AEB9CB;}
+
+/* weekend additions */
+.hlv.mode{color:#E6D6AE;font-size:34px;}
+.wk-title{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.55;margin:8px 0 0;color:#fff;}
+.wk-sub{font-size:12px;color:#AEB9CB;margin:4px 0 0;}
+.wk-hero{padding-top:6px;}
+.imp{display:inline-block;font-size:11px;font-weight:700;padding:1px 9px;border-radius:20px;margin-right:6px;}
+.imp.high{background:var(--red-bg);color:var(--red);} .imp.mid{background:var(--amber-bg);color:var(--amber);} .imp.low{background:var(--green-bg);color:var(--green);}
+.bsrc .ast{color:var(--muted);font-weight:500;}
+.empty{font-size:13px;color:var(--muted);padding:14px 0;border-top:1px solid var(--ink);}
+table.ev{font-size:12.8px;}
+table.ev th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--ink);padding:0 10px 7px 0;}
+table.ev td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.6;color:var(--ink-2);}
+table.ev td.wh{font-weight:600;color:var(--gold-ink);white-space:nowrap;}
+table.ev td.nm{font-weight:600;color:var(--ink);}
+.evwrap{overflow-x:auto;}
+.lede a{color:var(--gold-ink);font-weight:600;text-underline-offset:2px;}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEK6XRV37Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JEK6XRV37Z');
+</script>
+</head>
+<div class="mini" id="mini" aria-hidden="true">
+  <div class="wrap mini-in">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M36 24V76M36 52L68 24M48 45L69 76" stroke="#F7F4EC" stroke-width="7" fill="none"/></svg>
+    <span class="mini-lv caution">Weekend Brief</span>
+    <span class="mini-p">주의 50 · P 73%</span>
+    <span class="mini-d">2026년 10월 3일(토)</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="https://kalpheonresearch.com/" aria-label="홈으로">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="none" stroke="#C9A96B" stroke-width="1.6"/><circle cx="50" cy="50" r="43" fill="none" stroke="#C9A96B" stroke-width="0.5"/><path d="M36 24V76M36 52L68 24M48 45L69 76" stroke="#F7F4EC" stroke-width="5.5" fill="none"/><path d="M30 24H42M30 76H42" stroke="#F7F4EC" stroke-width="2" fill="none"/></svg>
+        <div><div class="bw">KALPHEON</div><div class="bs">Weekend Brief · 월요일 시가 전 점검</div></div>
+      </a>
+      <div class="meta">
+        <div class="langrow"><span class="langsw" role="group" aria-label="Language"><b>KO</b><a href="en/2026-10-03.html" hreflang="en" lang="en" onclick="try{localStorage.setItem('kp_lang','en')}catch(e){}">EN</a></span></div>
+        <strong>2026년 10월 3일(토)</strong> 발행<br>
+        시장 10/2(금) 마감 기준 · 주말에는 수치가 갱신되지 않습니다
+      </div>
+    </div>
+
+    <div class="headline wk-hero">
+      <b class="hlv mode">Weekend Brief</b>
+    </div>
+    <h1 class="wk-title">약한 고용 뒤 금리 인상 기대 후퇴, 원유가 월요일 변수</h1>
+    <p class="wk-sub">토요일 경량 브리프 · 월요일 시가에 영향을 줄 소식만 선별</p>
+
+    <div class="verdict">
+      <div class="gauge">
+        <div class="vlabel">Kalpheon Index</div>
+        <svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kalpheon Index 50">
+          <path d="M 25 105 A 85 85 0 0 1 195 105" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="16" stroke-linecap="round"/>
+          <path d="M 25 105 A 85 85 0 0 1 195 105" fill="none" stroke="#D4A64A" stroke-width="16" stroke-linecap="round" stroke-dasharray="267.04" stroke-dashoffset="133.52"/>
+          <text x="110" y="94" font-size="34" font-weight="700" fill="#FFFFFF" text-anchor="middle">50</text>
+          <text x="110" y="113" font-size="11" fill="#AEB9CB" text-anchor="middle">/ 100 · 주의</text>
+          <text x="25" y="126" font-size="10" fill="#AEB9CB" text-anchor="start">안전</text>
+          <text x="195" y="126" font-size="10" fill="#AEB9CB" text-anchor="end">위험</text>
+        </svg>
+      </div>
+      <div>
+        <div class="vlabel">사이클 위치 (민스키 모델)</div>
+        <div class="vbig">P 73<small>%</small></div>
+        <div class="vsub">새로운 논리 탄생 구간 (65~78%)</div>
+      </div>
+      <div class="sigstrip" role="list" aria-label="7개 경고 신호">
+        <div class="sg" role="listitem"><i class="red"></i><b>41.07</b><span>CAPE</span></div>
+        <div class="sg" role="listitem"><i class="red"></i><b>234.1%</b><span>버핏지표</span></div>
+        <div class="sg" role="listitem"><i class="yellow"></i><b>31</b><span>공포탐욕</span></div>
+        <div class="sg" role="listitem"><i class="yellow"></i><b>46.5%</b><span>AAII 약세</span></div>
+        <div class="sg" role="listitem"><i class="yellow"></i><b>63%</b><span>0DTE</span></div>
+        <div class="sg" role="listitem"><i class="green"></i><b>15.97</b><span>VIX</span></div>
+        <div class="sg" role="listitem"><i class="green"></i><b>+0.46</b><span>10Y-2Y</span></div>
+      </div>
+    </div>
+
+    <div class="readline">
+      <div><strong>주말 동안 달라진 점</strong>금요일 고용 부진으로 이번 달 금리 인상 기대는 사라졌지만 12월 인상 전망은 남아 있습니다. 주말에는 중동 군사 배치와 G7 비축유 방출 소식이 월요일 시가의 원유 변수로 남았습니다.</div>
+      <div><strong>이 판단이 틀렸다는 신호</strong>월요일 시가 전 WTI가 95달러를 넘거나 10년물 금리가 5.34%를 다시 웃돌면 완화 기대 중심의 해석은 틀린 것입니다.</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <nav class="rnav" aria-label="리포트 탐색">
+    <a class="rn js-prev" href="https://kalpheonresearch.com/#archive" hidden><span class="rk">이전 리포트</span><span class="rd"></span></a>
+    <a class="rn mid" href="https://kalpheonresearch.com/#archive">보관 저장소</a>
+    <a class="rn next js-next" href="https://kalpheonresearch.com/#archive" hidden><span class="rk">다음 리포트</span><span class="rd"></span></a>
+    <button type="button" class="rn share js-share">공유</button>
+  </nav>
+
+  <section class="sec">
+    <h2>월요일 시가에 영향을 줄 소식</h2>
+    <p class="lead">주말에 나온 소식 중 월요일 시가에 닿을 수 있는 것만 영향도 순으로 정리</p>
+    <div class="brief"><div class="bi"><div class="bt">9월 비농업 고용 2만9천 명 증가에 그쳐 예상 9만 명을 크게 밑돌고 실업률 4.2%로 상승</div><div class="bsrc"><span class="imp high">영향 높음</span>Trading Economics <span class="ast">· 美10년물, 나스닥, 달러</span></div><div class="bb">시장은 이번 달 금리 인상 기대를 접었지만 12월 인상 전망은 유지하고 있어, 월요일에는 연준 인사 발언에 따라 금리 경로 기대가 다시 흔들릴 수 있습니다.</div></div><div class="bi"><div class="bt">미국이 중동에 추가 군사 자산을 배치 중이라는 보도가 나오며 공급 차질 우려 지속</div><div class="bsrc"><span class="imp mid">영향 중간</span>Trading Economics <span class="ast">· WTI, 브렌트, 에너지주</span></div><div class="bb">WTI는 금요일 91달러 선에서 마감했고 브렌트는 102달러 선입니다. 주말 사이 긴장이 커지면 월요일 시가에 유가와 에너지주가 먼저 반응할 수 있습니다.</div></div><div class="bi"><div class="bt">G7이 향후 4개월간 비축유 1억 배럴을 방출하기로 했다는 소식</div><div class="bsrc"><span class="imp mid">영향 중간</span>Trading Economics <span class="ast">· 원유, 인플레이션 기대</span></div><div class="bb">유가 상단을 눌러 물가 부담을 덜어줄 수 있는 재료입니다. 다만 중동 공급 불안이 커지면 효과가 상쇄될 수 있습니다.</div></div></div>
+  </section>
+
+  
+  
+  
+
+  <section class="sec">
+    <h2>금요일 종가 스냅샷</h2>
+    <p class="lead">2026-10-02 데일리 리포트(시장 10/2(금) 마감) 수치입니다. 주말에는 지수 수치가 바뀌지 않습니다.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="kl">VIX</div><div class="kv">15.97</div></div>
+      <div class="kpi"><div class="kl">공포탐욕지수 (CNN)</div><div class="kv">31</div></div>
+      <div class="kpi"><div class="kl">美 10년물 금리</div><div class="kv">5.24%</div></div>
+      <div class="kpi"><div class="kl">MOVE</div><div class="kv">96.00</div></div>
+    </div>
+    <table class="snap">
+      <tr><th>지수</th><th>종가</th><th>등락</th></tr>
+      <tr><td>S&amp;P 500</td><td>7,747.11</td><td class="pos">+1.05%</td></tr>
+      <tr><td>Dow Jones</td><td>51,246.93</td><td class="pos">+0.63%</td></tr>
+      <tr><td>Nasdaq</td><td>27,313.42</td><td class="pos">+1.64%</td></tr>
+      <tr><td>Russell 2000</td><td>2,846.57</td><td class="pos">+1.42%</td></tr>
+      <tr><td>금 (Gold)</td><td>$4,216.90</td><td class="pos">+0.35%</td></tr>
+      <tr><td>비트코인</td><td>$85,983.27</td><td class="pos">+2.33%</td></tr>
+    </table>
+    <p class="note">금요일 마감 이후의 선물과 시간외 움직임은 반영되지 않았습니다.</p>
+    <p class="lede" style="margin-top:14px"><a href="https://kalpheonresearch.com/reports/daily/2026-10-02.html">2026-10-02 데일리 리포트 전체 보기</a></p>
+  </section>
+
+  <div class="disc"><strong>이용 안내</strong><br>본 리포트는 정보 제공 및 교육 목적의 개인 연구 노트이며, 특정 종목이나 상품의 매수·매도 권유 또는 투자 자문이 아닙니다. 작성자 개인의 견해로 소속 기관의 입장과 무관합니다. 자동화 도구로 생성되어 수치와 해석에 오류가 있을 수 있으며, 투자 판단과 그 결과의 책임은 이용자 본인에게 있습니다. 각 지표의 권리는 아래 표기된 제공처에 있습니다. 본 사이트는 배포가 제한되는 지역의 이용자를 대상으로 하지 않습니다.</div>
+  <div class="fail">일부 데이터 갱신 실패: 10년물 등락, MOVE, MOVE 등락, 美10년물, 공포탐욕지수</div>
+  <nav class="rnav b" aria-label="리포트 하단 탐색">
+    <a class="rn js-prev" href="https://kalpheonresearch.com/#archive" hidden><span class="rk">이전 리포트</span><span class="rd"></span></a>
+    <a class="rn mid" href="https://kalpheonresearch.com/#archive">보관 저장소</a>
+    <a class="rn next js-next" href="https://kalpheonresearch.com/#archive" hidden><span class="rk">다음 리포트</span><span class="rd"></span></a>
+  </nav>
+  <footer>
+    <span class="flinks"><a href="https://kalpheonresearch.com/#about">About</a><a href="https://kalpheonresearch.com/#method">방법론</a><a href="https://kalpheonresearch.com/#notice">이용 안내</a></span>
+    <span>데이터 출처: Trading Economics, Kalpheon 데일리 리포트(금요일 종가), 각 항목에 표기된 출처</span>
+    <span>© 2026 Kalpheon Research · 정보 제공 목적, 투자 자문 아님</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
+  var L = { ko: { copied: '링크를 복사했습니다', share: '공유' }, en: { copied: 'Link copied', share: 'Share' } }[lang];
+  var ymd = '2026-10-03';
+  var hero = document.querySelector('.hero'), mini = document.getElementById('mini');
+  if (hero && mini && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { mini.classList.toggle('on', !es[0].isIntersecting); }).observe(hero);
+  }
+  function label(d) { var p = d.split('-'); return Number(p[1]) + '/' + Number(p[2]); }
+  function put(sel, e) {
+    var href = lang === 'en' ? (e.en ? e.date + '.html' : '../' + e.date + '.html') : e.date + '.html';
+    Array.prototype.forEach.call(document.querySelectorAll(sel), function (a) {
+      a.href = href; a.querySelector('.rd').textContent = label(e.date); a.hidden = false;
+    });
+  }
+  try {
+    fetch('../index.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (m) {
+      var rows = (m.reports || []).filter(function (e) { return /^\d{4}-\d{2}-\d{2}$/.test(e.date); });
+      var i = -1; rows.forEach(function (e, k) { if (e.date === ymd) i = k; });
+      if (i < 0) return;
+      if (rows[i + 1]) put('.js-prev', rows[i + 1]);
+      if (rows[i - 1]) put('.js-next', rows[i - 1]);
+    }).catch(function () {});
+  } catch (e) {}
+  function copy(url, btn) {
+    function done() { var t = btn.textContent; btn.textContent = L.copied; setTimeout(function () { btn.textContent = t; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(done, function () { window.prompt('', url); }); }
+    else { var x = document.createElement('textarea'); x.value = url; document.body.appendChild(x); x.select(); try { document.execCommand('copy'); done(); } catch (e) { window.prompt('', url); } document.body.removeChild(x); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.js-share'), function (btn) {
+    btn.addEventListener('click', function () {
+      var c = document.querySelector('link[rel="canonical"]'), url = c ? c.href : location.href;
+      if (navigator.share) { navigator.share({ title: document.title, url: url }).catch(function () {}); } else { copy(url, btn); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

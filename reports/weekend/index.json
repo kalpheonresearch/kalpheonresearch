@@ -1,0 +1,56 @@
+{
+ "updated": "2026-10-03",
+ "reports": [
+  {
+   "date": "2026-10-03",
+   "mode": "sat",
+   "daily_asof": "2026-10-02",
+   "market_asof": "2026-10-02",
+   "title": "약한 고용 뒤 금리 인상 기대 후퇴, 원유가 월요일 변수",
+   "summary": "금요일 고용 부진으로 이번 달 금리 인상 기대는 사라졌지만 12월 인상 전망은 남아 있습니다. 주말에는 중동 군사 배치와 G7 비축유 방출 소식이 월요일 시가의 원유 변수로 남았습니다.",
+   "falsify": "월요일 시가 전 WTI가 95달러를 넘거나 10년물 금리가 5.34%를 다시 웃돌면 완화 기대 중심의 해석은 틀린 것입니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 73,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     41.07,
+     "red"
+    ],
+    "bi": [
+     234.1,
+     "red"
+    ],
+    "fg": [
+     31,
+     "yellow"
+    ],
+    "aaii": [
+     46.5,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     15.97,
+     "green"
+    ],
+    "spread": [
+     0.46,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Weak jobs ease hike bets, oil is Monday's wild card",
+    "summary": "Friday's weak payrolls erased bets on a rate hike this month, though a December hike is still expected. Over the weekend, US military moves in the Middle East and the G7 reserve release leave oil as the main swing factor for Monday's open.",
+    "falsify": "If WTI tops $95 or the 10-year yield climbs back above 5.34% before Monday's open, the easing-driven reading is wrong.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  }
+ ]
+}
