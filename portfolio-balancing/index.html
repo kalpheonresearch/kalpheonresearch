@@ -1,1 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>포트폴리오 밸런싱 | 목표 비중 계산기 · Kalpheon Research</title>
+<meta name="description" content="투자 성향(손실 최소부터 수익 극대화까지), 시장 전망, 개인 상황, 기본 비중을 입력하면 현금성, 방어배당, 성장자산, 테마·개별종목 4개 슬리브의 목표 비중을 자동으로 계산해 주는 포트폴리오 밸런싱 도구입니다. 참고용이며 투자 자문이 아닙니다.">
+<link rel="canonical" href="https://kalpheonresearch.com/portfolio-balancing/">
+<link rel="alternate" hreflang="ko" href="https://kalpheonresearch.com/portfolio-balancing/"><link rel="alternate" hreflang="en" href="https://kalpheonresearch.com/portfolio-balancing/en/"><link rel="alternate" hreflang="x-default" href="https://kalpheonresearch.com/portfolio-balancing/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kalpheon Research">
+<meta property="og:title" content="포트폴리오 밸런싱 · 목표 비중 계산기">
+<meta property="og:description" content="투자 성향(손실 최소부터 수익 극대화까지), 시장 전망, 개인 상황, 기본 비중을 입력하면 현금성, 방어배당, 성장자산, 테마·개별종목 4개 슬리브의 목표 비중을 자동으로 계산해 주는 포트폴리오 밸런싱 도구입니다. 참고용이며 투자 자문이 아닙니다.">
+<meta property="og:url" content="https://kalpheonresearch.com/portfolio-balancing/">
+<meta property="og:image" content="https://kalpheonresearch.com/portfolio-balancing/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://kalpheonresearch.com/portfolio-balancing/og.png">
+<meta name="theme-color" content="#0F1E33">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "포트폴리오 밸런싱", "url": "https://kalpheonresearch.com/portfolio-balancing/", "description": "투자 성향(손실 최소부터 수익 극대화까지), 시장 전망, 개인 상황, 기본 비중을 입력하면 현금성, 방어배당, 성장자산, 테마·개별종목 4개 슬리브의 목표 비중을 자동으로 계산해 주는 포트폴리오 밸런싱 도구입니다. 참고용이며 투자 자문이 아닙니다.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "ko", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "isPartOf": {"@type": "WebSite", "name": "Kalpheon Research", "url": "https://kalpheonresearch.com/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@500&family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2D4A; --ink-soft:#4A5872; --paper:#FFFFFF; --canvas:#F4F6FA;
+    --rule:#E1E6EE; --gold:#E0A62E; --gold-ink:#8A6414; --acc:#14233B;
+    --red:#C2412D; --red-bg:#FCEDEA; --green:#1E7F63; --green-bg:#E8F6F0;
+    --yellow:#8A6414; --yellow-bg:#FFF7E0; --muted:#667085;
+    --pos:#1E7F63; --neg:#C2412D; --sel-bg:#E9EEFA; --thumb-bg:#FFFFFF;
+    --c-cash:#9AA9BD; --c-div:#2FA595; --c-growth:#E3AC3D; --c-sat:#E2604E;
+    --vbar-h:50px; --th:16px;
+  }
+  @media (max-width:700px){ :root{--th:22px;} }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --canvas:#12171F; --paper:#1A212B; --ink:#E9ECF2; --ink-soft:#B5BECC; --rule:#2A3340; --muted:#8E99AB;
+      --gold:#E8B54A; --gold-ink:#F0C466; --acc:#8FB0F0; --red:#FF8A78; --green:#4FD1A5; --pos:#4FD1A5; --neg:#FF8A78;
+      --red-bg:#3A2420; --green-bg:#1E2E27; --yellow-bg:#332B18; --yellow:#F0C466; --sel-bg:#27324A; --thumb-bg:#1A212B;
+      --c-cash:#8C9BB2; --c-div:#3CBFAE; --c-growth:#F0B94A; --c-sat:#F07A66;
+    }
+  }
+  :root[data-theme="dark"]{
+    --canvas:#12171F; --paper:#1A212B; --ink:#E9ECF2; --ink-soft:#B5BECC; --rule:#2A3340; --muted:#8E99AB;
+    --gold:#E8B54A; --gold-ink:#F0C466; --acc:#8FB0F0; --red:#FF8A78; --green:#4FD1A5; --pos:#4FD1A5; --neg:#FF8A78;
+    --red-bg:#3A2420; --green-bg:#1E2E27; --yellow-bg:#332B18; --yellow:#F0C466; --sel-bg:#27324A; --thumb-bg:#1A212B;
+    --c-cash:#8C9BB2; --c-div:#3CBFAE; --c-growth:#F0B94A; --c-sat:#F07A66;
+  }
+  body.dark-terminal{
+    --canvas:#0D1117; --paper:#161B22; --ink:#E6EDF3; --ink-soft:#B1BAC4; --rule:#30363D;
+    --gold:#D4A85A; --gold-ink:#D4A85A; --acc:#E6EDF3; --red:#F85149; --green:#3FB950; --muted:#8B949E; --yellow:#D4A85A;
+    --pos:#3FB950; --neg:#F85149; --sel-bg:#21262D; --thumb-bg:#0D1117;
+    --red-bg:#3A1D1D; --green-bg:#17301F; --yellow-bg:#33291A;
+    --c-cash:#8B949E; --c-div:#3FB950; --c-growth:#D4A85A; --c-sat:#F85149;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0; max-width:100%;}
+  body{background:var(--canvas); font-family:'Noto Sans KR',sans-serif; color:var(--ink); font-feature-settings:"tnum" 1; -webkit-font-smoothing:antialiased; font-size:14px; padding-bottom:env(safe-area-inset-bottom,0px);}
+  .wrap{max-width:1060px; margin:0 auto; padding:16px 18px 44px;}
+  button{font-family:inherit;}
 
+  /* top bar: style tabs + tools */
+  .vbar{position:sticky; top:0; z-index:60; display:flex; gap:6px; align-items:center; padding:0 12px; height:var(--vbar-h); background:var(--paper); border-bottom:1px solid var(--rule); overflow-x:auto;}
+  .vtitle{font-size:10.5px; color:var(--muted); white-space:nowrap; margin-right:2px;}
+  .vbtn{flex:0 0 auto; font-size:12px; font-weight:700; padding:7px 14px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); border-radius:18px; cursor:pointer; white-space:nowrap;}
+  .vbtn.on{background:var(--sel-bg); color:var(--ink); border-color:var(--ink); box-shadow:inset 0 -3px 0 var(--acc);}
+  .vtools{margin-left:auto; display:flex; gap:5px; flex:0 0 auto; padding-left:8px;}
+  .tbtn{font-size:11px; font-weight:600; padding:6px 10px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); border-radius:3px; cursor:pointer; white-space:nowrap;}
+  .tbtn:hover{border-color:var(--ink); color:var(--ink);}
+  .tbtn.on{background:var(--sel-bg); color:var(--ink); border-color:var(--ink); font-weight:700;}
+  .langpair{display:inline-flex;}
+  .langpair .tbtn{border-radius:0;}
+  .langpair .tbtn:first-child{border-radius:3px 0 0 3px;}
+  .langpair .tbtn:last-child{border-radius:0 3px 3px 0; border-left:none;}
+
+  /* shared pieces */
+  .srow{margin-bottom:15px;}
+  .srow label{display:flex; justify-content:space-between; align-items:baseline;}
+  .srow .n{font-size:12.5px; font-weight:600;}
+  .srow .v{font-family:'Noto Serif KR',serif; font-weight:700; font-size:13px; color:var(--ink);}
+  .srow .hint{font-size:10px; color:var(--muted); line-height:1.45; margin:1px 0 4px;}
+  .srow .ends{display:flex; justify-content:space-between; font-size:9.5px; color:var(--muted); margin-top:3px;}
+  input[type=range]{--f:calc(var(--p,0) * 1% + var(--th) * (0.5 - var(--p,0) / 100)); -webkit-appearance:none; appearance:none; width:100%; height:6px; background:linear-gradient(to right,var(--acc) var(--f),var(--rule) var(--f)); border-radius:3px; outline:none; margin:6px 0 0;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:var(--th); height:var(--th); border-radius:50%; background:var(--thumb-bg); border:3px solid var(--acc); box-shadow:0 1px 4px rgba(20,35,59,.28); cursor:pointer;}
+  input[type=range]::-moz-range-thumb{width:var(--th); height:var(--th); border-radius:50%; background:var(--thumb-bg); border:3px solid var(--acc); box-shadow:0 1px 4px rgba(20,35,59,.28); cursor:pointer; box-sizing:border-box;}
+  @media (max-width:700px){ input[type=range]{height:7px;} }
+  .s-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px 26px;}
+  @media (max-width:700px){ .s-grid{grid-template-columns:1fr;} }
+  .ghost{font-size:10.5px; font-weight:600; padding:6px 12px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); border-radius:3px; cursor:pointer; margin-top:6px;}
+  .ghost:hover{border-color:var(--ink); color:var(--ink);}
+  .note{font-size:10.3px; color:var(--neg); line-height:1.5; margin-top:6px;}
+  .note:empty{display:none;}
+  .up{color:var(--pos); font-weight:600;}
+  .down{color:var(--neg); font-weight:600;}
+  .mut{color:var(--muted);}
+  .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px; vertical-align:middle;}
+  .stack{display:flex; border-radius:5px; overflow:hidden; background:var(--rule);}
+  .seg{height:100%; transition:width .25s ease;}
+  .donut-wrap{display:flex; justify-content:center; margin:8px 0 12px;}
+  .donut circle{transition:stroke-dasharray .3s ease, stroke-dashoffset .3s ease;}
+  .dn-t1{font-size:10px; fill:var(--muted);}
+  .dn-t2{font-family:'Noto Serif KR',serif; font-size:19px; font-weight:700; fill:var(--ink);}
+  .lg-row{display:flex; align-items:baseline; gap:6px; padding:7px 0; border-bottom:1px solid var(--rule); font-size:12.5px;}
+  .lg-n{flex:1;}
+  .lg-v{font-family:'Noto Serif KR',serif; font-weight:700; font-size:15px;}
+  .lg-d{font-size:10px; color:var(--muted); width:74px; text-align:right;}
+  .sub{font-family:'Noto Serif KR',serif; font-size:12px; font-weight:600; margin:14px 0 7px; padding-bottom:5px; border-bottom:1px solid var(--rule);}
+  .drv{font-size:11px; line-height:1.7; color:var(--ink-soft); margin-bottom:3px;}
+  .drv b{color:var(--ink); font-family:'Noto Serif KR',serif; margin-right:6px;}
+  .mini-nums{display:flex; justify-content:space-between; gap:6px; font-size:10px; line-height:1.25; color:var(--ink-soft); margin-top:5px;}
+  .mini-nums b{font-family:'Noto Serif KR',serif; font-size:12.5px; color:var(--ink); display:block;}
+  .tbl-wrap{overflow-x:auto;}
+  table.mx{width:100%; border-collapse:collapse; font-size:10.8px; min-width:420px;}
+  table.mx th{text-align:center; font-weight:600; font-size:10px; color:var(--muted); border-bottom:1px solid var(--ink); padding:0 4px 6px;}
+  table.mx th:first-child, table.mx td:first-child{text-align:left;}
+  table.mx td{padding:5px 4px; border-bottom:1px solid var(--rule); text-align:center;}
+  table.mx td:first-child{font-weight:600;}
+  .formula{font-family:'Noto Serif KR',serif; font-size:12px; color:var(--ink-soft); line-height:1.7; margin:10px 0;}
+  .foot{margin-top:22px; padding-top:10px; border-top:1px solid var(--rule); font-size:9.8px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;}
+
+  /* O: original */
+  .o-wrap{max-width:960px; margin:0 auto; padding:16px 18px 44px;}
+  .o-note{background:var(--yellow-bg); border:1px solid #F0DFAE; border-radius:3px; padding:10px 14px; font-size:11.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px;}
+  .o-result{position:sticky; top:var(--vbar-h); z-index:20; background:var(--paper); border:2px solid var(--acc); border-radius:6px; padding:12px 14px 11px; margin-bottom:18px; box-shadow:0 3px 14px rgba(20,35,59,.12);}
+  .o-title{font-family:'Noto Serif KR',serif; font-weight:700; font-size:12.5px; display:block; margin-bottom:8px;}
+  .o-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:9px;}
+  .o-cell{text-align:center; min-width:0;}
+  .o-name{font-size:10.3px; color:var(--ink-soft); line-height:1.25;}
+  .o-val{font-family:'Noto Serif KR',serif; font-weight:700; font-size:21px; line-height:1.25;}
+  .o-delta{font-size:9.5px; color:var(--muted);}
+  .o-legend{font-size:9.5px; color:var(--muted); margin-top:5px;}
+  @media (max-width:520px){ .o-val{font-size:17px;} .o-name{font-size:9.6px;} .o-cell{padding:0 1px;} }
+  .o-group{border:1px solid var(--rule); border-radius:7px; padding:15px 17px 6px; background:var(--paper); box-shadow:0 1px 4px rgba(20,35,59,.05); margin-bottom:16px;}
+  .o-gt{font-family:'Noto Serif KR',serif; font-size:13.5px; font-weight:700; color:var(--gold-ink);}
+  .o-gd{font-size:10.8px; color:var(--muted); margin:3px 0 13px; line-height:1.55;}
+  details.o-calc{border-top:1px solid var(--rule); padding-top:12px; margin-top:6px;}
+  details.o-calc summary{cursor:pointer; font-family:'Noto Serif KR',serif; font-weight:700; font-size:12.8px; list-style:none;}
+  details.o-calc summary::-webkit-details-marker{display:none;}
+  details.o-calc summary:before{content:'▸ '; color:var(--gold);}
+  details.o-calc[open] summary:before{content:'▾ ';}
+
+  /* A: dashboard */
+  .a-layout{display:grid; grid-template-columns:1fr 340px; gap:24px; align-items:start;}
+  .a-right{position:sticky; top:calc(var(--vbar-h) + 12px);}
+  .a-card{border:1px solid var(--rule); border-radius:12px; padding:18px 18px 14px; background:var(--paper); box-shadow:0 2px 14px rgba(31,45,74,.07);}
+  .a-title{font-family:'Noto Serif KR',serif; font-weight:700; font-size:13.5px;}
+  .a-tabs{display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap;}
+  .a-tab{font-size:12px; font-weight:600; padding:7px 14px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); border-radius:18px; cursor:pointer;}
+  .a-tab.on{background:var(--sel-bg); border-color:var(--ink); color:var(--ink); box-shadow:inset 0 -3px 0 var(--acc);}
+  .g-desc{font-size:11.5px; color:var(--muted); margin-bottom:14px;}
+  .a-mini{display:none;}
+  @media (max-width:900px){
+    .a-layout{grid-template-columns:1fr;}
+    .a-right{position:static; order:-1;}
+    .a-mini{display:block; position:sticky; top:var(--vbar-h); z-index:40; background:var(--paper); border:1px solid var(--acc); border-radius:8px; padding:9px 12px; margin-bottom:12px; box-shadow:0 3px 10px rgba(20,35,59,.12);}
+  }
+
+  /* C: presets */
+  .c-wrap{max-width:760px; margin:0 auto; padding:18px 18px 44px;}
+  .c-lab{font-size:11px; font-weight:700; color:var(--gold-ink); margin-bottom:8px; letter-spacing:.04em;}
+  .c-chips{display:flex; gap:7px; overflow-x:auto; padding-bottom:6px;}
+  .c-chip{flex:0 0 auto; font-size:12.5px; font-weight:600; padding:9px 15px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); border-radius:20px; cursor:pointer; white-space:nowrap;}
+  .c-chip.on{background:var(--sel-bg); color:var(--ink); border-color:var(--ink); box-shadow:inset 0 -3px 0 var(--acc);}
+  .c-chip.mine{border-style:dashed;}
+  .c-chip .x{margin-left:6px; opacity:.6;}
+  .c-chip.add{color:var(--ink); border-color:var(--acc); background:transparent;}
+  .c-save{display:none; gap:6px; margin:6px 0 4px;}
+  .c-save.open{display:flex;}
+  .c-save input{flex:1; min-width:0; font-size:12px; padding:7px 10px; border:1px solid var(--rule); border-radius:4px; background:var(--paper); color:var(--ink);}
+  .c-save button{font-size:11.5px; font-weight:700; padding:7px 12px; border:1px solid var(--ink); background:var(--ink); color:var(--canvas); border-radius:4px; cursor:pointer;}
+  .c-desc{font-size:11.5px; color:var(--muted); margin:6px 0 16px; min-height:17px;}
+  .c-tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:12px;}
+  @media (max-width:560px){ .c-tiles{grid-template-columns:repeat(2,1fr);} }
+  .c-tile{border:1px solid var(--rule); border-top-width:4px; border-radius:8px; padding:12px 12px 10px; background:var(--paper);}
+  .c-tn{font-size:11px; color:var(--ink-soft);}
+  .c-tv{font-family:'Noto Serif KR',serif; font-weight:700; font-size:26px; line-height:1.2; margin:2px 0;}
+  .c-td{font-size:10px; color:var(--muted);}
+  .c-box{border:1px solid var(--rule); border-radius:10px; padding:16px 16px 4px; margin-top:18px; background:var(--paper);}
+  details.c-more{margin-top:14px; border:1px dashed var(--rule); border-radius:10px; padding:12px 16px;}
+  details.c-more summary{cursor:pointer; font-size:12.5px; font-weight:700; list-style:none;}
+  details.c-more summary::-webkit-details-marker{display:none;}
+  details.c-more summary:before{content:'▸ '; color:var(--gold);}
+  details.c-more[open] summary:before{content:'▾ ';}
+  .c-gh{font-family:'Noto Serif KR',serif; font-size:12px; font-weight:700; color:var(--gold-ink); margin:16px 0 8px;}
+
+  /* D: terminal */
+  body.dark-terminal{font-family:ui-monospace,'SF Mono',Menlo,Consolas,'Noto Sans KR',monospace;}
+  .d-wrap{max-width:1120px; margin:0 auto; padding:0 14px 40px;}
+  .d-tick{position:sticky; top:var(--vbar-h); z-index:40; display:flex; flex-wrap:wrap; gap:6px 22px; align-items:baseline; padding:9px 2px; background:var(--canvas); border-bottom:1px solid var(--rule); font-size:12px;}
+  .d-tick span em{font-style:normal; color:var(--muted); margin-right:5px; font-size:10px;}
+  .d-tick span b{font-size:15px;}
+  .d-main{display:grid; grid-template-columns:1fr 330px; gap:18px; margin-top:12px; align-items:start;}
+  @media (max-width:900px){ .d-main{grid-template-columns:1fr;} .d-side{order:-1;} }
+  .d-sec{margin-bottom:16px;}
+  .d-sech{display:flex; justify-content:space-between; font-size:10.5px; letter-spacing:.1em; color:var(--gold); border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px; font-weight:700;}
+  .d-sech em{font-style:normal; color:var(--muted);}
+  .d-cols{display:grid; grid-template-columns:1fr 1fr; gap:0 22px;}
+  @media (max-width:1000px){ .d-cols{grid-template-columns:1fr;} }
+  .d-row{display:grid; grid-template-columns:128px 1fr 40px 54px; gap:8px; align-items:center; padding:3px 0; border-bottom:1px dotted var(--rule);}
+  .d-n{font-size:11px; line-height:1.25;}
+  .d-n small{display:block; font-size:8.5px; color:var(--muted);}
+  .d-row input[type=range]{--th:11px; margin:0; height:3px;}
+  .d-row input[type=range]::-webkit-slider-thumb{border-width:2px; border-radius:2px; box-shadow:none;}
+  .d-row input[type=range]::-moz-range-thumb{border-width:2px; border-radius:2px; box-shadow:none;}
+  .d-v{font-size:11px; color:var(--gold); text-align:right; font-weight:700;}
+  .d-t{position:relative; height:8px; background:var(--rule); border-radius:1px;}
+  .d-t:after{content:''; position:absolute; left:50%; top:-2px; bottom:-2px; width:1px; background:var(--muted);}
+  .d-t i{position:absolute; top:0; height:100%; display:block;}
+  .d-side{position:sticky; top:calc(var(--vbar-h) + 52px);}
+  @media (max-width:900px){ .d-side{position:static;} }
+  .d-ar{display:grid; grid-template-columns:112px 1fr 92px; gap:8px; align-items:center; margin-bottom:8px; font-size:11px;}
+  .d-bar{position:relative; height:12px; background:var(--rule); border-radius:1px;}
+  .d-bar i{position:absolute; left:0; top:0; bottom:0; display:block;}
+  .d-bar u{position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--ink);}
+  .d-av b{font-size:13px;}
+  .d-av em{font-style:normal; font-size:10px; margin-left:4px;}
+  .d-btn{font-size:10.5px; padding:5px 10px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); cursor:pointer; margin-top:8px;}
+
+  .stats{font-size:11px; color:var(--ink-soft); margin-top:9px; line-height:1.65; background:var(--sel-bg); border-radius:6px; padding:7px 10px;}
+  .stats b{color:var(--ink);}
+  .d-chips{display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px;}
+  .d-chips .c-chip{padding:4px 9px; font-size:10.5px; border-radius:3px;}
+  /* toast / modal */
+  .toast{position:fixed; left:50%; bottom:calc(18px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:90; background:#14233B; color:#fff; font-size:12px; padding:10px 14px; border-radius:8px; display:none; align-items:center; gap:12px; max-width:92vw; box-shadow:0 6px 24px rgba(0,0,0,.25);}
+  .toast.show{display:flex;}
+  .toast button{background:none; border:none; color:#D4A85A; font-weight:700; font-size:12px; cursor:pointer; padding:0;}
+  .modal{position:fixed; inset:0; background:rgba(20,35,59,.55); z-index:100; display:none; align-items:center; justify-content:center; padding:20px;}
+  .modal.show{display:flex;}
+  .modal-in{background:var(--paper); border:1.5px solid var(--acc); border-radius:12px; padding:22px 24px; max-width:420px; width:100%;}
+  .modal-in h3{font-family:'Noto Serif KR',serif; font-size:15px; margin:0 0 12px; padding-bottom:8px; border-bottom:2px solid var(--ink);}
+  .modal-in ol{margin:0 0 16px; padding-left:20px; font-size:12.5px; color:var(--ink-soft); line-height:1.85;}
+  .modal-in button{width:100%; font-size:13px; font-weight:700; padding:11px; border:none; background:var(--ink); color:var(--canvas); border-radius:6px; cursor:pointer;}
+  /* ===== Kalpheon Research site shell (same header as the home page) ===== */
+  @media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){ --canvas:#F7F6F2; --rule:#E7E3D8; --ink:#0F1E33; --acc:#0F1E33; } }
+  :root[data-theme="light"]{ --canvas:#F7F6F2; --rule:#E7E3D8; --ink:#0F1E33; --acc:#0F1E33; }
+  header.pbh{background:var(--paper); border-bottom:1px solid var(--rule);}
+  .pbh-in{max-width:1060px; margin:0 auto; padding:22px 18px 14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px 18px;}
+  .pb-brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink);}
+  .pb-brand svg{width:32px; flex:none;}
+  .pb-bw{font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; letter-spacing:.14em; font-size:19px; line-height:1;}
+  .pb-bs{font-family:'Jost',sans-serif; font-weight:500; letter-spacing:.38em; font-size:9px; color:#8A6B2F; margin-top:4px;}
+  :root[data-theme="dark"] .pb-bs{color:#C9A96B;}
+  nav.pb-nav{display:flex; gap:2px; order:3; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+  nav.pb-nav::-webkit-scrollbar{display:none;}
+  nav.pb-nav a{flex:none; display:inline-flex; align-items:center; min-height:44px; padding:0 14px 0 0; font-size:13.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;}
+  nav.pb-nav a:hover{color:#8A6B2F;}
+  nav.pb-nav a[aria-current="page"]{color:var(--ink); box-shadow:inset 0 -3px 0 #B8975A;}
+  @media (min-width:760px){ nav.pb-nav{order:0; width:auto; margin-left:auto; margin-right:6px;} nav.pb-nav a{padding:0 12px;} }
+  .pb-lang{display:inline-flex; border:1px solid var(--rule); border-radius:22px; overflow:hidden; background:var(--paper);}
+  .pb-lang a,.pb-lang b{display:flex; align-items:center; justify-content:center; min-width:48px; min-height:40px; padding:0 14px; font-size:12px; font-weight:700; line-height:1; text-decoration:none; color:var(--muted);}
+  .pb-lang b{background:var(--ink); color:var(--paper);}
+  .pb-lang a:hover{background:var(--sel-bg); color:var(--ink);}
+  .pb-intro{max-width:1060px; margin:0 auto; padding:20px 18px 14px;}
+  .pb-intro h1{font-family:'Noto Serif KR',Georgia,serif; font-size:26px; margin:0 0 6px; line-height:1.25;}
+  .pb-intro p{margin:0; color:var(--ink-soft); font-size:13.5px; max-width:740px; line-height:1.7;}
+  .pb-foot{max-width:1060px; margin:0 auto; padding:10px 18px 46px; font-size:11px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 18px; border-top:1px solid var(--rule);}
+  .pb-foot a{color:inherit; text-decoration:underline; text-underline-offset:2px; margin-right:12px;}
+  body.site .langpair{display:none;}
+</style>
+</head>
+<body>
+<header class="pbh"><div class="pbh-in"><a class="pb-brand" href="/" aria-label="Kalpheon Research"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="4"/><path d="M37 26V74M37 52L66 26M49 47L68 74" stroke="currentColor" stroke-width="8" fill="none"/></svg><div><div class="pb-bw">KALPHEON</div><div class="pb-bs">RESEARCH</div></div></a><nav class="pb-nav" aria-label="사이트 메뉴"><a href="/">투데이</a><a href="/#trend">트렌드</a><a href="/portfolio-balancing/" aria-current="page">포트폴리오 밸런싱</a><a href="/#archive">보관 저장소</a><a href="/#about">About</a><a href="/#method">방법론</a></nav><span class="pb-lang" role="group" aria-label="Language"><b>KO</b><a href="https://kalpheonresearch.com/portfolio-balancing/en/" hreflang="en" lang="en" onclick="try{localStorage.setItem('kp_lang','en')}catch(e){};this.href=this.getAttribute('href')+location.search+location.hash">EN</a></span></div></header>
+<section class="pb-intro"><h1>포트폴리오 밸런싱</h1><p>내 투자 성향(손실 최소부터 수익 극대화까지)과 시장 전망을 슬라이더로 입력하면 4개 슬리브(현금성, 방어배당, 성장자산, 테마·개별종목)의 목표 비중이 바로 계산됩니다. 매수·매도 금액은 계산하지 않는 참고용 도구입니다.</p><noscript><p>이 도구를 쓰려면 JavaScript를 켜야 합니다.</p></noscript></section>
+<div class="vbar" id="vbar">
+  <span class="vtitle" id="vTitle"></span>
+  <button type="button" class="vbtn" data-v="O"></button>
+  <button type="button" class="vbtn" data-v="A"></button>
+  <button type="button" class="vbtn" data-v="C"></button>
+  <button type="button" class="vbtn" data-v="D"></button>
+  <div class="vtools">
+    <span class="langpair"><button type="button" class="tbtn" id="langKo">KO</button><button type="button" class="tbtn" id="langEn">EN</button></span>
+    <button type="button" class="tbtn" id="shareBtn"></button>
+    <button type="button" class="tbtn" id="resetBtn"></button>
+    <button type="button" class="tbtn" id="themeBtn">🌙</button>
+    <button type="button" class="tbtn" id="helpBtn">❓</button>
+  </div>
+</div>
+<div id="app"></div>
+<footer class="pb-foot"><span><a href="/#about">About</a><a href="/#method">방법론</a><a href="/#notice">이용 안내</a></span><span>&copy; 2026 Kalpheon Research · 정보 제공 목적, 투자 자문 아님</span></footer>
+
+<div class="toast" id="toast"><span id="toastMsg"></span><button type="button" id="toastBtn"></button></div>
+<div class="modal" id="modal">
+  <div class="modal-in">
+    <h3 id="mTitle"></h3>
+    <ol id="mList"></ol>
+    <button type="button" id="modalOk"></button>
+  </div>
+</div>
+
+<script>window.PB_SITE={"lang": "ko", "koUrl": "/portfolio-balancing/", "enUrl": "/portfolio-balancing/en/"};</script>
+<script>
+// ==PURE-START==
+// text fields are [Korean, English] pairs
+var SLEEVES = [
+  {k:'cash',   name:['현금성','Cash'],        base:35, color:'var(--muted)', risk:-1,   vol:0.01, stress:0},
+  {k:'div',    name:['방어배당','Dividend'],   base:35, color:'var(--green)', risk:-0.4, vol:0.11, stress:-0.28},
+  {k:'growth', name:['성장자산','Growth'],     base:30, color:'var(--gold)',  risk:0.5,  vol:0.16, stress:-0.40},
+  {k:'sat',    name:['테마·개별종목','Themes & stocks'], base:5, color:'var(--red)', risk:1, vol:0.35, stress:-0.55}
+];
+// 가정: 슬리브별 위험 점수(-1 안전 ~ +1 공격), 연 변동성, 스트레스 손실, 상관관계 (통계 추정이 아닌 판단치)
+var CORR = [[1,0,0,0],[0,1,0.8,0.65],[0,0.8,1,0.85],[0,0.65,0.85,1]];
+var OBJ_A = 0.8, OBJ_ETA = 0.5, CONC_STRENGTH = 0.7, CONC_CAPMIN = 45;
+var OBJ_NAME = ['투자 성향(목표)','Investment objective'];
+
+var GROUPS = [
+  {id:'profile', title:['투자 성향 (목표)','Investment objective'], desc:['무엇을 우선하는지: 손실을 줄일지, 수익을 극대화할지, 얼마나 한곳에 몰지','What you prioritize: limiting losses, maximizing return, and how concentrated to be'], noTilt:true, items:[
+    {id:'s_obj', name:['목표 성향','Objective'], hint:['손실을 줄이는 것이 우선인지, 수익 극대화가 우선인지','Whether limiting losses or maximizing return comes first'], lo:['손실 최소화','Minimize losses'], hi:['수익 극대화','Maximize return'], min:0, max:100, step:1, def:50, unit:''},
+    {id:'s_conc', name:['집중도','Concentration'], hint:['여러 곳에 나눌지, 소수에 집중할지','Spread across sleeves or concentrate in a few'], lo:['분산','Diversified'], hi:['집중','Concentrated'], min:0, max:100, step:1, def:50, unit:''}
+  ]},
+  {id:'market', title:['시장 전망','Market outlook'], desc:['지금 시장과 경제를 어떻게 보는지','How you see markets and the economy right now'], items:[
+    {id:'p_risk', name:['위험도','Perceived risk'], hint:['지금 시장·경기에서 느끼는 전반적 위험 수준','Overall level of risk you feel in markets and the economy'], lo:['안전','Safe'], hi:['매우 위험','Very risky'], min:0, max:100, neutral:50, step:1, def:60, unit:'', m:[0.5,0.2,-0.3,-0.6]},
+    {id:'p_growth', name:['성장가능성','Growth outlook'], hint:['향후 경제와 기업이익 성장에 대한 기대','Expectation for economic and earnings growth'], lo:['낮음','Low'], hi:['높음','High'], min:0, max:100, neutral:50, step:1, def:55, unit:'', m:[-0.3,-0.1,0.35,0.5]},
+    {id:'p_value', name:['밸류에이션매력도','Valuation attractiveness'], hint:['현재 주가 수준이 얼마나 싸다고 보는지','How cheap you think current prices are'], lo:['매우 비쌈','Very expensive'], hi:['매우 쌈','Very cheap'], min:0, max:100, neutral:50, step:1, def:25, unit:'', m:[-0.4,0.1,0.4,0.2]},
+    {id:'p_defense', name:['방어력','Defensiveness'], hint:['하락장에 대비해 얼마나 방어적으로 가져가고 싶은지','How defensive you want to be ahead of a downturn'], lo:['공격적','Aggressive'], hi:['매우 방어적','Very defensive'], min:0, max:100, neutral:50, step:1, def:60, unit:'', m:[0.4,0.4,-0.4,-0.5]},
+    {id:'p_rate', name:['금리 전망','Rate outlook'], hint:['향후 1년 정책금리의 방향','Direction of policy rates over the next year'], lo:['인하(완화)','Cuts (easing)'], hi:['인상(긴축)','Hikes (tightening)'], min:0, max:100, neutral:50, step:1, def:60, unit:'', m:[0.35,-0.25,-0.25,-0.35]},
+    {id:'p_infl', name:['인플레이션 전망','Inflation outlook'], hint:['물가 상승 압력의 강도','Strength of price pressure'], lo:['낮음','Low'], hi:['높음','High'], min:0, max:100, neutral:50, step:1, def:55, unit:'', m:[-0.3,0.15,0.1,-0.1]},
+    {id:'p_recession', name:['경기침체 확률','Recession probability'], hint:['향후 1년 안에 경기침체가 올 가능성','Chance of a recession within a year'], lo:['낮음','Low'], hi:['높음','High'], min:0, max:100, neutral:50, step:1, def:35, unit:'', m:[0.45,0.25,-0.35,-0.45]},
+    {id:'p_geo', name:['지정학·사건사고 리스크','Geopolitical and event risk'], hint:['전쟁, 금융사고 등 예기치 못한 충격 가능성','Chance of unexpected shocks such as wars or financial accidents'], lo:['안정','Stable'], hi:['고조','Elevated'], min:0, max:100, neutral:50, step:1, def:55, unit:'', m:[0.35,0.1,-0.2,-0.3]}
+  ]},
+  {id:'theme', title:['테마 (AI 사이클)','Theme (AI cycle)'], desc:['주로 테마·개별종목 슬리브(물리적 AI 인프라 등)에 영향','Mainly affects the Themes & stocks sleeve (physical AI infrastructure, etc.)'], items:[
+    {id:'t_aicycle', name:['AI 투자 사이클 지속성','AI investment cycle durability'], hint:['AI 인프라 투자 붐이 이어질 가능성','Likelihood that the AI infrastructure boom continues'], lo:['버블 붕괴','Bubble bursts'], hi:['구조적 지속','Structural'], min:0, max:100, neutral:50, step:1, def:65, unit:'', m:[-0.05,-0.05,0.2,0.7]},
+    {id:'t_dc', name:['데이터센터·전력 실행 확률','Data center and power delivery'], hint:['전력망·변압기 병목을 넘어 계획대로 지어질 가능성','Likelihood projects get built as planned despite grid and transformer bottlenecks'], lo:['지연·취소','Delayed or cancelled'], hi:['계획대로','On plan'], min:0, max:100, neutral:50, step:1, def:55, unit:'', m:[0,0,0.1,0.55]},
+    {id:'t_robot', name:['피지컬 AI 상용화 속도','Physical AI commercialization speed'], hint:['로보틱스·자율주행 등 실물 AI의 수익화 속도','How fast robotics and autonomy turn into revenue'], lo:['느림','Slow'], hi:['빠름','Fast'], min:0, max:100, neutral:50, step:1, def:50, unit:'', m:[0,0,0.05,0.5]},
+    {id:'t_val', name:['테마 밸류에이션 부담','Theme valuation burden'], hint:['AI 관련주 주가가 이미 과열됐다고 보는 정도','How overheated you think AI-related stocks already are'], lo:['부담 낮음','Low burden'], hi:['과열','Overheated'], min:0, max:100, neutral:50, step:1, def:70, unit:'', m:[0.1,0,-0.1,-0.6]},
+    {id:'t_reg', name:['규제·법률 리스크','Regulatory and legal risk'], hint:['반독점, AI 규제, 수출통제의 강도','Strength of antitrust, AI rules and export controls'], lo:['완화','Easing'], hi:['강화','Tightening'], min:0, max:100, neutral:50, step:1, def:55, unit:'', m:[0,0.05,-0.2,-0.35]}
+  ]},
+  {id:'personal', title:['개인 상황','Personal situation'], desc:['본인의 투자 여건과 성향','Your circumstances and preferences'], items:[
+    {id:'u_tol', name:['위험 감내도','Risk tolerance'], hint:['손실 구간을 견딜 수 있는 정도','How much of a loss you can sit through'], lo:['낮음','Low'], hi:['높음','High'], min:0, max:100, neutral:50, step:1, def:60, unit:'', m:[-0.4,-0.15,0.35,0.4]},
+    {id:'u_horizon', name:['투자 기간','Investment horizon'], hint:['자금을 묶어둘 수 있는 기간','How long you can keep the money invested'], lo:['단기','Short'], hi:['장기','Long'], min:1, max:30, neutral:10, step:1, def:15, unit:['년',' yr'], m:[-0.3,-0.05,0.3,0.3]},
+    {id:'u_income', name:['현금흐름(배당) 선호도','Income (dividend) preference'], hint:['배당·이자처럼 꾸준한 현금흐름의 중요도','Importance of steady dividends and interest'], lo:['낮음','Low'], hi:['매우 중요','Very important'], min:0, max:100, neutral:50, step:1, def:50, unit:'', m:[0.05,0.6,-0.25,-0.3]},
+    {id:'u_liq', name:['유동성 필요도','Liquidity need'], hint:['가까운 시일 내 현금이 필요할 가능성 (비상자금, 큰 지출)','Chance you need cash soon (emergency fund, large expenses)'], lo:['낮음','Low'], hi:['높음','High'], min:0, max:100, neutral:50, step:1, def:40, unit:'', m:[0.6,0.1,-0.25,-0.3]},
+    {id:'u_stable', name:['소득 안정성','Income stability'], hint:['근로소득 등 본업 수입의 안정성','Stability of your job income'], lo:['불안정','Unstable'], hi:['매우 안정','Very stable'], min:0, max:100, neutral:50, step:1, def:65, unit:'', m:[-0.25,0,0.2,0.2]}
+  ]},
+  {id:'constraint', title:['제약 조건 & 반영 강도','Constraints and view strength'], desc:['비중이 한쪽으로 쏠리지 않도록 거는 안전장치','Guardrails that keep weights from piling into one sleeve'], noTilt:true, items:[
+    {id:'c_satmax', name:['테마·개별종목 상한','Themes & stocks cap'], hint:['테마·개별종목 슬리브가 넘지 못하게 막는 최대 비중','Maximum weight the Themes & stocks sleeve may reach'], lo:'5%', hi:'60%', min:5, max:60, step:1, def:15, unit:'%'},
+    {id:'c_cashmin', name:['현금성 하한','Cash floor'], hint:['현금성이 이 아래로 내려가지 않게 막는 최소 비중','Minimum weight cash must keep'], lo:'0%', hi:'30%', min:0, max:30, step:1, def:10, unit:'%'},
+    {id:'c_strength', name:['견해 반영 강도','View strength'], hint:['0%면 기본 비중 그대로, 100%면 위 견해를 그대로 반영, 그 이상이면 견해를 더 크게 반영','At 0% you get the base weights; 100% applies your views as is; above that they count extra'], lo:'0%', hi:'200%', min:0, max:200, step:5, def:100, unit:'%'}
+  ]},
+  {id:'base', title:['기본 비중 (출발점)','Base weights (starting point)'], desc:['견해를 모두 중립으로 둘 때의 평소 배분. 합이 100이 아니어도 비율로 정규화됨','Your usual allocation when every view is neutral. They need not sum to 100; they are normalized'], noTilt:true, items:[
+    {id:'b_cash', name:['현금성 기본 비중','Cash base weight'], hint:['평소 현금·초단기채 비중','Usual weight in cash and ultra-short bonds'], lo:'0', hi:'60', min:0, max:60, step:1, def:35, unit:''},
+    {id:'b_div', name:['방어배당 기본 비중','Dividend base weight'], hint:['평소 배당ETF·배당주 비중','Usual weight in dividend ETFs and stocks'], lo:'0', hi:'60', min:0, max:60, step:1, def:35, unit:''},
+    {id:'b_growth', name:['성장자산 기본 비중','Growth base weight'], hint:['평소 시장 전체 ETF 등 성장자산 비중','Usual weight in broad-market ETFs and other growth assets'], lo:'0', hi:'60', min:0, max:60, step:1, def:30, unit:''},
+    {id:'b_sat', name:['테마·개별종목 기본 비중','Themes & stocks base weight'], hint:['평소 테마·개별종목 비중','Usual weight in themes and single stocks'], lo:'0', hi:'60', min:0, max:60, step:1, def:5, unit:''}
+  ]}
+];
+
+function allParams(){
+  var a = [];
+  GROUPS.forEach(function(g){ if(!g.noTilt){ g.items.forEach(function(it){ a.push(it); }); } });
+  return a;
+}
+
+function xOf(it, v){
+  var n = it.neutral;
+  if(v >= n){ return (it.max === n) ? 0 : (v - n) / (it.max - n); }
+  return (n === it.min) ? 0 : (v - n) / (n - it.min);
+}
+
+function computeAllocation(vals){
+  var base = SLEEVES.map(function(s){
+    var v = vals['b_' + s.k];
+    return (v != null && !isNaN(v)) ? v : s.base;
+  });
+  var baseTot = base.reduce(function(a,b){ return a+b; }, 0);
+  if(baseTot <= 0){ base = SLEEVES.map(function(s){ return s.base; }); baseTot = 105; }
+  var lam = ((vals.s_obj != null ? vals.s_obj : 50) - 50) / 50;     // -1 손실 최소화 ... +1 수익 극대화
+  var conc = ((vals.s_conc != null ? vals.s_conc : 50) - 50) / 50;  // -1 분산 ... +1 집중
+  var strength = (vals.c_strength != null ? vals.c_strength : 100) / 100 * Math.exp(CONC_STRENGTH * conc);
+  var logits = base.map(function(b){ return Math.log(Math.max(b, 1e-6) / baseTot); });
+  var contribs = SLEEVES.map(function(){ return []; });
+  // 1) 목표 성향: 기본 비중을 위험 점수 방향으로 이동
+  SLEEVES.forEach(function(s, i){
+    var c0 = OBJ_A * lam * s.risk;
+    logits[i] += c0;
+    if(Math.abs(c0) > 1e-9) contribs[i].push({name: OBJ_NAME, c: c0});
+  });
+  // 2) 시장·개인 견해: 손실 회피형은 위험 회피 견해를, 수익 추구형은 위험 선호 견해를 더 크게 반영
+  allParams().forEach(function(it){
+    var x = xOf(it, vals[it.id]);
+    var rho = 0;
+    for(var k=0;k<4;k++){ rho += SLEEVES[k].risk * it.m[k]; }
+    var dir = rho * x;
+    var d = dir > 1e-9 ? 1 : (dir < -1e-9 ? -1 : 0);
+    var g = 1 + OBJ_ETA * lam * d;
+    for(var i=0;i<4;i++){
+      var c1 = strength * g * it.m[i] * x;
+      logits[i] += c1;
+      contribs[i].push({name: it.name, c: c1});
+    }
+  });
+  var mx = Math.max.apply(null, logits);
+  var ex = logits.map(function(l){ return Math.exp(l - mx); });
+  var sum = ex.reduce(function(a,b){ return a+b; }, 0);
+  var w0 = ex.map(function(e){ return e/sum*100; });
+  // 3) 제약: 현금성 하한, 테마 상한, 한 슬리브 최대 비중(분산일수록 낮음)
+  var satMax = vals.c_satmax, cashMin = vals.c_cashmin;
+  var capMax = 100 - (100 - CONC_CAPMIN) * Math.max(0, -conc);
+  var lo = [cashMin, 0, 0, 0];
+  var hi = [capMax, capMax, capMax, Math.min(satMax, capMax)];
+  var fixedW = [null, null, null, null];
+  var w = w0.slice();
+  for(var iter=0; iter<8; iter++){
+    var fixedSum = 0, freeSum = 0;
+    for(var i=0;i<4;i++){ if(fixedW[i] != null) fixedSum += fixedW[i]; else freeSum += w0[i]; }
+    var rem = Math.max(0, 100 - fixedSum);
+    for(var i=0;i<4;i++){ w[i] = (fixedW[i] != null) ? fixedW[i] : (freeSum > 0 ? w0[i]*rem/freeSum : 0); }
+    var changed = false;
+    for(var i=0;i<4;i++){
+      if(fixedW[i] == null){
+        if(w[i] > hi[i] + 1e-9){ fixedW[i] = hi[i]; changed = true; }
+        else if(w[i] < lo[i] - 1e-9){ fixedW[i] = lo[i]; changed = true; }
+      }
+    }
+    if(!changed) break;
+  }
+  var notes = [];
+  if(fixedW[3] != null && Math.abs(fixedW[3] - hi[3]) < 1e-9){
+    if(satMax <= capMax + 1e-9) notes.push({k:'sat', v:satMax}); else notes.push({k:'max', v:Math.round(capMax)});
+  }
+  if(fixedW[0] != null && Math.abs(fixedW[0] - cashMin) < 1e-9 && cashMin > 0) notes.push({k:'cash', v:cashMin});
+  for(var i=0;i<3;i++){ if(fixedW[i] != null && Math.abs(fixedW[i] - capMax) < 1e-9 && capMax < 100){ notes.push({k:'max', v:Math.round(capMax)}); break; } }
+  return {w: w, base: base.map(function(b){ return b/baseTot*100; }), contribs: contribs, notes: notes, stats: portfolioStats(w)};
+}
+
+// 결과 배분의 성향 지표: 위험 점수(-1~+1), 추정 변동성(%), 스트레스 손실(%)
+function portfolioStats(w){
+  var f = w.map(function(x){ return x/100; });
+  var score = 0, stress = 0, v2 = 0;
+  for(var i=0;i<4;i++){
+    score += f[i] * SLEEVES[i].risk;
+    stress += f[i] * SLEEVES[i].stress;
+    for(var j=0;j<4;j++){ v2 += f[i]*f[j]*SLEEVES[i].vol*SLEEVES[j].vol*CORR[i][j]; }
+  }
+  var idx = score <= -0.55 ? 0 : (score <= -0.15 ? 1 : (score <= 0.20 ? 2 : (score <= 0.45 ? 3 : 4)));
+  return {score: score, vol: Math.sqrt(v2) * 100, stress: stress * 100, idx: idx};
+}
+// ==PURE-END==
+
+/* ---------- language ---------- */
+var LANG = 'ko';
+function L(x){ return Array.isArray(x) ? x[LANG === 'en' ? 1 : 0] : x; }
+var STANCE_LABELS = [['매우 방어적','Very defensive'],['방어적','Defensive'],['중립적','Neutral'],['공격적','Aggressive'],['매우 공격적','Very aggressive']];
+var STR = {
+  vtitle:   ['보기 방식','View'],
+  tabO:     ['클래식','Classic'],
+  tabA:     ['대시보드','Dashboard'],
+  tabC:     ['시나리오','Scenarios'],
+  tabD:     ['터미널','Terminal'],
+  share:    ['🔗 링크','🔗 Link'],
+  reset:    ['↺ 기본값','↺ Reset'],
+  docTitle: ['Kalpheon Target Allocation Builder','Kalpheon Target Allocation Builder'],
+  mTitle:   ['사용법','How to use'],
+  mOk:      ['시작하기','Get started'],
+  mList:    [
+    ['위의 "보기 방식"에서 취향에 맞는 화면을 고르면 됨. 입력한 값은 화면을 바꿔도 유지됨','먼저 "투자 성향"에서 손실 최소부터 수익 극대화까지 본인의 목표를 고르고, 슬라이더로 시장 전망을 입력하면 목표 비중이 바로 계산됨','"기본 비중" 항목에 평소 본인의 배분을 넣으면 그 값이 출발점이 됨','링크 버튼으로 지금 설정, 보기 방식, 언어를 저장하거나 공유할 수 있음'],
+    ['Pick the layout you like under "View". Your inputs stay when you switch.','Start with "Investment objective" (from minimizing losses to maximizing return), then set your market outlook with the sliders; target weights recalculate instantly.','Enter your usual allocation under "Base weights" and it becomes the starting point.','The link button saves or shares your current settings, layout and language.']
+  ],
+  resultTitle: ['자동 산출 목표 비중','Auto-computed target allocation'],
+  legend:   ['▲▼ = 기본 비중 대비 차이 (%p)','▲▼ = difference vs base weights (pp)'],
+  keyDrivers: ['주요 변동 요인','Key drivers'],
+  driversBy: ['슬리브별 주요 변동 요인','Key drivers by sleeve'],
+  noDrivers: ['쏠림 요인 없음','No notable drivers'],
+  calcSummary: ['계산 근거 & 주요 변동 요인','How it is calculated & key drivers'],
+  matrixTitle: ['파라미터 민감도 표','Parameter sensitivity table'],
+  paramCol: ['파라미터','Parameter'],
+  oNote: ['<strong>작동 방식.</strong> 모든 파라미터가 중립(중간값)이면 맨 아래 "기본 비중"이 그대로 나옴. 파라미터를 움직일수록 해당 견해에 민감한 슬리브 비중이 위아래로 기울어짐. 맨 위 "투자 성향"에서 손실 최소부터 수익 극대화(집중)까지 고르면 같은 견해도 다른 배분으로 이어짐. 매수·매도 금액은 계산하지 않고 참고용 목표 비중만 보여줌.',
+          '<strong>How it works.</strong> When every parameter is neutral (mid-range), the "Base weights" at the bottom come out unchanged. The further you move a parameter, the more the sleeves sensitive to that view tilt up or down. Under "Investment objective" you can choose anything from minimizing losses to maximizing return (concentrated), so the same views lead to different allocations. No buy or sell amounts are calculated; this is a reference target allocation only.'],
+  formula: ['비중(슬리브) = softmax[ ln(기본 비중) + 성향 보정 + 반영 강도 × Σ (손실 회피 가중 × 민감도 × 파라미터 편차) ] 후 상한·하한 적용<br>성향 보정 = 0.8 × 목표 성향 × 슬리브 위험 가중. 손실 회피 가중 = 1 ± 0.5 × 목표 성향 (수익 추구형은 위험 선호 견해를, 손실 회피형은 위험 회피 견해를 더 크게 반영)<br>집중도 = 반영 강도 배수(0.5배~2배)와 한 슬리브 최대 비중(분산 45% ~ 집중 100%)<br>파라미터 편차 = (값 − 중립값) / (끝값 − 중립값), 범위 −1 ~ +1. 목표 성향과 집중도가 중간(50)이면 보정이 없음',
+            'Weight(sleeve) = softmax[ ln(base weight) + objective tilt + view strength × Σ (loss-aversion weight × sensitivity × parameter deviation) ], then caps and floors apply<br>Objective tilt = 0.8 × objective × sleeve risk weight. Loss-aversion weight = 1 ± 0.5 × objective (return-seekers count risk-on views more, loss-averse investors count risk-off views more)<br>Concentration = view-strength multiplier (0.5x to 2x) and the largest allowed single sleeve (diversified 45% to concentrated 100%)<br>Parameter deviation = (value − neutral) / (end − neutral), range −1 to +1. At mid objective and mid concentration there is no adjustment'],
+  foot1: ['민감도 계수는 방향과 상대적 크기를 반영한 판단치이며 통계적으로 추정한 값이 아님','Sensitivity coefficients are judgment-based estimates of direction and relative size, not statistically fitted values'],
+  foot2: ['정보 제공 목적, 투자 자문 아님 · Kalpheon Target Allocation Builder · Generated by Claude','For information only, not investment advice · Kalpheon Target Allocation Builder · Generated by Claude'],
+  largest:  ['최대 ','Top: '],
+  chooseScenario: ['시나리오 선택','Choose a scenario'],
+  savePlaceholder: ['시나리오 이름 (예: 나의 강세 전망)','Scenario name (e.g. My bull case)'],
+  save:     ['저장','Save'],
+  addChip:  ['＋ 현재 설정 저장','＋ Save current'],
+  customDesc: ['직접 조정한 설정 (저장하면 칩으로 남음)','Custom settings (save them to keep as a chip)'],
+  savedDesc: ['내가 저장한 시나리오','Saved by you'],
+  coreBox:  ['핵심 조정','Core adjustments'],
+  moreParams: ['상세 파라미터 {n}개 더 조정','Fine-tune {n} more parameters'],
+  allocation: ['ALLOCATION','ALLOCATION'],
+  baseMark: ['| = 기본 비중','| = base weight'],
+  drivers:  ['DRIVERS','DRIVERS'],
+  tUndo:    ['되돌리기','Undo'],
+  tApplied: ['시나리오 \'{n}\' 적용됨','Scenario \'{n}\' applied'],
+  tSaved:   ['\'{n}\' 저장됨','\'{n}\' saved'],
+  tDeleted: ['\'{n}\' 삭제됨','\'{n}\' deleted'],
+  tMax:     ['저장은 최대 6개까지 가능함','You can save up to 6 scenarios'],
+  tReset:   ['기본값으로 되돌림','Reset to defaults'],
+  tCopied:  ['현재 설정 링크를 복사함','Link to the current settings copied'],
+  pfTitle:  ['내 투자 성향','Your investment objective'],
+  pfCustom: ['직접 조정한 성향','Custom objective'],
+  tProfile: ['성향 \'{n}\' 적용됨','Objective \'{n}\' applied'],
+  statScore: ['위험 점수','Risk score'],
+  statVol:  ['추정 변동성','Est. volatility'],
+  statStress: ['스트레스 손실','Stress loss'],
+  statsNote: ['위험 점수는 슬리브별 위험 가중(현금성 −1, 방어배당 −0.4, 성장자산 +0.5, 테마·개별종목 +1)의 평균이고, 추정 변동성과 스트레스 손실은 슬리브별 가정치(연 변동성 1·11·16·35%, 스트레스 손실 0·−28·−40·−55%)와 가정 상관관계로 계산한 대략치이며 예측이 아님',
+               'Risk score is the weighted average of sleeve risk weights (cash −1, dividend −0.4, growth +0.5, themes & stocks +1); estimated volatility and stress loss are rough figures from assumed sleeve volatilities (1/11/16/35% a year), stress losses (0/−28/−40/−55%) and assumed correlations, not forecasts'],
+  noteMax:  ['분산 설정에 따라 한 슬리브가 {v}%를 넘지 않도록 제한됨','Diversification setting: no single sleeve exceeds {v}%'],
+  noteSat:  ['테마·개별종목 상한 {v}%에 걸려 초과분은 다른 슬리브로 재배분됨','Themes & stocks cap of {v}% reached; the excess goes to other sleeves'],
+  noteCash: ['현금성 하한 {v}%에 맞추고 나머지를 다른 슬리브에서 조정함','Cash floor of {v}% applied; the remainder is adjusted across other sleeves']
+};
+function S(key, vars){
+  var s = L(STR[key]);
+  if(vars){ Object.keys(vars).forEach(function(k){ s = s.split('{'+k+'}').join(vars[k]); }); }
+  return s;
+}
+function noteText(n){ return S(n.k === 'sat' ? 'noteSat' : (n.k === 'max' ? 'noteMax' : 'noteCash'), {v: n.v}); }
+function notesText(r){ return r.notes.map(noteText).join(' · '); }
+
+/* ---------- state ---------- */
+var COLORS = {cash:'var(--c-cash)', div:'var(--c-div)', growth:'var(--c-growth)', sat:'var(--c-sat)'};
+var CORE = ['p_risk', 'p_value', 'p_rate', 'p_recession', 't_aicycle', 'u_tol'];
+var PRESETS = [
+  {id:'base', name:['현재 기본','Current default'], desc:['지금 환경(고평가, 긴축 기조)을 가정한 기본 설정','Default assumptions for today\'s environment (rich valuations, tightening bias)'], o:{}},
+  {id:'rec',  name:['경기침체 우려','Recession fears'], desc:['침체 확률과 위험도를 높게 보고 방어적으로','Higher recession odds and risk, defensive stance'], o:{p_recession:80, p_risk:80, p_growth:30, p_defense:80, p_geo:65, u_liq:55}},
+  {id:'ai',   name:['AI 낙관','AI bull'], desc:['AI 투자 사이클이 계획대로 이어진다고 보는 시나리오','The AI investment cycle plays out as planned'], o:{t_aicycle:90, t_dc:80, t_robot:75, t_val:45, p_growth:70, p_risk:45}},
+  {id:'infl', name:['인플레 재점화','Inflation reignites'], desc:['물가와 금리가 다시 오르는 시나리오','Prices and rates climb again'], o:{p_infl:85, p_rate:85, p_value:30, p_risk:70}},
+  {id:'def',  name:['방어 우선','Defense first'], desc:['손실 감내도를 낮추고 현금흐름을 중시','Lower loss tolerance, income focus'], o:{p_defense:90, u_tol:25, u_income:80, u_liq:70, p_risk:70}},
+  {id:'agg',  name:['공격 성장','Aggressive growth'], desc:['위험을 감수하고 성장에 베팅','Take more risk and bet on growth'], o:{u_tol:85, p_risk:30, p_value:60, u_horizon:25, p_growth:75, p_defense:30}}
+];
+var STORE_STATE = 'kalpheon_alloc_i18n_state', STORE_SAVED = 'kalpheon_alloc_i18n_saved', STORE_ONB = 'kalpheon_alloc_i18n_onb', STORE_THEME = 'kalpheon_alloc_i18n_theme';
+var VALS = {};
+var active = 'A';
+var SAVED = [];
+var prevSnapshot = null;
+var toastTimer = null;
+
+function $(id){ return document.getElementById(id); }
+function app(){ return $('app'); }
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function itemById(id){
+  for(var i=0;i<GROUPS.length;i++){ for(var j=0;j<GROUPS[i].items.length;j++){ if(GROUPS[i].items[j].id === id) return GROUPS[i].items[j]; } }
+  return null;
+}
+function clampItem(it, v){ return Math.max(it.min, Math.min(it.max, v)); }
+function defaults(){ var v = {}; GROUPS.forEach(function(g){ g.items.forEach(function(it){ v[it.id] = it.def; }); }); return v; }
+function mergeVals(src){
+  Object.keys(VALS).forEach(function(k){
+    if(src[k] != null){
+      var n = parseFloat(src[k]);
+      if(!isNaN(n)) VALS[k] = clampItem(itemById(k), n);
+    }
+  });
+}
+function fmtVal(it, v){ return v + L(it.unit); }
+function saveState(){ lsSet(STORE_STATE, JSON.stringify({vals: VALS, variant: active, lang: LANG})); }
+
+/* ---------- scenarios (used by Scenarios view) ---------- */
+function scenarioTilt(p){
+  var o = {};
+  allParams().forEach(function(it){
+    var v = (p.o && p.o[it.id] != null) ? p.o[it.id] : it.def;
+    o[it.id] = clampItem(it, v);
+  });
+  return o;
+}
+function allScenarios(){
+  var list = PRESETS.map(function(p){ return {id:p.id, name:L(p.name), desc:L(p.desc), tilt:scenarioTilt(p), mine:false}; });
+  SAVED.forEach(function(s, i){ list.push({id:'s'+i, name:s.name, desc:S('savedDesc'), tilt:s.tilt, mine:true, idx:i}); });
+  return list;
+}
+function activeScenario(){
+  var list = allScenarios(), ps = allParams();
+  for(var i=0;i<list.length;i++){
+    var ok = true;
+    for(var j=0;j<ps.length;j++){ if(VALS[ps[j].id] !== list[i].tilt[ps[j].id]){ ok = false; break; } }
+    if(ok) return list[i];
+  }
+  return null;
+}
+function applyScenario(id){
+  var s = allScenarios().filter(function(x){ return x.id === id; })[0];
+  if(!s) return;
+  prevSnapshot = JSON.parse(JSON.stringify(VALS));
+  Object.keys(s.tilt).forEach(function(k){ VALS[k] = s.tilt[k]; });
+  rerender();
+  showToast(S('tApplied', {n: s.name}), S('tUndo'), undo);
+}
+function undo(){
+  if(prevSnapshot){ VALS = prevSnapshot; prevSnapshot = null; rerender(); }
+}
+function loadSaved(){
+  try{ var o = JSON.parse(lsGet(STORE_SAVED) || '[]'); if(Array.isArray(o)) SAVED = o.filter(function(s){ return s && s.name && s.tilt; }).slice(0, 6); }catch(e){ SAVED = []; }
+}
+function saveScenario(name){
+  name = (name || '').trim();
+  if(!name) return;
+  if(SAVED.length >= 6){ showToast(S('tMax')); return; }
+  var tilt = {};
+  allParams().forEach(function(it){ tilt[it.id] = VALS[it.id]; });
+  SAVED.push({name: name, tilt: tilt});
+  lsSet(STORE_SAVED, JSON.stringify(SAVED));
+  showToast(S('tSaved', {n: name}));
+  rerender();
+}
+
+/* ---------- shared UI helpers ---------- */
+function sliderRow(it, opt){
+  opt = opt || {};
+  return '<div class="srow"><label><span class="n">'+L(it.name)+'</span><span class="v" data-val="'+it.id+'">'+fmtVal(it, VALS[it.id])+'</span></label>'
+    + (opt.hint === false ? '' : '<div class="hint">'+L(it.hint)+'</div>')
+    + '<input type="range" data-pid="'+it.id+'" min="'+it.min+'" max="'+it.max+'" step="'+it.step+'" value="'+VALS[it.id]+'">'
+    + '<div class="ends"><span>'+L(it.lo)+'</span><span>'+L(it.hi)+'</span></div></div>';
+}
+function setFill(inp){
+  var mn = parseFloat(inp.min), mx = parseFloat(inp.max), v = parseFloat(inp.value);
+  inp.style.setProperty('--p', ((v - mn) / (mx - mn) * 100).toFixed(2));
+}
+function bindSliders(root){
+  root.querySelectorAll('input[data-pid]').forEach(function(inp){
+    setFill(inp);
+    inp.addEventListener('input', function(){
+      setFill(inp);
+      var id = inp.getAttribute('data-pid');
+      VALS[id] = parseFloat(inp.value);
+      var it = itemById(id);
+      document.querySelectorAll('[data-val="'+id+'"]').forEach(function(el){ el.textContent = fmtVal(it, VALS[id]); });
+      VARIANTS[active].refresh();
+      saveState();
+    });
+  });
+}
+function deltaTxt(w, b){
+  var d = w - b;
+  var a = d > 0.05 ? '▲' : (d < -0.05 ? '▼' : '●');
+  return a + ' ' + (d > 0 ? '+' : '') + d.toFixed(1) + '%p';
+}
+function topDrivers(r, i, n){
+  return r.contribs[i].filter(function(o){ return Math.abs(o.c) >= 0.02; })
+    .sort(function(a,b){ return Math.abs(b.c) - Math.abs(a.c); }).slice(0, n);
+}
+function driverSpans(list){
+  if(!list.length) return '<span class="mut">'+S('noDrivers')+'</span>';
+  return list.map(function(o){ return '<span class="'+(o.c>0?'up':'down')+'">'+(o.c>0?'▲':'▼')+' '+L(o.name)+'</span>'; }).join(' &nbsp; ');
+}
+function driversBlock(r, n){
+  return SLEEVES.map(function(s, i){ return '<div class="drv"><b>'+L(s.name)+'</b>'+driverSpans(topDrivers(r, i, n))+'</div>'; }).join('');
+}
+function stackHTML(h){
+  return '<div class="stack" style="height:'+h+'px">'+SLEEVES.map(function(s){ return '<div class="seg" data-seg="'+s.k+'" style="background:'+COLORS[s.k]+'; width:0%"></div>'; }).join('')+'</div>';
+}
+function updateStack(r){
+  SLEEVES.forEach(function(s, i){
+    document.querySelectorAll('[data-seg="'+s.k+'"]').forEach(function(e){ e.style.width = r.w[i].toFixed(2)+'%'; });
+  });
+}
+function miniNums(r){
+  return SLEEVES.map(function(s, i){ return '<span><span class="dot" style="background:'+COLORS[s.k]+'"></span>'+L(s.name)+'<b>'+r.w[i].toFixed(1)+'%</b></span>'; }).join('');
+}
+function donutHTML(id, size, thick){
+  var c = size/2, r = (size - thick)/2;
+  var s = '<svg class="donut" viewBox="0 0 '+size+' '+size+'" width="'+size+'" height="'+size+'"><circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="var(--rule)" stroke-width="'+thick+'"/>';
+  SLEEVES.forEach(function(sl, i){
+    s += '<circle id="'+id+'_'+i+'" cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="'+COLORS[sl.k]+'" stroke-width="'+thick+'" transform="rotate(-90 '+c+' '+c+')" style="stroke-dasharray:0 1000; stroke-dashoffset:0"/>';
+  });
+  s += '<text id="'+id+'_t1" class="dn-t1" x="'+c+'" y="'+(c-6)+'" text-anchor="middle"></text><text id="'+id+'_t2" class="dn-t2" x="'+c+'" y="'+(c+16)+'" text-anchor="middle"></text></svg>';
+  return s;
+}
+function updateDonut(id, r, size, thick){
+  var rr = (size - thick)/2, C = 2*Math.PI*rr, off = 0, maxI = 0;
+  r.w.forEach(function(w, i){
+    var len = C*w/100;
+    var dash = Math.max(0, len - (w > 0.5 ? 2.5 : 0));
+    var e = $(id+'_'+i);
+    if(e){ e.style.strokeDasharray = dash.toFixed(2)+' '+(C-dash).toFixed(2); e.style.strokeDashoffset = (-off).toFixed(2); }
+    off += len;
+    if(w > r.w[maxI]) maxI = i;
+  });
+  var t1 = $(id+'_t1'), t2 = $(id+'_t2');
+  if(t1) t1.textContent = S('largest') + L(SLEEVES[maxI].name);
+  if(t2) t2.textContent = r.w[maxI].toFixed(1) + '%';
+}
+function legendHTML(r){
+  return SLEEVES.map(function(s, i){
+    return '<div class="lg-row"><span class="dot" style="background:'+COLORS[s.k]+'"></span><span class="lg-n">'+L(s.name)+'</span><span class="lg-v">'+r.w[i].toFixed(1)+'%</span><span class="lg-d">'+deltaTxt(r.w[i], r.base[i])+'</span></div>';
+  }).join('');
+}
+function matrixHTML(){
+  var h = '<tr><th>'+S('paramCol')+'</th>' + SLEEVES.map(function(s){ return '<th>'+L(s.name)+'</th>'; }).join('') + '</tr>';
+  allParams().forEach(function(it){
+    h += '<tr><td>'+L(it.name)+'</td>' + it.m.map(function(c){
+      return '<td class="'+(c>0?'up':(c<0?'down':''))+'">'+(c>0?'+':'')+(c===0?'0':c.toFixed(2))+'</td>';
+    }).join('') + '</tr>';
+  });
+  return h;
+}
+function footHTML(){ return '<div class="foot"><span>'+S('foot1')+'</span><span>'+S('foot2')+'</span></div>'; }
+
+/* ---------- toast / modal / theme / share ---------- */
+function showToast(msg, actionLabel, actionFn){
+  $('toastMsg').textContent = msg;
+  var b = $('toastBtn');
+  if(actionLabel){ b.textContent = actionLabel; b.style.display = ''; b.onclick = function(){ actionFn(); hideToast(); }; }
+  else { b.style.display = 'none'; b.onclick = null; }
+  $('toast').classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(hideToast, 6000);
+}
+function hideToast(){ $('toast').classList.remove('show'); }
+function updateThemeBtn(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var dark = cur === 'dark' || (!cur && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  $('themeBtn').textContent = dark ? '☀️' : '🌙';
+}
+function toggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var dark = cur === 'dark' || (!cur && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  var next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  lsSet(STORE_THEME, next);
+  updateThemeBtn();
+}
+function copyShareLink(){
+  var params = new URLSearchParams();
+  Object.keys(VALS).forEach(function(k){ params.set(k, VALS[k]); });
+  params.set('v', active);
+  if(!window.PB_SITE) params.set('lang', LANG);
+  var url = window.location.origin + window.location.pathname + '?' + params.toString();
+  function done(){ showToast(S('tCopied')); }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done, function(){ fallbackCopy(url, done); });
+  } else { fallbackCopy(url, done); }
+}
+function fallbackCopy(text, cb){
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta);
+  if(cb) cb();
+}
+function rerender(){
+  VARIANTS[active].mount();
+  VARIANTS[active].refresh();
+  saveState();
+}
+function resetAll(){
+  prevSnapshot = JSON.parse(JSON.stringify(VALS));
+  VALS = defaults();
+  rerender();
+  showToast(S('tReset'), S('tUndo'), undo);
+}
+function applyLangChrome(){
+  document.documentElement.setAttribute('lang', LANG);
+  if(!window.PB_SITE) document.title = S('docTitle');
+  $('vTitle').textContent = S('vtitle');
+  var tabKey = {O:'tabO', A:'tabA', C:'tabC', D:'tabD'};
+  document.querySelectorAll('.vbtn').forEach(function(b){ b.textContent = S(tabKey[b.getAttribute('data-v')]); });
+  $('shareBtn').textContent = S('share');
+  $('resetBtn').textContent = S('reset');
+  $('langKo').classList.toggle('on', LANG === 'ko');
+  $('langEn').classList.toggle('on', LANG === 'en');
+  $('mTitle').textContent = S('mTitle');
+  $('modalOk').textContent = S('mOk');
+  $('mList').innerHTML = L(STR.mList).map(function(t){ return '<li>'+t+'</li>'; }).join('');
+}
+function setLang(l){
+  LANG = l;
+  applyLangChrome();
+  rerender();
+}
+
+/* ---------- investment objective profiles ---------- */
+var PROFILES = [
+  {id:'pf1', name:['손실 최소','Minimize losses'], desc:['잃지 않는 것이 최우선. 수익이 낮아도 손실을 최소화하는 쪽으로 기울임','Not losing comes first; accept lower returns to keep losses small'], o:{s_obj:10, s_conc:25, c_satmax:5, c_cashmin:30, c_strength:80}},
+  {id:'pf2', name:['손실 방어 우선','Defense first'], desc:['손실 방어를 우선하되 성장에도 일부 투자','Prioritize protection but keep some exposure to growth'], o:{s_obj:30, s_conc:35, c_satmax:8, c_cashmin:20, c_strength:90}},
+  {id:'pf3', name:['기준 유지','Keep my base'], desc:['기본 비중을 기준으로 시장 견해만 반영 (기본 설정)','Start from your base weights and apply only your market views (default)'], o:{s_obj:50, s_conc:50, c_satmax:15, c_cashmin:10, c_strength:100}},
+  {id:'pf4', name:['성장 우선','Growth first'], desc:['변동성을 감수하고 성장에 더 비중을 둠','Accept more volatility to lean into growth'], o:{s_obj:70, s_conc:65, c_satmax:25, c_cashmin:5, c_strength:115}},
+  {id:'pf5', name:['수익 극대화 (집중)','Maximize return (concentrated)'], desc:['손실 위험을 감수하고 확신 있는 곳에 크게 투자. 집중 투자를 허용','Accept large losses and concentrate where you have conviction'], o:{s_obj:92, s_conc:92, c_satmax:50, c_cashmin:0, c_strength:160}}
+];
+function activeProfile(){
+  for(var i=0;i<PROFILES.length;i++){
+    var ok = true, ks = Object.keys(PROFILES[i].o);
+    for(var j=0;j<ks.length;j++){ if(VALS[ks[j]] !== PROFILES[i].o[ks[j]]){ ok = false; break; } }
+    if(ok) return PROFILES[i];
+  }
+  return null;
+}
+function profileChipsHTML(){
+  var cur = activeProfile();
+  return PROFILES.map(function(p){ return '<button type="button" class="c-chip'+(cur && cur.id === p.id ? ' on' : '')+'" data-pf="'+p.id+'">'+L(p.name)+'</button>'; }).join('');
+}
+function syncProfileChips(){
+  var cur = activeProfile();
+  document.querySelectorAll('[data-pchips]').forEach(function(el){ el.innerHTML = profileChipsHTML(); });
+  document.querySelectorAll('[data-pdesc]').forEach(function(el){ el.textContent = cur ? L(cur.desc) : S('pfCustom'); });
+}
+function applyProfile(id){
+  var p = PROFILES.filter(function(x){ return x.id === id; })[0];
+  if(!p) return;
+  prevSnapshot = JSON.parse(JSON.stringify(VALS));
+  Object.keys(p.o).forEach(function(k){ VALS[k] = p.o[k]; });
+  rerender();
+  showToast(S('tProfile', {n: L(p.name)}), S('tUndo'), undo);
+}
+function statsHTML(r){
+  var s = r.stats;
+  return '<b>'+L(STANCE_LABELS[s.idx])+'</b> · '+S('statScore')+' '+(s.score > 0 ? '+' : '')+s.score.toFixed(2)+' · '+S('statVol')+' '+s.vol.toFixed(1)+'% · '+S('statStress')+' '+s.stress.toFixed(0)+'%';
+}
+
+/* ---------- Classic ---------- */
+function mountO(){
+  var groups = GROUPS.map(function(g){
+    var extra = g.id === 'profile' ? '<div class="c-chips" data-pchips></div><div class="c-desc" data-pdesc></div>' : '';
+    return '<div class="o-group"><div class="o-gt">'+L(g.title)+'</div><div class="o-gd">'+L(g.desc)+'</div>'+extra+'<div class="s-grid">'+g.items.map(function(it){ return sliderRow(it); }).join('')+'</div></div>';
+  }).join('');
+  app().innerHTML = '<div class="o-wrap">'
+    + '<div class="o-note">'+S('oNote')+'</div>'
+    + '<div class="o-result"><span class="o-title">'+S('resultTitle')+'</span><div class="o-grid" id="o_grid"></div>'+stackHTML(9)+'<div class="note" id="o_note"></div><div class="o-legend">'+S('legend')+'</div><div class="stats" id="o_stats"></div></div>'
+    + groups
+    + '<details class="o-calc"><summary>'+S('calcSummary')+'</summary><div class="formula">'+S('formula')+'</div><div class="formula">'+S('statsNote')+'</div><div class="sub">'+S('driversBy')+'</div><div id="o_drv"></div><div class="sub">'+S('matrixTitle')+'</div><div class="tbl-wrap"><table class="mx">'+matrixHTML()+'</table></div></details>'
+    + footHTML() + '</div>';
+  bindSliders(app());
+}
+function refreshO(){
+  var r = computeAllocation(VALS);
+  $('o_grid').innerHTML = SLEEVES.map(function(s, i){
+    return '<div class="o-cell"><div class="o-name"><span class="dot" style="background:'+COLORS[s.k]+'"></span>'+L(s.name)+'</div><div class="o-val">'+r.w[i].toFixed(1)+'%</div><div class="o-delta">'+deltaTxt(r.w[i], r.base[i])+'</div></div>';
+  }).join('');
+  $('o_note').textContent = notesText(r);
+  $('o_drv').innerHTML = driversBlock(r, 3);
+  $('o_stats').innerHTML = statsHTML(r);
+  syncProfileChips();
+  updateStack(r);
+}
+
+/* ---------- Dashboard ---------- */
+var aTab = 'profile';
+function mountA(){
+  app().innerHTML = '<div class="wrap">'
+    + '<div class="a-mini">'+stackHTML(8)+'<div class="mini-nums" id="a_mnums"></div></div>'
+    + '<div class="a-layout"><div class="a-left"><div class="a-tabs" id="a_tabs"></div><div id="a_group"></div></div>'
+    + '<div class="a-right"><div class="a-card"><div class="a-title">'+S('resultTitle')+'</div><div class="donut-wrap">'+donutHTML('a_d', 200, 26)+'</div><div id="a_legend"></div><div class="stats" id="a_stats"></div><div class="note" id="a_note"></div><div class="sub">'+S('keyDrivers')+'</div><div id="a_drv"></div></div></div></div>'
+    + footHTML() + '</div>';
+  renderATabs();
+  renderAGroup();
+}
+function renderATabs(){
+  var h = '';
+  GROUPS.forEach(function(g){ h += '<button type="button" class="a-tab'+(g.id===aTab?' on':'')+'" data-tab="'+g.id+'">'+L(g.title)+'</button>'; });
+  $('a_tabs').innerHTML = h;
+  $('a_tabs').querySelectorAll('.a-tab').forEach(function(b){
+    b.addEventListener('click', function(){ aTab = b.getAttribute('data-tab'); renderATabs(); renderAGroup(); });
+  });
+}
+function renderAGroup(){
+  var g = GROUPS.filter(function(x){ return x.id === aTab; })[0];
+  var host = $('a_group');
+  var extra = g.id === 'profile' ? '<div class="c-chips" data-pchips></div><div class="c-desc" data-pdesc></div>' : '';
+  host.innerHTML = '<div class="g-desc">'+L(g.desc)+'</div>'+extra+'<div class="s-grid">'+g.items.map(function(it){ return sliderRow(it); }).join('')+'</div>';
+  bindSliders(host);
+  syncProfileChips();
+}
+function refreshA(){
+  var r = computeAllocation(VALS);
+  updateDonut('a_d', r, 200, 26);
+  $('a_legend').innerHTML = legendHTML(r);
+  $('a_note').textContent = notesText(r);
+  $('a_drv').innerHTML = driversBlock(r, 2);
+  $('a_stats').innerHTML = statsHTML(r);
+  syncProfileChips();
+  $('a_mnums').innerHTML = miniNums(r);
+  updateStack(r);
+}
+
+/* ---------- Scenarios ---------- */
+function mountC(){
+  var core = CORE.map(function(id){ return sliderRow(itemById(id)); }).join('');
+  var restCount = 0;
+  var rest = GROUPS.map(function(g){
+    var its = g.id === 'profile' ? [] : g.items.filter(function(it){ return CORE.indexOf(it.id) < 0; });
+    restCount += its.length;
+    return its.length ? '<div class="c-gh">'+L(g.title)+'</div><div class="s-grid">'+its.map(function(it){ return sliderRow(it, {hint:false}); }).join('')+'</div>' : '';
+  }).join('');
+  var objBox = '<div class="c-box" style="margin:0 0 18px"><div class="c-lab">'+S('pfTitle')+'</div><div class="c-chips" data-pchips></div><div class="c-desc" data-pdesc></div><div class="s-grid">'+sliderRow(itemById('s_obj'))+sliderRow(itemById('s_conc'))+'</div></div>';
+  app().innerHTML = '<div class="c-wrap">'+objBox+'<div class="c-lab">'+S('chooseScenario')+'</div><div class="c-chips" id="c_chips"></div>'
+    + '<div class="c-save" id="c_save"><input type="text" id="c_saveName" maxlength="24" placeholder="'+S('savePlaceholder')+'"><button type="button" id="c_saveBtn">'+S('save')+'</button></div>'
+    + '<div class="c-desc" id="c_desc"></div>'
+    + '<div class="c-tiles" id="c_tiles"></div>'+stackHTML(16)+'<div class="stats" id="c_stats"></div><div class="note" id="c_note"></div>'
+    + '<div class="c-box"><div class="c-lab">'+S('coreBox')+' ('+CORE.length+')</div><div class="s-grid">'+core+'</div></div>'
+    + '<details class="c-more"><summary>'+S('moreParams', {n: restCount})+'</summary><div>'+rest+'</div></details>'
+    + '<div class="sub">'+S('keyDrivers')+'</div><div id="c_drv"></div>'
+    + footHTML() + '</div>';
+  bindSliders(app());
+  $('c_chips').addEventListener('click', function(e){
+    var t = e.target;
+    var del = t.getAttribute && t.getAttribute('data-del');
+    if(del != null && del !== ''){
+      var idx = parseInt(del, 10), nm = SAVED[idx] ? SAVED[idx].name : '';
+      SAVED.splice(idx, 1);
+      lsSet(STORE_SAVED, JSON.stringify(SAVED));
+      refreshC();
+      showToast(S('tDeleted', {n: nm}));
+      return;
+    }
+    var btn = t.closest ? t.closest('button.c-chip') : null;
+    if(!btn) return;
+    if(btn.id === 'c_add'){ $('c_save').classList.toggle('open'); $('c_saveName').focus(); return; }
+    applyScenario(btn.getAttribute('data-sc'));
+  });
+  $('c_saveBtn').addEventListener('click', function(){ saveScenario($('c_saveName').value); });
+  $('c_saveName').addEventListener('keydown', function(e){ if(e.key === 'Enter') saveScenario($('c_saveName').value); });
+}
+function refreshC(){
+  var r = computeAllocation(VALS);
+  var cur = activeScenario();
+  $('c_chips').innerHTML = allScenarios().map(function(s){
+    return '<button type="button" class="c-chip'+(s.mine?' mine':'')+(cur && cur.id === s.id ? ' on' : '')+'" data-sc="'+s.id+'">'+s.name+(s.mine?'<span class="x" data-del="'+s.idx+'">×</span>':'')+'</button>';
+  }).join('') + '<button type="button" class="c-chip add" id="c_add">'+S('addChip')+'</button>';
+  $('c_desc').textContent = cur ? cur.desc : S('customDesc');
+  $('c_tiles').innerHTML = SLEEVES.map(function(s, i){
+    return '<div class="c-tile" style="border-top-color:'+COLORS[s.k]+'"><div class="c-tn">'+L(s.name)+'</div><div class="c-tv">'+r.w[i].toFixed(1)+'%</div><div class="c-td">'+deltaTxt(r.w[i], r.base[i])+'</div></div>';
+  }).join('');
+  $('c_note').textContent = notesText(r);
+  $('c_drv').innerHTML = driversBlock(r, 3);
+  $('c_stats').innerHTML = statsHTML(r);
+  syncProfileChips();
+  updateStack(r);
+}
+
+/* ---------- Terminal ---------- */
+function dRow(it, g){
+  return '<div class="d-row" title="'+L(it.hint)+'"><div class="d-n">'+L(it.name)+'<small>'+L(it.lo)+' ↔ '+L(it.hi)+'</small></div>'
+    + '<input type="range" data-pid="'+it.id+'" min="'+it.min+'" max="'+it.max+'" step="'+it.step+'" value="'+VALS[it.id]+'">'
+    + '<span class="d-v" data-val="'+it.id+'">'+fmtVal(it, VALS[it.id])+'</span>'
+    + '<span class="d-t">'+(g.noTilt ? '' : '<i data-tb="'+it.id+'"></i>')+'</span></div>';
+}
+function mountD(){
+  var secs = {};
+  GROUPS.forEach(function(g){
+    var chips = g.id === 'profile' ? '<div class="d-chips" data-pchips></div>' : '';
+    secs[g.id] = '<div class="d-sec"><div class="d-sech"><span>'+L(g.title)+'</span><em>'+g.items.length+'</em></div>'+chips+g.items.map(function(it){ return dRow(it, g); }).join('')+'</div>';
+  });
+  app().innerHTML = '<div class="d-wrap"><div class="d-tick" id="d_tick"></div>'
+    + '<div class="d-main"><div class="d-left"><div class="d-cols"><div>'+secs.profile+secs.market+secs.constraint+'</div><div>'+secs.theme+secs.personal+secs.base+'</div></div></div>'
+    + '<div class="d-side"><div class="d-sech"><span>'+S('allocation')+'</span><em>'+S('baseMark')+'</em></div><div id="d_alloc"></div><div class="d-sech" style="margin-top:14px"><span>PROFILE</span></div><div class="stats" id="d_stats"></div><div class="d-sech" style="margin-top:14px"><span>'+S('drivers')+'</span></div><div id="d_drv"></div><div class="note" id="d_note"></div></div></div>'
+    + footHTML() + '</div>';
+  bindSliders(app());
+}
+function refreshD(){
+  var r = computeAllocation(VALS);
+  $('d_tick').innerHTML = SLEEVES.map(function(s, i){
+    return '<span><em>'+L(s.name)+'</em><b style="color:'+COLORS[s.k]+'">'+r.w[i].toFixed(1)+'</b></span>';
+  }).join('');
+  $('d_alloc').innerHTML = SLEEVES.map(function(s, i){
+    var w = r.w[i], b = r.base[i], d = w - b, scale = 60;
+    return '<div class="d-ar"><span>'+L(s.name)+'</span><div class="d-bar"><i style="width:'+Math.min(100, w/scale*100).toFixed(1)+'%; background:'+COLORS[s.k]+'"></i><u style="left:'+Math.min(100, b/scale*100).toFixed(1)+'%"></u></div>'
+      + '<span class="d-av"><b>'+w.toFixed(1)+'</b><em class="'+(d>0.05?'up':(d<-0.05?'down':'mut'))+'">'+(d>0?'+':'')+d.toFixed(1)+'</em></span></div>';
+  }).join('');
+  $('d_drv').innerHTML = driversBlock(r, 2);
+  $('d_stats').innerHTML = statsHTML(r);
+  syncProfileChips();
+  $('d_note').textContent = notesText(r);
+  allParams().forEach(function(it){
+    var el = document.querySelector('[data-tb="'+it.id+'"]');
+    if(!el) return;
+    var x = xOf(it, VALS[it.id]);
+    el.style.left = (x >= 0 ? 50 : 50 + x*50) + '%';
+    el.style.width = (Math.abs(x)*50) + '%';
+    el.style.background = x >= 0 ? 'var(--gold)' : '#5FA8D3';
+  });
+}
+
+var VARIANTS = {
+  O: {mount: mountO, refresh: refreshO},
+  A: {mount: mountA, refresh: refreshA},
+  C: {mount: mountC, refresh: refreshC},
+  D: {mount: mountD, refresh: refreshD}
+};
+
+function switchV(k){
+  active = k;
+  document.body.classList.toggle('dark-terminal', k === 'D');
+  document.querySelectorAll('.vbtn').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-v') === k); });
+  rerender();
+  try{ window.scrollTo(0, 0); }catch(e){}
+}
+
+function init(){
+  VALS = defaults();
+  var browserKo = (navigator.language || '').toLowerCase().indexOf('ko') === 0;
+  LANG = browserKo ? 'ko' : 'en';
+  var st = lsGet(STORE_STATE);
+  if(st){ try{ var o = JSON.parse(st); if(o.vals) mergeVals(o.vals); if(VARIANTS[o.variant]) active = o.variant; if(o.lang === 'ko' || o.lang === 'en') LANG = o.lang; }catch(e){} }
+  var q = new URLSearchParams(window.location.search), qo = {}, hasQ = false;
+  q.forEach(function(v, k){ qo[k] = v; hasQ = true; });
+  if(hasQ){ mergeVals(qo); if(VARIANTS[qo.v]) active = qo.v; if(qo.lang === 'ko' || qo.lang === 'en') LANG = qo.lang; }
+  if(window.PB_SITE){ LANG = window.PB_SITE.lang; document.body.classList.add('site'); }
+  loadSaved();
+  var th = lsGet(STORE_THEME);
+  if(th === 'dark' || th === 'light') document.documentElement.setAttribute('data-theme', th);
+  updateThemeBtn();
+
+  document.querySelectorAll('.vbtn').forEach(function(b){
+    b.addEventListener('click', function(){ switchV(b.getAttribute('data-v')); });
+  });
+  app().addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('button[data-pf]') : null;
+    if(b) applyProfile(b.getAttribute('data-pf'));
+  });
+  $('langKo').addEventListener('click', function(){ if(LANG !== 'ko') setLang('ko'); });
+  $('langEn').addEventListener('click', function(){ if(LANG !== 'en') setLang('en'); });
+  $('shareBtn').addEventListener('click', copyShareLink);
+  $('resetBtn').addEventListener('click', resetAll);
+  $('themeBtn').addEventListener('click', toggleTheme);
+  $('helpBtn').addEventListener('click', function(){ $('modal').classList.add('show'); });
+  $('modalOk').addEventListener('click', function(){ $('modal').classList.remove('show'); lsSet(STORE_ONB, '1'); });
+
+  applyLangChrome();
+  switchV(active);
+  if(lsGet(STORE_ONB) !== '1' && !hasQ) $('modal').classList.add('show');
+}
+init();
+</script>
+</body>
+</html>
