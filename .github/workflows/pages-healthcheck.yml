@@ -1,0 +1,33 @@
+name: pages-healthcheck
+on:
+  schedule:
+    - cron: '30 13 * * 1-5'   # UTC 기준. 리포트 푸시 완료 후 시각으로 조정
+    - cron: '30 15 * * 1-5'   # 재확인용 2차 체크
+  workflow_dispatch:           # 수동 실행 버튼
+
+permissions:
+  contents: read
+  pages: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compare repo vs live site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          repo_date=$(jq -r .date kalpheon-index/latest.json)
+          live_date=$(curl -s "https://kalpheonresearch.com/kalpheon-index/latest.json?t=$(date +%s)" | jq -r .date)
+          echo "repo=$repo_date live=$live_date"
+
+          if [ "$repo_date" != "$live_date" ]; then
+            echo "Mismatch. Requesting a new Pages build."
+            gh api -X POST repos/${{ github.repository }}/pages/builds
+            sleep 180
+            live_date=$(curl -s "https://kalpheonresearch.com/kalpheon-index/latest.json?t=$(date +%s)" | jq -r .date)
+            echo "after retry live=$live_date"
+            [ "$repo_date" = "$live_date" ] || { echo "Still out of sync"; exit 1; }
+          fi
