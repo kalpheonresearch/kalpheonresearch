@@ -84,14 +84,25 @@
   .seg button{font:inherit;font-size:13px;font-weight:600;border:0;background:transparent;color:var(--navy-soft);padding:7px 13px;border-radius:999px;cursor:pointer;min-height:38px}
   .seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
   .seg.lang button{padding:7px 10px;min-width:40px}
-  @media (max-width:960px){nav.menu{display:none}}
+  .menubtn{display:none;font:inherit;font-size:13.5px;font-weight:600;color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:7px 14px;min-height:44px;cursor:pointer;align-items:center;gap:8px}
+  .menubtn .bars{display:inline-block;width:16px;height:2px;background:var(--navy);box-shadow:0 5px 0 var(--navy),0 -5px 0 var(--navy)}
+  @media (max-width:960px){
+    .bar{height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;row-gap:10px}
+    .menubtn{display:inline-flex}
+    nav.menu{display:none;order:5;flex:1 1 100%;border-top:1px solid var(--line);padding-top:8px}
+    header.site.open nav.menu{display:grid;grid-template-columns:repeat(2,1fr);gap:0 16px}
+    nav.menu a{padding:13px 4px;font-size:16px;border-bottom:1px solid #EEF1F6}
+    .newb{position:static;margin-left:8px;vertical-align:2px}
+  }
   /* 휴대폰: 헤더를 두 줄로 쌓아 오른쪽 메뉴가 화면 밖으로 밀리지 않게 한다 (1줄: 로고와 언어, 2줄: 쉬운/전문가 보기) */
   @media (max-width:560px){
     .wrap{padding:0 16px}
     .bar{height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;row-gap:10px}
     .ctrl{display:contents}
     .brand{order:1}
-    .seg.lang{order:2;margin-left:auto}
+    .menubtn{order:2;margin-left:auto}
+    .seg.lang{order:2;margin-left:0}
+    header.site{position:static}
     #viewSeg{order:3;flex:1 1 100%;display:flex}
     #viewSeg button{flex:1;font-size:14px}
     .hcard{padding:22px 18px;border-radius:20px}
@@ -265,15 +276,16 @@
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="4"/><path d="M37 26V74M37 52L66 26M49 47L68 74" stroke="currentColor" stroke-width="8" fill="none"/></svg>
       <span><span class="bw" style="display:block">KALPHEON</span><span class="bs" style="display:block">RESEARCH</span></span>
     </a>
-    <nav class="menu" aria-label="Site menu">
+    <nav class="menu" id="siteNav" aria-label="Site menu">
       <a href="#top" data-k="navToday">투데이</a>
-      <a href="#trend" class="pro-only" data-k="navTrend">트렌드</a>
+      <a href="#trend" data-k="navTrend">트렌드</a>
       <a href="/portfolio-balancing/" id="pbLink"><span data-k="navPB">포트폴리오 밸런싱</span><span class="newb">NEW</span></a>
       <a href="#archive" data-k="navArchive">보관 저장소</a>
       <a href="#about" data-k="navAbout">About</a>
       <a href="#method" data-k="navMethod">방법론</a>
     </nav>
     <div class="ctrl">
+      <button type="button" class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="siteNav"><span class="bars" aria-hidden="true"></span><span data-k="menu">메뉴</span></button>
       <div class="seg" id="viewSeg" role="group"><button type="button" data-view="easy" aria-pressed="false"></button><button type="button" data-view="pro" aria-pressed="false"></button></div>
       <div class="seg lang" role="group" aria-label="Language"><button type="button" data-lang="ko" aria-pressed="false">KO</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
     </div>
@@ -449,7 +461,7 @@
   /* ---------------- 문구 ---------------- */
   var S = {
     ko: {
-      title: 'Kalpheon Research', navToday: '투데이', navTrend: '트렌드', navPB: '포트폴리오 밸런싱', navArchive: '보관 저장소', navMethod: '방법론',
+      title: 'Kalpheon Research', menu: '메뉴', navToday: '투데이', navTrend: '트렌드', navPB: '포트폴리오 밸런싱', navArchive: '보관 저장소', navMethod: '방법론',
       viewEasy: '쉬운 보기', viewPro: '전문가 보기', viewLabel: '보기 방식',
       easyH1: '오늘 미국 주식시장,\n지금 어떤 상태일까요?', easyLead: '어려운 지표 7개를 하나의 점수로 줄였어요. 매 영업일 새벽에 자동으로 바뀝니다.',
       meterHint: '0에 가까울수록 안전, 100에 가까울수록 위험', seeNumbers: '숫자로 자세히 보기', seeEasy: '쉬운 설명으로 보기',
@@ -509,7 +521,7 @@
       stages: ['자산 가격 이상', '현명한 투자자', '기관투자자', '대중 참여', '1차 하락', '언론 보도 증가', '새로운 논리 탄생', '현실 부정', '탐욕', '열정(정점)']
     },
     en: {
-      title: 'Kalpheon Research', navToday: 'Today', navTrend: 'Trend', navPB: 'Portfolio Balancing', navArchive: 'Archive', navMethod: 'Methodology',
+      title: 'Kalpheon Research', menu: 'Menu', navToday: 'Today', navTrend: 'Trend', navPB: 'Portfolio Balancing', navArchive: 'Archive', navMethod: 'Methodology',
       viewEasy: 'Simple', viewPro: 'Expert', viewLabel: 'View mode',
       easyH1: 'Where is the US stock market\nright now?', easyLead: 'Seven hard indicators boiled down to one score, refreshed automatically every business day.',
       meterHint: 'Closer to 0 is safer, closer to 100 is riskier', seeNumbers: 'See the numbers', seeEasy: 'Show the simple version',
@@ -859,6 +871,18 @@
     setTimeout(function () { if (n.scrollIntoView) n.scrollIntoView(); }, 60);
   }
   window.addEventListener('hashchange', honorHash);
+
+  var hdr = document.querySelector('header.site'), mbtn = $('menuBtn');
+  function menu(open) { hdr.classList.toggle('open', open); mbtn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  mbtn.addEventListener('click', function () { menu(!hdr.classList.contains('open')); });
+  Array.prototype.forEach.call(document.querySelectorAll('#siteNav a'), function (a) {
+    a.addEventListener('click', function () {
+      var h = a.getAttribute('href') || '', n = h.charAt(0) === '#' ? document.getElementById(h.slice(1)) : null;
+      if (n && doc.getAttribute('data-view') === 'easy' && n.closest('.pro-only')) setView('pro', 'nav');
+      menu(false);
+    });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') menu(false); });
 
   renderStatic();
   load().then(function () { renderData(); honorHash(); }).catch(function () { var e = $('err'); e.textContent = T().err; e.hidden = false; });
