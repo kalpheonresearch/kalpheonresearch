@@ -32,27 +32,7 @@
     --vbar-h:50px; --th:16px;
   }
   @media (max-width:700px){ :root{--th:22px;} }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --canvas:#12171F; --paper:#1A212B; --ink:#E9ECF2; --ink-soft:#B5BECC; --rule:#2A3340; --muted:#8E99AB;
-      --gold:#E8B54A; --gold-ink:#F0C466; --acc:#8FB0F0; --red:#FF8A78; --green:#4FD1A5; --pos:#4FD1A5; --neg:#FF8A78;
-      --red-bg:#3A2420; --green-bg:#1E2E27; --yellow-bg:#332B18; --yellow:#F0C466; --sel-bg:#27324A; --thumb-bg:#1A212B;
-      --c-cash:#8C9BB2; --c-div:#3CBFAE; --c-growth:#F0B94A; --c-sat:#F07A66;
-    }
-  }
-  :root[data-theme="dark"]{
-    --canvas:#12171F; --paper:#1A212B; --ink:#E9ECF2; --ink-soft:#B5BECC; --rule:#2A3340; --muted:#8E99AB;
-    --gold:#E8B54A; --gold-ink:#F0C466; --acc:#8FB0F0; --red:#FF8A78; --green:#4FD1A5; --pos:#4FD1A5; --neg:#FF8A78;
-    --red-bg:#3A2420; --green-bg:#1E2E27; --yellow-bg:#332B18; --yellow:#F0C466; --sel-bg:#27324A; --thumb-bg:#1A212B;
-    --c-cash:#8C9BB2; --c-div:#3CBFAE; --c-growth:#F0B94A; --c-sat:#F07A66;
-  }
-  body.dark-terminal{
-    --canvas:#0D1117; --paper:#161B22; --ink:#E6EDF3; --ink-soft:#B1BAC4; --rule:#30363D;
-    --gold:#D4A85A; --gold-ink:#D4A85A; --acc:#E6EDF3; --red:#F85149; --green:#3FB950; --muted:#8B949E; --yellow:#D4A85A;
-    --pos:#3FB950; --neg:#F85149; --sel-bg:#21262D; --thumb-bg:#0D1117;
-    --red-bg:#3A1D1D; --green-bg:#17301F; --yellow-bg:#33291A;
-    --c-cash:#8B949E; --c-div:#3FB950; --c-growth:#D4A85A; --c-sat:#F85149;
-  }
+  :root{color-scheme:light;}
   *{box-sizing:border-box;}
   html,body{margin:0; padding:0; max-width:100%;}
   body{background:var(--canvas); font-family:'Noto Sans KR',sans-serif; color:var(--ink); font-feature-settings:"tnum" 1; -webkit-font-smoothing:antialiased; font-size:14px; padding-bottom:env(safe-area-inset-bottom,0px);}
@@ -120,20 +100,6 @@
   .foot{margin-top:22px; padding-top:10px; border-top:1px solid var(--rule); font-size:9.8px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;}
 
   /* O: original */
-  .o-wrap{max-width:960px; margin:0 auto; padding:16px 18px 44px;}
-  .o-note{background:var(--yellow-bg); border:1px solid #F0DFAE; border-radius:3px; padding:10px 14px; font-size:11.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px;}
-  .o-result{position:sticky; top:var(--vbar-h); z-index:20; background:var(--paper); border:2px solid var(--acc); border-radius:6px; padding:12px 14px 11px; margin-bottom:18px; box-shadow:0 3px 14px rgba(20,35,59,.12);}
-  .o-title{font-family:'Noto Serif KR',serif; font-weight:700; font-size:12.5px; display:block; margin-bottom:8px;}
-  .o-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:9px;}
-  .o-cell{text-align:center; min-width:0;}
-  .o-name{font-size:10.3px; color:var(--ink-soft); line-height:1.25;}
-  .o-val{font-family:'Noto Serif KR',serif; font-weight:700; font-size:21px; line-height:1.25;}
-  .o-delta{font-size:9.5px; color:var(--muted);}
-  .o-legend{font-size:9.5px; color:var(--muted); margin-top:5px;}
-  @media (max-width:520px){ .o-val{font-size:17px;} .o-name{font-size:9.6px;} .o-cell{padding:0 1px;} }
-  .o-group{border:1px solid var(--rule); border-radius:7px; padding:15px 17px 6px; background:var(--paper); box-shadow:0 1px 4px rgba(20,35,59,.05); margin-bottom:16px;}
-  .o-gt{font-family:'Noto Serif KR',serif; font-size:13.5px; font-weight:700; color:var(--gold-ink);}
-  .o-gd{font-size:10.8px; color:var(--muted); margin:3px 0 13px; line-height:1.55;}
   details.o-calc{border-top:1px solid var(--rule); padding-top:12px; margin-top:6px;}
   details.o-calc summary{cursor:pointer; font-family:'Noto Serif KR',serif; font-weight:700; font-size:12.8px; list-style:none;}
   details.o-calc summary::-webkit-details-marker{display:none;}
@@ -161,7 +127,7 @@
   .c-wrap{max-width:760px; margin:0 auto; padding:18px 18px 44px;}
   .c-lab{font-size:11px; font-weight:700; color:var(--gold-ink); margin-bottom:8px; letter-spacing:.04em;}
   .c-chips{display:flex; gap:7px; overflow-x:auto; padding-bottom:6px; max-width:100%;}
-  .a-left .c-chips, .o-group .c-chips{flex-wrap:wrap; overflow-x:visible;}
+  .a-left .c-chips{flex-wrap:wrap; overflow-x:visible;}
   .c-chip{flex:0 0 auto; font-size:12.5px; font-weight:600; padding:9px 15px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); border-radius:20px; cursor:pointer; white-space:nowrap;}
   .c-chip.on{background:var(--sel-bg); color:var(--ink); border-color:var(--ink); box-shadow:inset 0 -3px 0 var(--acc);}
   .c-chip.mine{border-style:dashed;}
@@ -187,43 +153,9 @@
   .c-gh{font-family:'Noto Serif KR',serif; font-size:12px; font-weight:700; color:var(--gold-ink); margin:16px 0 8px;}
 
   /* D: terminal */
-  body.dark-terminal{font-family:ui-monospace,'SF Mono',Menlo,Consolas,'Noto Sans KR',monospace;}
-  .d-wrap{max-width:1120px; margin:0 auto; padding:0 14px 40px;}
-  .d-tick{position:sticky; top:var(--vbar-h); z-index:40; display:flex; flex-wrap:wrap; gap:6px 22px; align-items:baseline; padding:9px 2px; background:var(--canvas); border-bottom:1px solid var(--rule); font-size:12px;}
-  .d-tick span em{font-style:normal; color:var(--muted); margin-right:5px; font-size:10px;}
-  .d-tick span b{font-size:15px;}
-  .d-main{display:grid; grid-template-columns:minmax(0,1fr) 330px; gap:18px; margin-top:12px; align-items:start;}
-  .d-left{min-width:0;}
-  @media (max-width:900px){ .d-main{grid-template-columns:minmax(0,1fr);} .d-side{order:-1;} }
-  .d-sec{margin-bottom:16px;}
-  .d-sech{display:flex; justify-content:space-between; font-size:10.5px; letter-spacing:.1em; color:var(--gold); border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px; font-weight:700;}
-  .d-sech em{font-style:normal; color:var(--muted);}
-  .d-cols{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:0 22px;}
-  @media (max-width:1000px){ .d-cols{grid-template-columns:minmax(0,1fr);} }
-  .d-row{display:grid; grid-template-columns:128px 1fr 40px 54px; gap:8px; align-items:center; padding:3px 0; border-bottom:1px dotted var(--rule);}
-  .d-n{font-size:11px; line-height:1.25;}
-  .d-n small{display:block; font-size:8.5px; color:var(--muted);}
-  .d-row input[type=range]{--th:11px; margin:0; height:3px;}
-  .d-row input[type=range]::-webkit-slider-thumb{border-width:2px; border-radius:2px; box-shadow:none;}
-  .d-row input[type=range]::-moz-range-thumb{border-width:2px; border-radius:2px; box-shadow:none;}
-  .d-v{font-size:11px; color:var(--gold); text-align:right; font-weight:700;}
-  .d-t{position:relative; height:8px; background:var(--rule); border-radius:1px;}
-  .d-t:after{content:''; position:absolute; left:50%; top:-2px; bottom:-2px; width:1px; background:var(--muted);}
-  .d-t i{position:absolute; top:0; height:100%; display:block;}
-  .d-side{position:sticky; top:calc(var(--vbar-h) + 52px);}
-  @media (max-width:900px){ .d-side{position:static;} }
-  .d-ar{display:grid; grid-template-columns:112px 1fr 92px; gap:8px; align-items:center; margin-bottom:8px; font-size:11px;}
-  .d-bar{position:relative; height:12px; background:var(--rule); border-radius:1px;}
-  .d-bar i{position:absolute; left:0; top:0; bottom:0; display:block;}
-  .d-bar u{position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--ink);}
-  .d-av b{font-size:13px;}
-  .d-av em{font-style:normal; font-size:10px; margin-left:4px;}
-  .d-btn{font-size:10.5px; padding:5px 10px; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); cursor:pointer; margin-top:8px;}
 
   .stats{font-size:11px; color:var(--ink-soft); margin-top:9px; line-height:1.65; background:var(--sel-bg); border-radius:6px; padding:7px 10px;}
   .stats b{color:var(--ink);}
-  .d-chips{display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px;}
-  .d-chips .c-chip{padding:4px 9px; font-size:10.5px; border-radius:3px;}
   /* toast / modal */
   .toast{position:fixed; left:50%; bottom:calc(18px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:90; background:#14233B; color:#fff; font-size:12px; padding:10px 14px; border-radius:8px; display:none; align-items:center; gap:12px; max-width:92vw; box-shadow:0 6px 24px rgba(0,0,0,.25);}
   .toast.show{display:flex;}
@@ -236,36 +168,65 @@
   .modal-in button{width:100%; font-size:13px; font-weight:700; padding:11px; border:none; background:var(--ink); color:var(--canvas); border-radius:6px; cursor:pointer;}
 
   /* ===== Kalpheon Research site shell: same palette and 1000px / 22px geometry as the home page ===== */
-  :root{ --canvas:#FCFCFB; --paper:#FFFFFF; --rule:#E7E3D8; --ink:#0F1E33; --ink-soft:#3A4A63; --muted:#5F6673; --acc:#0F1E33; }
-  header.pbh{background:var(--canvas);}
-  .pbh-in{position:relative; max-width:1000px; margin:0 auto; padding:22px 22px 14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px 18px;}
-  .pbh-in::after{content:''; position:absolute; left:22px; right:22px; bottom:0; height:1px; background:var(--rule);}
+  :root{ --canvas:#F6F8FB; --paper:#FFFFFF; --rule:#E3E8F0; --ink:#0F1E33; --ink-soft:#3A4A63; --muted:#6B7280; --acc:#0F1E33; }
+  header.pbh{background:#fff; border-bottom:1px solid var(--rule);}
+  .pbh-in{position:relative; max-width:1000px; margin:0 auto; padding:12px 22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px 18px;}
   .pb-brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink);}
   .pb-brand svg{width:32px; flex:none;}
   .pb-bw{font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; letter-spacing:.14em; font-size:19px; line-height:1;}
   .pb-bs{font-family:'Jost',sans-serif; font-weight:500; letter-spacing:.38em; font-size:9px; color:#8A6B2F; margin-top:4px;}
-  :root[data-theme="dark"] .pb-bs{color:#C9A96B;}
   nav.pb-nav{display:flex; gap:2px; order:3; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
   nav.pb-nav::-webkit-scrollbar{display:none;}
   nav.pb-nav a{flex:none; display:inline-flex; align-items:center; min-height:44px; padding:0 14px 0 0; font-size:13.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;}
   nav.pb-nav a:hover{color:#8A6B2F;}
   nav.pb-nav a[aria-current="page"]{color:var(--ink); box-shadow:inset 0 -3px 0 #B8975A;}
   @media (min-width:760px){ nav.pb-nav{order:0; width:auto; margin-left:auto; margin-right:6px;} nav.pb-nav a{padding:0 12px;} }
-  .pb-lang{display:inline-flex; border:1px solid var(--rule); border-radius:22px; overflow:hidden; background:var(--paper);}
-  .pb-lang a,.pb-lang b{display:flex; align-items:center; justify-content:center; min-width:48px; min-height:40px; padding:0 14px; font-size:12px; font-weight:700; line-height:1; text-decoration:none; color:var(--muted);}
-  .pb-lang b{background:var(--ink); color:var(--paper);}
+  .pb-lang{display:inline-flex; border:1.5px solid var(--ink); border-radius:999px; overflow:hidden; padding:3px; gap:0; background:#fff;}
+  .pb-lang a,.pb-lang b{border-radius:999px; display:flex; align-items:center; justify-content:center; min-width:48px; min-height:40px; padding:0 14px; font-size:12px; font-weight:700; line-height:1; text-decoration:none; color:var(--muted);}
+  .pb-lang b{background:var(--ink); color:#fff;}
   .pb-lang a:hover{background:var(--sel-bg); color:var(--ink);}
   .pb-intro{max-width:1000px; margin:0 auto; padding:20px 22px 16px;}
   .pb-intro h1{font-family:'Noto Serif KR',Georgia,serif; font-size:26px; margin:0 0 6px; line-height:1.25;}
   .pb-intro p{margin:0; color:var(--ink-soft); font-size:13.5px; max-width:740px; line-height:1.7;}
   .pb-foot{position:relative; max-width:1000px; margin:0 auto; padding:18px 22px 46px; font-size:11px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 18px;}
-  .pb-foot::before{content:''; position:absolute; top:0; left:22px; right:22px; height:1px; background:var(--rule);}
+  .pb-foot{border-top:1px solid var(--rule); max-width:none; padding-left:max(22px, calc((100% - 1000px) / 2 + 22px)); padding-right:max(22px, calc((100% - 1000px) / 2 + 22px)); margin-top:20px;}
   .pb-foot a{color:inherit; text-decoration:underline; text-underline-offset:2px; margin-right:12px;}
   /* view bar and all four views share the same container as the header */
   body.site .vbar{background:var(--canvas);}
   body.site .vbar-in{max-width:1000px; padding:0 22px;}
-  body.site .wrap, body.site .o-wrap, body.site .c-wrap, body.site .d-wrap{max-width:1000px; padding-left:22px; padding-right:22px;}
+  body.site .wrap, body.site .c-wrap{max-width:1000px; padding-left:22px; padding-right:22px;}
   body.site .langpair{display:none;}
+
+  /* ===== KALPHEON SHARE CARD (내 결과 카드) ===== */
+  .cd-fab{position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:6px; background:#14233B; color:#E8B54A; border:1.5px solid #E8B54A; border-radius:26px; padding:12px 18px; font-size:13px; font-weight:700; cursor:pointer; box-shadow:0 6px 20px rgba(20,35,59,.35);}
+  .cd-fab:active{transform:scale(.97);}
+  .cd-modal{position:fixed; inset:0; background:rgba(10,18,32,.72); z-index:110; display:none; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:18px 16px calc(24px + env(safe-area-inset-bottom,0px));}
+  .cd-modal.show{display:block;}
+  .cd-in{max-width:440px; margin:0 auto;}
+  .cd-top{display:flex; justify-content:space-between; align-items:center; color:#fff; margin-bottom:10px;}
+  .cd-top b{font-family:'Noto Serif KR',serif; font-size:15px;}
+  .cd-x{background:none; border:none; color:#fff; font-size:24px; line-height:1; cursor:pointer; padding:4px 8px;}
+  .cd-img{display:block; width:100%; height:auto; border-radius:14px; box-shadow:0 10px 36px rgba(0,0,0,.45); background:#14233B;}
+  .cd-hint{color:#B5BECC; font-size:11px; text-align:center; margin:8px 0 12px;}
+  .cd-btns{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  .cd-btns button{font-family:inherit; font-size:13px; font-weight:700; padding:13px 10px; border-radius:8px; cursor:pointer; border:1.5px solid #E8B54A; background:transparent; color:#E8B54A;}
+  .cd-btns button.pri{background:#E8B54A; color:#14233B; grid-column:1 / -1; font-size:14.5px; padding:15px;}
+  /* ===== /SHARE CARD ===== */
+  /* scenarios: delete confirm, auto-save note, sensitivity table */
+  .toast{bottom:calc(76px + env(safe-area-inset-bottom,0px));}
+  .del-msg{margin:0 0 16px; font-size:13px; line-height:1.7; color:var(--ink-soft);}
+  .del-btns{display:flex; gap:8px;}
+  .del-btns button{flex:1;}
+  .modal-in button.alt{background:transparent; color:var(--ink); border:1px solid var(--rule);}
+  .modal-in button.danger{background:var(--neg); color:#fff;}
+  .c-chip .x{padding:3px 6px; margin-right:-6px; opacity:.55;}
+  .c-chip .x:hover{opacity:1; color:var(--neg);}
+  .c-desc.auto{color:var(--green); font-weight:600;}
+  .mx-note{font-size:11px; color:var(--muted); line-height:1.6; margin:8px 0 10px;}
+  details.o-calc{margin-top:18px;}
+  @media (max-width:520px){ table.mx{min-width:0; font-size:10px;} table.mx th{font-size:9px; padding:0 2px 6px;} table.mx td{padding:5px 2px;} table.mx th:first-child{width:34%;} }
+  table.mx tr.mx-on td{background:var(--sel-bg);}
+  table.mx tr.mx-on td:first-child{box-shadow:inset 3px 0 0 var(--acc); color:var(--ink);}
 </style>
 </head>
 <body>
@@ -273,15 +234,13 @@
 <section class="pb-intro"><h1>Portfolio Balancing</h1><p>Choose your objective, from minimizing losses to maximizing return, and set your market outlook with sliders. Target weights for four sleeves (cash, dividend, growth, themes &amp; stocks) update instantly. It does not calculate buy or sell amounts; it is for reference only.</p><noscript><p>Please enable JavaScript to use this tool.</p></noscript></section>
 <div class="vbar" id="vbar"><div class="vbar-in">
   <span class="vtitle" id="vTitle"></span>
-  <button type="button" class="vbtn" data-v="O"></button>
   <button type="button" class="vbtn" data-v="A"></button>
   <button type="button" class="vbtn" data-v="C"></button>
-  <button type="button" class="vbtn" data-v="D"></button>
   <div class="vtools">
     <span class="langpair"><button type="button" class="tbtn" id="langKo">KO</button><button type="button" class="tbtn" id="langEn">EN</button></span>
+    <button type="button" class="tbtn" id="cardBtn"></button>
     <button type="button" class="tbtn" id="shareBtn"></button>
     <button type="button" class="tbtn" id="resetBtn"></button>
-    <button type="button" class="tbtn" id="themeBtn">🌙</button>
     <button type="button" class="tbtn" id="helpBtn">❓</button>
   </div>
 </div></div>
@@ -294,6 +253,27 @@
     <h3 id="mTitle"></h3>
     <ol id="mList"></ol>
     <button type="button" id="modalOk"></button>
+  </div>
+</div>
+
+<div class="modal" id="delModal">
+  <div class="modal-in">
+    <h3 id="delTitle"></h3>
+    <p id="delMsg" class="del-msg"></p>
+    <div class="del-btns"><button type="button" class="alt" id="delCancel"></button><button type="button" class="danger" id="delOk"></button></div>
+  </div>
+</div>
+<button type="button" class="cd-fab" id="cardFab"></button>
+<div class="cd-modal" id="cardModal">
+  <div class="cd-in">
+    <div class="cd-top"><b id="cdTitle"></b><button type="button" class="cd-x" id="cdClose" aria-label="close">×</button></div>
+    <img class="cd-img" id="cdImg" alt="Kalpheon result card">
+    <div class="cd-hint" id="cdHint"></div>
+    <div class="cd-btns">
+      <button type="button" class="pri" id="cdShare"></button>
+      <button type="button" id="cdSave"></button>
+      <button type="button" id="cdLink"></button>
+    </div>
   </div>
 </div>
 
@@ -452,18 +432,16 @@ function L(x){ return Array.isArray(x) ? x[LANG === 'en' ? 1 : 0] : x; }
 var STANCE_LABELS = [['매우 방어적','Very defensive'],['방어적','Defensive'],['중립적','Neutral'],['공격적','Aggressive'],['매우 공격적','Very aggressive']];
 var STR = {
   vtitle:   ['보기 방식','View'],
-  tabO:     ['클래식','Classic'],
   tabA:     ['대시보드','Dashboard'],
   tabC:     ['시나리오','Scenarios'],
-  tabD:     ['터미널','Terminal'],
   share:    ['🔗 링크','🔗 Link'],
   reset:    ['↺ 기본값','↺ Reset'],
   docTitle: ['Kalpheon Target Allocation Builder','Kalpheon Target Allocation Builder'],
   mTitle:   ['사용법','How to use'],
   mOk:      ['시작하기','Get started'],
   mList:    [
-    ['위의 "보기 방식"에서 취향에 맞는 화면을 고르면 됨. 입력한 값은 화면을 바꿔도 유지됨','먼저 "투자 성향"에서 손실 최소부터 수익 극대화까지 본인의 목표를 고르고, 슬라이더로 시장 전망을 입력하면 목표 비중이 바로 계산됨','"기본 비중" 항목에 평소 본인의 배분을 넣으면 그 값이 출발점이 됨','링크 버튼으로 지금 설정, 보기 방식, 언어를 저장하거나 공유할 수 있음'],
-    ['Pick the layout you like under "View". Your inputs stay when you switch.','Start with "Investment objective" (from minimizing losses to maximizing return), then set your market outlook with the sliders; target weights recalculate instantly.','Enter your usual allocation under "Base weights" and it becomes the starting point.','The link button saves or shares your current settings, layout and language.']
+    ['위의 "보기 방식"에서 대시보드(탭으로 나눠 보는 화면)나 시나리오(핵심 항목과 저장 기능 중심 화면)를 고르면 됨. 입력한 값은 화면을 바꿔도 유지됨','먼저 "투자 성향"에서 손실 최소부터 수익 극대화까지 본인의 목표를 고르고, 슬라이더로 시장 전망을 입력하면 목표 비중이 바로 계산됨','"기본 비중" 항목에 평소 본인의 배분을 넣으면 그 값이 출발점이 됨','시나리오 화면에서 저장한 시나리오를 선택한 채 슬라이더를 움직이면 변경 내용이 자동 저장됨. 링크 버튼으로 지금 설정, 보기 방식, 언어를 공유할 수 있음'],
+    ['Pick Dashboard (tabbed groups) or Scenarios (core inputs and saving) under "View". Your inputs stay when you switch.','Start with "Investment objective" (from minimizing losses to maximizing return), then set your market outlook with the sliders; target weights recalculate instantly.','Enter your usual allocation under "Base weights" and it becomes the starting point.','In Scenarios, moving a slider while one of your saved scenarios is selected saves the change automatically. The link button shares your current settings, layout and language.']
   ],
   resultTitle: ['자동 산출 목표 비중','Auto-computed target allocation'],
   legend:   ['▲▼ = 기본 비중 대비 차이 (%p)','▲▼ = difference vs base weights (pp)'],
@@ -510,6 +488,15 @@ var STR = {
   noteSat:  ['테마·개별종목 상한 {v}%에 걸려 초과분은 다른 슬리브로 재배분됨','Themes & stocks cap of {v}% reached; the excess goes to other sleeves'],
   noteCash: ['현금성 하한 {v}%에 맞추고 나머지를 다른 슬리브에서 조정함','Cash floor of {v}% applied; the remainder is adjusted across other sleeves']
 };
+Object.assign(STR, {
+  matrixNote: ['각 견해가 슬리브 비중을 올리는지(+) 내리는지(−) 보여주는 민감도 계수임. 지금 중립에서 벗어나 있는 파라미터는 강조 표시됨','Sensitivity coefficients showing whether each view lifts (+) or lowers (−) a sleeve weight. Parameters currently away from neutral are highlighted.'],
+  delTitle: ['시나리오 삭제','Delete scenario'],
+  delMsg:   ['\'{n}\'을(를) 삭제할까요?','Delete \'{n}\'?'],
+  delOk:    ['삭제','Delete'],
+  delCancel:['취소','Cancel'],
+  tRestored:['\'{n}\' 복원됨','\'{n}\' restored'],
+  editing:  ['\'{n}\' 수정 중 · 변경 사항은 자동 저장됨 (원본을 남기려면 먼저 \'＋ 현재 설정 저장\'으로 복사)','Editing \'{n}\' · changes are saved automatically (to keep the original, first copy it with \'＋ Save current\')']
+});
 function S(key, vars){
   var s = L(STR[key]);
   if(vars){ Object.keys(vars).forEach(function(k){ s = s.split('{'+k+'}').join(vars[k]); }); }
@@ -529,10 +516,12 @@ var PRESETS = [
   {id:'def',  name:['방어 우선','Defense first'], desc:['손실 감내도를 낮추고 현금흐름을 중시','Lower loss tolerance, income focus'], o:{p_defense:90, u_tol:25, u_income:80, u_liq:70, p_risk:70}},
   {id:'agg',  name:['공격 성장','Aggressive growth'], desc:['위험을 감수하고 성장에 베팅','Take more risk and bet on growth'], o:{u_tol:85, p_risk:30, p_value:60, u_horizon:25, p_growth:75, p_defense:30}}
 ];
-var STORE_STATE = 'kalpheon_alloc_i18n_state', STORE_SAVED = 'kalpheon_alloc_i18n_saved', STORE_ONB = 'kalpheon_alloc_i18n_onb', STORE_THEME = 'kalpheon_alloc_i18n_theme';
+var STORE_STATE = 'kalpheon_alloc_i18n_state', STORE_SAVED = 'kalpheon_alloc_i18n_saved', STORE_ONB = 'kalpheon_alloc_i18n_onb';
 var VALS = {};
 var active = 'A';
 var SAVED = [];
+var EDIT_IDX = null;      // saved scenario currently being edited (auto-saved)
+var delIdx = null, lastDeleted = null;
 var prevSnapshot = null;
 var toastTimer = null;
 
@@ -580,9 +569,21 @@ function activeScenario(){
   }
   return null;
 }
+function persistSaved(){ lsSet(STORE_SAVED, JSON.stringify(SAVED)); }
+function currentScenario(){
+  var ps = allParams();
+  function same(t){ for(var j=0;j<ps.length;j++){ if(VALS[ps[j].id] !== t[ps[j].id]) return false; } return true; }
+  if(EDIT_IDX != null && SAVED[EDIT_IDX] && same(SAVED[EDIT_IDX].tilt)){
+    return {id:'s'+EDIT_IDX, name:SAVED[EDIT_IDX].name, desc:S('savedDesc'), mine:true, idx:EDIT_IDX};
+  }
+  var cur = activeScenario();
+  EDIT_IDX = (cur && cur.mine) ? cur.idx : null;
+  return cur;
+}
 function applyScenario(id){
   var s = allScenarios().filter(function(x){ return x.id === id; })[0];
   if(!s) return;
+  EDIT_IDX = s.mine ? s.idx : null;
   prevSnapshot = JSON.parse(JSON.stringify(VALS));
   Object.keys(s.tilt).forEach(function(k){ VALS[k] = s.tilt[k]; });
   rerender();
@@ -601,7 +602,8 @@ function saveScenario(name){
   var tilt = {};
   allParams().forEach(function(it){ tilt[it.id] = VALS[it.id]; });
   SAVED.push({name: name, tilt: tilt});
-  lsSet(STORE_SAVED, JSON.stringify(SAVED));
+  EDIT_IDX = SAVED.length - 1;
+  persistSaved();
   showToast(S('tSaved', {n: name}));
   rerender();
 }
@@ -625,6 +627,10 @@ function bindSliders(root){
       setFill(inp);
       var id = inp.getAttribute('data-pid');
       VALS[id] = parseFloat(inp.value);
+      if(active === 'C' && EDIT_IDX != null && SAVED[EDIT_IDX] && Object.prototype.hasOwnProperty.call(SAVED[EDIT_IDX].tilt, id)){
+        SAVED[EDIT_IDX].tilt[id] = VALS[id];
+        persistSaved();
+      }
       var it = itemById(id);
       document.querySelectorAll('[data-val="'+id+'"]').forEach(function(el){ el.textContent = fmtVal(it, VALS[id]); });
       VARIANTS[active].refresh();
@@ -690,15 +696,24 @@ function legendHTML(r){
 function matrixHTML(){
   var h = '<tr><th>'+S('paramCol')+'</th>' + SLEEVES.map(function(s){ return '<th>'+L(s.name)+'</th>'; }).join('') + '</tr>';
   allParams().forEach(function(it){
-    h += '<tr><td>'+L(it.name)+'</td>' + it.m.map(function(c){
+    h += '<tr data-mx="'+it.id+'"><td>'+L(it.name)+'</td>' + it.m.map(function(c){
       return '<td class="'+(c>0?'up':(c<0?'down':''))+'">'+(c>0?'+':'')+(c===0?'0':c.toFixed(2))+'</td>';
     }).join('') + '</tr>';
   });
   return h;
 }
+function matrixSection(){
+  return '<details class="o-calc" open><summary>'+S('matrixTitle')+'</summary><div class="mx-note">'+S('matrixNote')+'</div><div class="tbl-wrap"><table class="mx">'+matrixHTML()+'</table></div></details>';
+}
+function syncMatrix(){
+  document.querySelectorAll('tr[data-mx]').forEach(function(tr){
+    var it = itemById(tr.getAttribute('data-mx'));
+    tr.classList.toggle('mx-on', !!it && VALS[it.id] !== it.neutral);
+  });
+}
 function footHTML(){ return '<div class="foot"><span>'+S('foot1')+'</span><span>'+S('foot2')+'</span></div>'; }
 
-/* ---------- toast / modal / theme / share ---------- */
+/* ---------- toast / modal / share ---------- */
 function showToast(msg, actionLabel, actionFn){
   $('toastMsg').textContent = msg;
   var b = $('toastBtn');
@@ -709,19 +724,6 @@ function showToast(msg, actionLabel, actionFn){
   toastTimer = setTimeout(hideToast, 6000);
 }
 function hideToast(){ $('toast').classList.remove('show'); }
-function updateThemeBtn(){
-  var cur = document.documentElement.getAttribute('data-theme');
-  var dark = cur === 'dark' || (!cur && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  $('themeBtn').textContent = dark ? '☀️' : '🌙';
-}
-function toggleTheme(){
-  var cur = document.documentElement.getAttribute('data-theme');
-  var dark = cur === 'dark' || (!cur && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  var next = dark ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  lsSet(STORE_THEME, next);
-  updateThemeBtn();
-}
 function copyShareLink(){
   var params = new URLSearchParams();
   Object.keys(VALS).forEach(function(k){ params.set(k, VALS[k]); });
@@ -756,9 +758,16 @@ function applyLangChrome(){
   document.documentElement.setAttribute('lang', LANG);
   if(!window.PB_SITE) document.title = S('docTitle');
   $('vTitle').textContent = S('vtitle');
-  var tabKey = {O:'tabO', A:'tabA', C:'tabC', D:'tabD'};
+  var tabKey = {A:'tabA', C:'tabC'};
   document.querySelectorAll('.vbtn').forEach(function(b){ b.textContent = S(tabKey[b.getAttribute('data-v')]); });
   $('shareBtn').textContent = S('share');
+  $('cardBtn').textContent = S('cardBtn');
+  $('cardFab').textContent = S('cardFab');
+  $('cdTitle').textContent = S('cardTitle');
+  $('cdHint').textContent = S('cardHint');
+  $('cdShare').textContent = S('cardShare');
+  $('cdSave').textContent = S('cardSave');
+  $('cdLink').textContent = S('cardLink');
   $('resetBtn').textContent = S('reset');
   $('langKo').classList.toggle('on', LANG === 'ko');
   $('langEn').classList.toggle('on', LANG === 'en');
@@ -810,32 +819,6 @@ function statsHTML(r){
   return '<b>'+L(STANCE_LABELS[s.idx])+'</b> · '+S('statScore')+' '+(s.score > 0 ? '+' : '')+s.score.toFixed(2)+' · '+S('statVol')+' '+s.vol.toFixed(1)+'% · '+S('statStress')+' '+s.stress.toFixed(0)+'%';
 }
 
-/* ---------- Classic ---------- */
-function mountO(){
-  var groups = GROUPS.map(function(g){
-    var extra = g.id === 'profile' ? '<div class="c-chips" data-pchips></div><div class="c-desc" data-pdesc></div>' : '';
-    return '<div class="o-group"><div class="o-gt">'+L(g.title)+'</div><div class="o-gd">'+L(g.desc)+'</div>'+extra+'<div class="s-grid">'+g.items.map(function(it){ return sliderRow(it); }).join('')+'</div></div>';
-  }).join('');
-  app().innerHTML = '<div class="o-wrap">'
-    + '<div class="o-note">'+S('oNote')+'</div>'
-    + '<div class="o-result"><span class="o-title">'+S('resultTitle')+'</span><div class="o-grid" id="o_grid"></div>'+stackHTML(9)+'<div class="note" id="o_note"></div><div class="o-legend">'+S('legend')+'</div><div class="stats" id="o_stats"></div></div>'
-    + groups
-    + '<details class="o-calc"><summary>'+S('calcSummary')+'</summary><div class="formula">'+S('formula')+'</div><div class="formula">'+S('statsNote')+'</div><div class="sub">'+S('driversBy')+'</div><div id="o_drv"></div><div class="sub">'+S('matrixTitle')+'</div><div class="tbl-wrap"><table class="mx">'+matrixHTML()+'</table></div></details>'
-    + footHTML() + '</div>';
-  bindSliders(app());
-}
-function refreshO(){
-  var r = computeAllocation(VALS);
-  $('o_grid').innerHTML = SLEEVES.map(function(s, i){
-    return '<div class="o-cell"><div class="o-name"><span class="dot" style="background:'+COLORS[s.k]+'"></span>'+L(s.name)+'</div><div class="o-val">'+r.w[i].toFixed(1)+'%</div><div class="o-delta">'+deltaTxt(r.w[i], r.base[i])+'</div></div>';
-  }).join('');
-  $('o_note').textContent = notesText(r);
-  $('o_drv').innerHTML = driversBlock(r, 3);
-  $('o_stats').innerHTML = statsHTML(r);
-  syncProfileChips();
-  updateStack(r);
-}
-
 /* ---------- Dashboard ---------- */
 var aTab = 'profile';
 function mountA(){
@@ -843,6 +826,7 @@ function mountA(){
     + '<div class="a-mini">'+stackHTML(8)+'<div class="mini-nums" id="a_mnums"></div></div>'
     + '<div class="a-layout"><div class="a-left"><div class="a-tabs" id="a_tabs"></div><div id="a_group"></div></div>'
     + '<div class="a-right"><div class="a-card"><div class="a-title">'+S('resultTitle')+'</div><div class="donut-wrap">'+donutHTML('a_d', 200, 26)+'</div><div id="a_legend"></div><div class="stats" id="a_stats"></div><div class="note" id="a_note"></div><div class="sub">'+S('keyDrivers')+'</div><div id="a_drv"></div></div></div></div>'
+    + matrixSection()
     + footHTML() + '</div>';
   renderATabs();
   renderAGroup();
@@ -871,6 +855,7 @@ function refreshA(){
   $('a_drv').innerHTML = driversBlock(r, 2);
   $('a_stats').innerHTML = statsHTML(r);
   syncProfileChips();
+  syncMatrix();
   $('a_mnums').innerHTML = miniNums(r);
   updateStack(r);
 }
@@ -892,19 +877,13 @@ function mountC(){
     + '<div class="c-box"><div class="c-lab">'+S('coreBox')+' ('+CORE.length+')</div><div class="s-grid">'+core+'</div></div>'
     + '<details class="c-more"><summary>'+S('moreParams', {n: restCount})+'</summary><div>'+rest+'</div></details>'
     + '<div class="sub">'+S('keyDrivers')+'</div><div id="c_drv"></div>'
+    + matrixSection()
     + footHTML() + '</div>';
   bindSliders(app());
   $('c_chips').addEventListener('click', function(e){
     var t = e.target;
     var del = t.getAttribute && t.getAttribute('data-del');
-    if(del != null && del !== ''){
-      var idx = parseInt(del, 10), nm = SAVED[idx] ? SAVED[idx].name : '';
-      SAVED.splice(idx, 1);
-      lsSet(STORE_SAVED, JSON.stringify(SAVED));
-      refreshC();
-      showToast(S('tDeleted', {n: nm}));
-      return;
-    }
+    if(del != null && del !== ''){ e.stopPropagation(); askDelete(parseInt(del, 10)); return; }
     var btn = t.closest ? t.closest('button.c-chip') : null;
     if(!btn) return;
     if(btn.id === 'c_add'){ $('c_save').classList.toggle('open'); $('c_saveName').focus(); return; }
@@ -915,11 +894,12 @@ function mountC(){
 }
 function refreshC(){
   var r = computeAllocation(VALS);
-  var cur = activeScenario();
+  var cur = currentScenario();
   $('c_chips').innerHTML = allScenarios().map(function(s){
     return '<button type="button" class="c-chip'+(s.mine?' mine':'')+(cur && cur.id === s.id ? ' on' : '')+'" data-sc="'+s.id+'">'+s.name+(s.mine?'<span class="x" data-del="'+s.idx+'">×</span>':'')+'</button>';
   }).join('') + '<button type="button" class="c-chip add" id="c_add">'+S('addChip')+'</button>';
-  $('c_desc').textContent = cur ? cur.desc : S('customDesc');
+  $('c_desc').textContent = (cur && cur.mine) ? S('editing', {n: cur.name}) : (cur ? cur.desc : S('customDesc'));
+  $('c_desc').classList.toggle('auto', !!(cur && cur.mine));
   $('c_tiles').innerHTML = SLEEVES.map(function(s, i){
     return '<div class="c-tile" style="border-top-color:'+COLORS[s.k]+'"><div class="c-tn">'+L(s.name)+'</div><div class="c-tv">'+r.w[i].toFixed(1)+'%</div><div class="c-td">'+deltaTxt(r.w[i], r.base[i])+'</div></div>';
   }).join('');
@@ -927,62 +907,49 @@ function refreshC(){
   $('c_drv').innerHTML = driversBlock(r, 3);
   $('c_stats').innerHTML = statsHTML(r);
   syncProfileChips();
+  syncMatrix();
   updateStack(r);
 }
 
-/* ---------- Terminal ---------- */
-function dRow(it, g){
-  return '<div class="d-row" title="'+L(it.hint)+'"><div class="d-n">'+L(it.name)+'<small>'+L(it.lo)+' ↔ '+L(it.hi)+'</small></div>'
-    + '<input type="range" data-pid="'+it.id+'" min="'+it.min+'" max="'+it.max+'" step="'+it.step+'" value="'+VALS[it.id]+'">'
-    + '<span class="d-v" data-val="'+it.id+'">'+fmtVal(it, VALS[it.id])+'</span>'
-    + '<span class="d-t">'+(g.noTilt ? '' : '<i data-tb="'+it.id+'"></i>')+'</span></div>';
+function askDelete(idx){
+  if(!SAVED[idx]) return;
+  delIdx = idx;
+  $('delTitle').textContent = S('delTitle');
+  $('delMsg').textContent = S('delMsg', {n: SAVED[idx].name});
+  $('delOk').textContent = S('delOk');
+  $('delCancel').textContent = S('delCancel');
+  $('delModal').classList.add('show');
+  $('delCancel').focus();
 }
-function mountD(){
-  var secs = {};
-  GROUPS.forEach(function(g){
-    var chips = g.id === 'profile' ? '<div class="d-chips" data-pchips></div>' : '';
-    secs[g.id] = '<div class="d-sec"><div class="d-sech"><span>'+L(g.title)+'</span><em>'+g.items.length+'</em></div>'+chips+g.items.map(function(it){ return dRow(it, g); }).join('')+'</div>';
-  });
-  app().innerHTML = '<div class="d-wrap"><div class="d-tick" id="d_tick"></div>'
-    + '<div class="d-main"><div class="d-left"><div class="d-cols"><div>'+secs.profile+secs.market+secs.constraint+'</div><div>'+secs.theme+secs.personal+secs.base+'</div></div></div>'
-    + '<div class="d-side"><div class="d-sech"><span>'+S('allocation')+'</span><em>'+S('baseMark')+'</em></div><div id="d_alloc"></div><div class="d-sech" style="margin-top:14px"><span>PROFILE</span></div><div class="stats" id="d_stats"></div><div class="d-sech" style="margin-top:14px"><span>'+S('drivers')+'</span></div><div id="d_drv"></div><div class="note" id="d_note"></div></div></div>'
-    + footHTML() + '</div>';
-  bindSliders(app());
+function closeDelete(){ $('delModal').classList.remove('show'); delIdx = null; }
+function doDelete(){
+  var idx = delIdx;
+  if(idx == null || !SAVED[idx]){ closeDelete(); return; }
+  var rem = SAVED.splice(idx, 1)[0];
+  lastDeleted = {s: rem, idx: idx};
+  if(EDIT_IDX === idx) EDIT_IDX = null; else if(EDIT_IDX != null && EDIT_IDX > idx) EDIT_IDX--;
+  persistSaved(); closeDelete(); refreshC();
+  showToast(S('tDeleted', {n: rem.name}), S('tUndo'), restoreDeleted);
 }
-function refreshD(){
-  var r = computeAllocation(VALS);
-  $('d_tick').innerHTML = SLEEVES.map(function(s, i){
-    return '<span><em>'+L(s.name)+'</em><b style="color:'+COLORS[s.k]+'">'+r.w[i].toFixed(1)+'</b></span>';
-  }).join('');
-  $('d_alloc').innerHTML = SLEEVES.map(function(s, i){
-    var w = r.w[i], b = r.base[i], d = w - b, scale = 60;
-    return '<div class="d-ar"><span>'+L(s.name)+'</span><div class="d-bar"><i style="width:'+Math.min(100, w/scale*100).toFixed(1)+'%; background:'+COLORS[s.k]+'"></i><u style="left:'+Math.min(100, b/scale*100).toFixed(1)+'%"></u></div>'
-      + '<span class="d-av"><b>'+w.toFixed(1)+'</b><em class="'+(d>0.05?'up':(d<-0.05?'down':'mut'))+'">'+(d>0?'+':'')+d.toFixed(1)+'</em></span></div>';
-  }).join('');
-  $('d_drv').innerHTML = driversBlock(r, 2);
-  $('d_stats').innerHTML = statsHTML(r);
-  syncProfileChips();
-  $('d_note').textContent = notesText(r);
-  allParams().forEach(function(it){
-    var el = document.querySelector('[data-tb="'+it.id+'"]');
-    if(!el) return;
-    var x = xOf(it, VALS[it.id]);
-    el.style.left = (x >= 0 ? 50 : 50 + x*50) + '%';
-    el.style.width = (Math.abs(x)*50) + '%';
-    el.style.background = x >= 0 ? 'var(--gold)' : '#5FA8D3';
-  });
+function restoreDeleted(){
+  if(!lastDeleted) return;
+  if(SAVED.length >= 6){ showToast(S('tMax')); return; }
+  var d = lastDeleted; lastDeleted = null;
+  var at = Math.min(d.idx, SAVED.length);
+  SAVED.splice(at, 0, d.s);
+  if(EDIT_IDX != null && EDIT_IDX >= at) EDIT_IDX++;
+  persistSaved();
+  if(active === 'C') refreshC();
+  showToast(S('tRestored', {n: d.s.name}));
 }
 
 var VARIANTS = {
-  O: {mount: mountO, refresh: refreshO},
   A: {mount: mountA, refresh: refreshA},
-  C: {mount: mountC, refresh: refreshC},
-  D: {mount: mountD, refresh: refreshD}
+  C: {mount: mountC, refresh: refreshC}
 };
 
 function switchV(k){
   active = k;
-  document.body.classList.toggle('dark-terminal', k === 'D');
   document.querySelectorAll('.vbtn').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-v') === k); });
   rerender();
   try{ window.scrollTo(0, 0); }catch(e){}
@@ -999,9 +966,6 @@ function init(){
   if(hasQ){ mergeVals(qo); if(VARIANTS[qo.v]) active = qo.v; if(qo.lang === 'ko' || qo.lang === 'en') LANG = qo.lang; }
   if(window.PB_SITE){ LANG = window.PB_SITE.lang; document.body.classList.add('site'); }
   loadSaved();
-  var th = lsGet(STORE_THEME);
-  if(th === 'dark' || th === 'light') document.documentElement.setAttribute('data-theme', th);
-  updateThemeBtn();
 
   document.querySelectorAll('.vbtn').forEach(function(b){
     b.addEventListener('click', function(){ switchV(b.getAttribute('data-v')); });
@@ -1013,8 +977,17 @@ function init(){
   $('langKo').addEventListener('click', function(){ if(LANG !== 'ko') setLang('ko'); });
   $('langEn').addEventListener('click', function(){ if(LANG !== 'en') setLang('en'); });
   $('shareBtn').addEventListener('click', copyShareLink);
+  $('cardBtn').addEventListener('click', openCard);
+  $('cardFab').addEventListener('click', openCard);
+  $('cdClose').addEventListener('click', closeCard);
+  $('cardModal').addEventListener('click', function(e){ if(e.target === $('cardModal')) closeCard(); });
+  $('cdShare').addEventListener('click', shareCard);
+  $('cdSave').addEventListener('click', saveCard);
+  $('cdLink').addEventListener('click', copyCardLink);
+  $('delCancel').addEventListener('click', closeDelete);
+  $('delOk').addEventListener('click', doDelete);
+  $('delModal').addEventListener('click', function(e){ if(e.target === $('delModal')) closeDelete(); });
   $('resetBtn').addEventListener('click', resetAll);
-  $('themeBtn').addEventListener('click', toggleTheme);
   $('helpBtn').addEventListener('click', function(){ $('modal').classList.add('show'); });
   $('modalOk').addEventListener('click', function(){ $('modal').classList.remove('show'); lsSet(STORE_ONB, '1'); });
 
@@ -1022,6 +995,163 @@ function init(){
   switchV(active);
   if(lsGet(STORE_ONB) !== '1' && !hasQ) $('modal').classList.add('show');
 }
+/* ===== KALPHEON SHARE CARD (내 결과 카드) ===== */
+Object.assign(STR, {
+  cardBtn:   ['🖼 결과 카드','🖼 My card'],
+  cardFab:   ['🖼 내 결과 카드 만들기','🖼 Make my result card'],
+  cardTitle: ['내 결과 카드','My result card'],
+  cardHint:  ['이미지를 길게 눌러 저장할 수도 있음','Tip: press and hold the image to save it'],
+  cardShare: ['공유하기','Share'],
+  cardSave:  ['이미지 저장','Save image'],
+  cardLink:  ['설정 링크 복사','Copy settings link'],
+  cardMine:  ['나의 투자 성향','MY INVESTMENT STYLE'],
+  cardTry:   ['나도 해보기','Try it yourself'],
+  cardLargest: ['최대','Largest'],
+  cardDisc:  ['정보 제공 목적, 투자 자문 아님 · 판단치 기반 참고용','For information only, not investment advice · judgment-based'],
+  cardText:  ['내 투자 성향은 \'{p}\'. 나도 목표 비중 만들어보기 →','My investment style: \'{p}\'. Build your own target weights →']
+});
+var PERSONAS = [['철벽 수비형','The Fortress'],['신중한 지킴이','The Steady Keeper'],['균형 잡힌 항해사','The Balanced Navigator'],['성장 개척자','The Growth Pioneer'],['승부사','The High-Conviction Player']];
+var CARD_COL = {cash:'#9AA9BD', div:'#2FA595', growth:'#E3AC3D', sat:'#E2604E'};
+var cardCanvas = null;
+
+function cardUrl(){ return 'kalpheonresearch.com/portfolio-balancing' + (LANG === 'en' ? '/en' : ''); }
+function pctRound(w){
+  var fl = w.map(function(x){ return Math.floor(x); });
+  var rem = 100 - fl.reduce(function(a,b){ return a+b; }, 0);
+  var ord = w.map(function(x,i){ return {i:i, f:x - Math.floor(x)}; }).sort(function(a,b){ return b.f - a.f; });
+  for(var k=0;k<rem && k<ord.length;k++) fl[ord[k].i]++;
+  return fl;
+}
+function rr(g, x, y, w, h, r){
+  g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath();
+}
+function spaced(g, t, x, y, gap){
+  var cx = x;
+  for(var i=0;i<t.length;i++){ g.fillText(t[i], cx, y); cx += g.measureText(t[i]).width + gap; }
+}
+function drawCard(){
+  var W = 1080, H = 1350, ko = LANG !== 'en';
+  var c = document.createElement('canvas'); c.width = W; c.height = H;
+  var g = c.getContext('2d');
+  var r = computeAllocation(VALS), pc = pctRound(r.w), st = r.stats;
+  var serif = '"Noto Serif KR","Cormorant Garamond",Georgia,serif', sans = '"Noto Sans KR","Jost",Arial,sans-serif';
+
+  var bg = g.createLinearGradient(0,0,W,H); bg.addColorStop(0,'#16294A'); bg.addColorStop(1,'#0C1729');
+  g.fillStyle = bg; g.fillRect(0,0,W,H);
+  g.strokeStyle = 'rgba(232,181,74,.35)'; g.lineWidth = 2; rr(g, 28, 28, W-56, H-56, 30); g.stroke();
+
+  // header
+  g.textBaseline = 'alphabetic'; g.textAlign = 'left';
+  g.fillStyle = '#E8B54A'; g.font = '600 30px ' + sans; spaced(g, 'KALPHEON RESEARCH', 76, 104, 5);
+  var d = new Date(), ds = d.getFullYear() + '.' + ('0'+(d.getMonth()+1)).slice(-2) + '.' + ('0'+d.getDate()).slice(-2);
+  g.textAlign = 'right'; g.fillStyle = '#8E99AB'; g.font = '500 26px ' + sans; g.fillText(ds, W-76, 104);
+
+  // persona
+  var pi = st.idx, pname = PERSONAS[pi][ko ? 0 : 1];
+  g.textAlign = 'left'; g.fillStyle = '#8E99AB'; g.font = '600 26px ' + sans; spaced(g, S('cardMine'), 76, 190, ko ? 4 : 5);
+  g.fillStyle = '#FFFFFF'; var fs = 92; g.font = '700 ' + fs + 'px ' + serif;
+  while(g.measureText(pname).width > W - 152 && fs > 52){ fs -= 4; g.font = '700 ' + fs + 'px ' + serif; }
+  g.fillText(pname, 76, 295);
+  var conc = VALS.s_conc, ctag = conc < 35 ? (ko ? '분산 투자' : 'Diversified') : (conc > 65 ? (ko ? '집중 투자' : 'Concentrated') : (ko ? '균형 배분' : 'Balanced'));
+  g.fillStyle = '#E8B54A'; g.font = '600 32px ' + sans; g.fillText(L(STANCE_LABELS[pi]) + '  ·  ' + ctag, 76, 352);
+
+  // donut
+  var cx = W/2, cy = 612, R = 188, T = 64, a0 = -Math.PI/2, gap = 0.028;
+  g.lineCap = 'butt'; g.lineWidth = T;
+  g.strokeStyle = 'rgba(255,255,255,.07)'; g.beginPath(); g.arc(cx, cy, R, 0, Math.PI*2); g.stroke();
+  var tot = r.w.reduce(function(a,b){ return a+b; }, 0), ang = a0, big = 0;
+  SLEEVES.forEach(function(s, i){
+    var sweep = r.w[i] / tot * Math.PI * 2;
+    if(r.w[i] > r.w[big]) big = i;
+    if(sweep > gap){ g.strokeStyle = CARD_COL[s.k]; g.beginPath(); g.arc(cx, cy, R, ang + gap/2, ang + sweep - gap/2); g.stroke(); }
+    ang += sweep;
+  });
+  g.textAlign = 'center'; g.fillStyle = '#8E99AB'; g.font = '500 24px ' + sans; g.fillText(S('cardLargest') + ' ' + L(SLEEVES[big].name), cx, cy - 22);
+  g.fillStyle = '#FFFFFF'; g.font = '700 84px ' + serif; g.fillText(pc[big] + '%', cx, cy + 62);
+
+  // legend
+  var y0 = 868;
+  SLEEVES.forEach(function(s, i){
+    var y = y0 + i * 56, dl = Math.round(r.w[i] - r.base[i]);
+    g.fillStyle = CARD_COL[s.k]; g.beginPath(); g.arc(96, y - 10, 12, 0, Math.PI*2); g.fill();
+    g.textAlign = 'left'; g.fillStyle = '#E9ECF2'; g.font = '500 32px ' + sans; g.fillText(L(s.name), 128, y);
+    g.textAlign = 'right'; g.fillStyle = '#FFFFFF'; g.font = '700 36px ' + serif; g.fillText(pc[i] + '%', W - 200, y);
+    if(dl !== 0){ g.fillStyle = dl > 0 ? '#7FD6B8' : '#FF8A78'; g.font = '600 24px ' + sans; g.fillText((dl > 0 ? '▲' : '▼') + Math.abs(dl), W - 76, y - 2); }
+    g.strokeStyle = 'rgba(255,255,255,.08)'; g.lineWidth = 1.5; g.beginPath(); g.moveTo(76, y + 20); g.lineTo(W-76, y + 20); g.stroke();
+  });
+
+  // stats
+  var sy = 1112, cols = [[S('statScore'), (st.score > 0 ? '+' : '') + st.score.toFixed(2)], [S('statVol'), st.vol.toFixed(1) + '%'], [S('statStress'), st.stress.toFixed(0) + '%']];
+  cols.forEach(function(cl, i){
+    var x = 76 + i * ((W - 152) / 3) + (W - 152) / 6;
+    g.textAlign = 'center'; g.fillStyle = '#8E99AB'; g.font = '500 24px ' + sans; g.fillText(cl[0], x, sy);
+    g.fillStyle = '#FFFFFF'; g.font = '700 40px ' + serif; g.fillText(cl[1], x, sy + 52);
+  });
+
+  // CTA
+  g.fillStyle = '#E8B54A'; rr(g, 76, 1194, W - 152, 78, 39); g.fill();
+  g.fillStyle = '#14233B'; g.textAlign = 'center';
+  var cta = S('cardTry') + '  →  ' + cardUrl(), cf = 30; g.font = '700 ' + cf + 'px ' + sans;
+  while(g.measureText(cta).width > W - 220 && cf > 18){ cf -= 1; g.font = '700 ' + cf + 'px ' + sans; }
+  g.fillText(cta, W/2, 1243);
+  g.fillStyle = '#6F7C92'; g.font = '500 20px ' + sans; g.fillText(S('cardDisc'), W/2, 1304);
+  return {canvas: c, persona: pname};
+}
+
+function cardLinkUrl(){
+  var params = new URLSearchParams();
+  Object.keys(VALS).forEach(function(k){ params.set(k, VALS[k]); });
+  params.set('v', active); params.set('ref', 'card');
+  if(!window.PB_SITE) params.set('lang', LANG);
+  return window.location.origin + window.location.pathname + '?' + params.toString();
+}
+var cardPersona = '';
+function openCard(){
+  var go = function(){
+    var o = drawCard(); cardCanvas = o.canvas; cardPersona = o.persona;
+    $('cdImg').src = cardCanvas.toDataURL('image/png');
+    $('cardModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
+  var done = false, once = function(){ if(!done){ done = true; go(); } };
+  setTimeout(once, 1500);
+  try{
+    Promise.all([document.fonts.load('700 80px "Noto Serif KR"'), document.fonts.load('500 30px "Noto Sans KR"'), document.fonts.load('600 30px "Noto Sans KR"')]).then(once, once);
+  }catch(e){ once(); }
+}
+function closeCard(){ $('cardModal').classList.remove('show'); document.body.style.overflow = ''; }
+function cardFile(cb){
+  cardCanvas.toBlob(function(blob){
+    var f = null;
+    try{ f = new File([blob], 'kalpheon-my-card.png', {type:'image/png'}); }catch(e){}
+    cb(blob, f);
+  }, 'image/png');
+}
+function saveCard(){
+  cardFile(function(blob){
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'kalpheon-my-card.png';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+  });
+}
+function shareCard(){
+  cardFile(function(blob, f){
+    var text = S('cardText', {p: cardPersona}), url = 'https://' + cardUrl();
+    if(f && navigator.canShare && navigator.canShare({files:[f]}) && navigator.share){
+      navigator.share({files:[f], title:'Kalpheon Research', text: text + ' ' + url}).catch(function(){});
+    } else if(navigator.share){
+      navigator.share({title:'Kalpheon Research', text: text, url: url}).catch(function(){});
+    } else { saveCard(); }
+  });
+}
+function copyCardLink(){
+  var url = cardLinkUrl();
+  function ok(){ showToast(S('tCopied')); }
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(ok, function(){ fallbackCopy(url, ok); }); }
+  else { fallbackCopy(url, ok); }
+}
+/* ===== /SHARE CARD ===== */
+
 init();
 </script>
 </body>
