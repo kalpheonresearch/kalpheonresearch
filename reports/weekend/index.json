@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-04",
+ "updated": "2026-10-10",
  "reports": [
+  {
+   "date": "2026-10-10",
+   "mode": "sat",
+   "daily_asof": "2026-10-09",
+   "market_asof": "2026-10-09",
+   "title": "주말 새 소식 없음, 월요일은 금요일 판정 유지",
+   "summary": "월요일 시가에 영향을 줄 새 소식 없음. 금요일 종가 기준 Kalpheon Index 50/100 '주의' 판정을 그대로 유지합니다.",
+   "falsify": "월요일 선물 기준으로 VIX가 30을 돌파하거나 10년물 금리가 5.40%를 넘어서면 금요일 판정을 다시 봐야 합니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 77,
+   "stage": "새로운 논리 탄생",
+   "items": 0,
+   "sig": {
+    "cape": [
+     41.62,
+     "red"
+    ],
+    "bi": [
+     236.9,
+     "red"
+    ],
+    "fg": [
+     45,
+     "yellow"
+    ],
+    "aaii": [
+     39.0,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     14.84,
+     "green"
+    ],
+    "spread": [
+     0.44,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "No new weekend news, Friday's read stands for Monday",
+    "summary": "No new developments that should affect Monday's open. Friday's Kalpheon Index of 50/100 (Caution) carries over unchanged.",
+    "falsify": "A VIX move above 30 or a 10-year yield above 5.40% at Monday's open would call for a fresh look at Friday's assessment.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-04",
    "mode": "sun",

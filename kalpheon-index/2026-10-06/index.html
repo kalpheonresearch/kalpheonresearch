@@ -102,19 +102,23 @@ footer{margin:28px 0 40px;font-size:12px;color:var(--muted);}
   </section>
   <section id="embed">
     <h2>내 글에 붙이기</h2>
-    <p class="lead">아래 코드를 붙여넣으면 배지가 매일 자동으로 최신 값으로 바뀌고, 누르면 이 페이지로 연결됩니다.</p>
-    <img class="badge" src="/kalpheon-index/badge.svg" width="280" height="76" alt="Kalpheon Index 50">
-    <div class="sn"><div class="snh"><span>HTML</span><button type="button" data-t="s1" data-c="복사" data-d="복사됨">복사</button></div><code class="c" id="s1">&lt;a href=&quot;https://kalpheonresearch.com/kalpheon-index/&quot;&gt;&lt;img src=&quot;https://kalpheonresearch.com/kalpheon-index/badge.svg&quot; alt=&quot;Kalpheon Index&quot; width=&quot;280&quot; height=&quot;76&quot;&gt;&lt;/a&gt;</code></div><div class="sn"><div class="snh"><span>Markdown</span><button type="button" data-t="s2" data-c="복사" data-d="복사됨">복사</button></div><code class="c" id="s2">[![Kalpheon Index](https://kalpheonresearch.com/kalpheon-index/badge.svg)](https://kalpheonresearch.com/kalpheon-index/)</code></div><div class="sn"><div class="snh"><span>링크 문구</span><button type="button" data-t="s3" data-c="복사" data-d="복사됨">복사</button></div><code class="c" id="s3">오늘의 Kalpheon Index: 50 (주의) · https://kalpheonresearch.com/kalpheon-index/2026-10-06/</code></div>
+    <p class="lead">복사 버튼을 누르면 오늘의 지수 요약과 링크가 복사됩니다. 글에 그대로 붙여넣으세요.</p>
+    <div class="sn"><div class="snh"><span>링크/공유</span><button type="button" data-t="s3" data-c="복사" data-d="복사됨">복사</button></div><script type="text/plain" id="s3">오늘의 Kalpheon Index: 50 (주의), 사이클 위치 P=75% (새로운 논리 탄생)
+
+- 적색 신호: CAPE 41.67, 버핏지표 237.4%
+- 황색 신호: 공포탐욕 43, AAII 약세 46.5%, 0DTE 63%
+- 전일 대비: 변동 없음 (50)
+
+핵심: 밸류에이션은 과열이지만 심리는 아직 공포권이라 신호가 엇갈린다.
+
+'주의' 판정에 동의하시나요, 아니면 아직 이르다고 보시나요?
+
+전체 리포트: https://kalpheonresearch.com/reports/daily/2026-10-06.html</script></div>
   </section>
   <section id="cite">
     <h2>인용하기</h2>
     <p class="lead">글이나 영상에서 이렇게 인용해 주세요.</p>
     <div class="cite" id="s4">Kalpheon Index 50 (주의), 2026.10.06 기준, Kalpheon Research</div>
-  </section>
-  <section id="data">
-    <h2>데이터로 가져가기</h2>
-    <p class="lead">최신 값이 담긴 작은 JSON 파일입니다. 주소는 고정이고 매일 갱신됩니다.</p>
-    <code class="c">https://kalpheonresearch.com/kalpheon-index/latest.json</code>
   </section>
   <p class="disc">이 지수는 시장의 현재 위치를 설명하는 참고 자료이며 투자 권유나 자문이 아닙니다. 투자 판단과 결과는 본인의 책임입니다.</p>
   <footer>&copy; Kalpheon Research</footer>
@@ -122,7 +126,7 @@ footer{margin:28px 0 40px;font-size:12px;color:var(--muted);}
 <script>
 (function(){var b=document.querySelectorAll('button[data-t]');
 function cp(t,done){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){window.prompt('',t);});}else{var x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();try{document.execCommand('copy');done();}catch(e){window.prompt('',t);}document.body.removeChild(x);}}
-Array.prototype.forEach.call(b,function(btn){btn.addEventListener('click',function(){var t=document.getElementById(btn.getAttribute('data-t')).textContent;cp(t,function(){btn.textContent=btn.getAttribute('data-d');setTimeout(function(){btn.textContent=btn.getAttribute('data-c');},1600);});});});})();
+Array.prototype.forEach.call(b,function(btn){btn.addEventListener('click',function(){var t=document.getElementById(btn.getAttribute('data-t')).textContent.trim();cp(t,function(){btn.textContent=btn.getAttribute('data-d');setTimeout(function(){btn.textContent=btn.getAttribute('data-c');},1600);});});});})();
 </script>
 </body>
 </html>

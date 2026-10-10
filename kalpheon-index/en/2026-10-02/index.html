@@ -102,19 +102,23 @@ footer{margin:28px 0 40px;font-size:12px;color:var(--muted);}
   </section>
   <section id="embed">
     <h2>Embed it in your post</h2>
-    <p class="lead">Paste the code below. The badge updates itself every day and links back to this page.</p>
-    <img class="badge" src="/kalpheon-index/badge-en.svg" width="280" height="76" alt="Kalpheon Index 50">
-    <div class="sn"><div class="snh"><span>HTML</span><button type="button" data-t="s1" data-c="Copy" data-d="Copied">Copy</button></div><code class="c" id="s1">&lt;a href=&quot;https://kalpheonresearch.com/kalpheon-index/en/&quot;&gt;&lt;img src=&quot;https://kalpheonresearch.com/kalpheon-index/badge-en.svg&quot; alt=&quot;Kalpheon Index&quot; width=&quot;280&quot; height=&quot;76&quot;&gt;&lt;/a&gt;</code></div><div class="sn"><div class="snh"><span>Markdown</span><button type="button" data-t="s2" data-c="Copy" data-d="Copied">Copy</button></div><code class="c" id="s2">[![Kalpheon Index](https://kalpheonresearch.com/kalpheon-index/badge-en.svg)](https://kalpheonresearch.com/kalpheon-index/en/)</code></div><div class="sn"><div class="snh"><span>Link text</span><button type="button" data-t="s3" data-c="Copy" data-d="Copied">Copy</button></div><code class="c" id="s3">Today&#x27;s Kalpheon Index: 50 (Caution) · https://kalpheonresearch.com/kalpheon-index/en/2026-10-02/</code></div>
+    <p class="lead">Press Copy to get today&#x27;s index summary and link, ready to paste into your post.</p>
+    <div class="sn"><div class="snh"><span>Link / Share</span><button type="button" data-t="s3" data-c="Copy" data-d="Copied">Copy</button></div><script type="text/plain" id="s3">Today's read: 50 (Caution), Cycle position P=73% (New Paradigm)
+
+- Driver: CAPE 41.07 and Buffett Ind. 234.1% in the red
+- Driver: Fear & Greed 31, AAII bears 46.5% and 0DTE 63% in the yellow
+- Vs. yesterday: Unchanged at 50
+
+Takeaway: Prices are still expensive but sentiment stays cautious, so the signals disagree.
+
+Do you agree with Caution, or is it too early?
+
+Full report: https://kalpheonresearch.com/reports/daily/en/2026-10-02.html</script></div>
   </section>
   <section id="cite">
     <h2>How to cite</h2>
     <p class="lead">Please cite it like this in your posts or videos.</p>
     <div class="cite" id="s4">Kalpheon Index 50 (Caution), as of 2026.10.02, Kalpheon Research</div>
-  </section>
-  <section id="data">
-    <h2>Get the data</h2>
-    <p class="lead">A small JSON file with the latest values. The address is fixed and it updates every day.</p>
-    <code class="c">https://kalpheonresearch.com/kalpheon-index/latest.json</code>
   </section>
   <p class="disc">This index describes where the market stands today. It is reference material, not investment advice or a recommendation. Investment decisions and outcomes are your own responsibility.</p>
   <footer>&copy; Kalpheon Research</footer>
@@ -122,7 +126,7 @@ footer{margin:28px 0 40px;font-size:12px;color:var(--muted);}
 <script>
 (function(){var b=document.querySelectorAll('button[data-t]');
 function cp(t,done){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){window.prompt('',t);});}else{var x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();try{document.execCommand('copy');done();}catch(e){window.prompt('',t);}document.body.removeChild(x);}}
-Array.prototype.forEach.call(b,function(btn){btn.addEventListener('click',function(){var t=document.getElementById(btn.getAttribute('data-t')).textContent;cp(t,function(){btn.textContent=btn.getAttribute('data-d');setTimeout(function(){btn.textContent=btn.getAttribute('data-c');},1600);});});});})();
+Array.prototype.forEach.call(b,function(btn){btn.addEventListener('click',function(){var t=document.getElementById(btn.getAttribute('data-t')).textContent.trim();cp(t,function(){btn.textContent=btn.getAttribute('data-d');setTimeout(function(){btn.textContent=btn.getAttribute('data-c');},1600);});});});})();
 </script>
 </body>
 </html>
