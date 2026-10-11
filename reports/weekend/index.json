@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-10",
+ "updated": "2026-10-11",
  "reports": [
+  {
+   "date": "2026-10-11",
+   "mode": "sun",
+   "daily_asof": "2026-10-09",
+   "market_asof": "2026-10-09",
+   "title": "수요일 CPI가 금리 5.24%와 지정학 리스크를 시험하는 한 주",
+   "summary": "금요일 종가 기준 Kalpheon Index 50/100 '주의' 판정은 그대로입니다. 월요일은 채권시장이 휴장이라 거래가 얇고, 사우디 후티 충돌과 러시아 디젤 공급 소식이 시가의 분위기를 정할 수 있습니다.",
+   "falsify": "VIX가 30을 돌파하거나 10년물 금리가 5.40%를 넘어서면 금요일 판정을 다시 봐야 합니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 77,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     41.62,
+     "red"
+    ],
+    "bi": [
+     236.9,
+     "red"
+    ],
+    "fg": [
+     45,
+     "yellow"
+    ],
+    "aaii": [
+     39.0,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     14.84,
+     "green"
+    ],
+    "spread": [
+     0.44,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "A week when Wednesday CPI tests the 5.24% 10Y yield and geopolitical risk",
+    "summary": "The Friday-close Kalpheon Index stays at 50/100 (Caution). Monday trades thin with the bond market closed, so the Saudi-Houthi conflict and Russian diesel supply news could set the tone at the open.",
+    "falsify": "A VIX move above 30 or a 10Y yield above 5.40% would call for revisiting the Friday assessment.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-10",
    "mode": "sat",
