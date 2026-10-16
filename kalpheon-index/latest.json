@@ -1,7 +1,7 @@
 {
  "name": "Kalpheon Index",
- "date": "2026-10-15",
- "market_asof": "2026-10-15",
+ "date": "2026-10-16",
+ "market_asof": "2026-10-16",
  "score": 50,
  "scale": "0-100 (higher = more warning signals)",
  "zone": "caution",
@@ -17,15 +17,15 @@
  "change_vs_previous": 0,
  "signals": {
   "cape": {
-   "value": 41.38,
+   "value": 41.01,
    "status": "red"
   },
   "bi": {
-   "value": 238.0,
+   "value": 236.3,
    "status": "red"
   },
   "fg": {
-   "value": 32,
+   "value": 31,
    "status": "yellow"
   },
   "aaii": {
@@ -37,11 +37,11 @@
    "status": "yellow"
   },
   "vix": {
-   "value": 16.46,
+   "value": 19.99,
    "status": "green"
   },
   "spread": {
-   "value": 0.44,
+   "value": 0.35,
    "status": "green"
   }
  },
@@ -55,8 +55,8 @@
   "page_en": "https://kalpheonresearch.com/kalpheon-index/en/",
   "badge_ko": "https://kalpheonresearch.com/kalpheon-index/badge.svg",
   "badge_en": "https://kalpheonresearch.com/kalpheon-index/badge-en.svg",
-  "report_ko": "https://kalpheonresearch.com/reports/daily/2026-10-15.html",
-  "report_en": "https://kalpheonresearch.com/reports/daily/en/2026-10-15.html"
+  "report_ko": "https://kalpheonresearch.com/reports/daily/2026-10-16.html",
+  "report_en": "https://kalpheonresearch.com/reports/daily/en/2026-10-16.html"
  },
  "source": "Kalpheon Research",
  "attribution": "Please cite as: Kalpheon Index, Kalpheon Research, with a link to the page URL.",
