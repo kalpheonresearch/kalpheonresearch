@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-11",
+ "updated": "2026-10-17",
  "reports": [
+  {
+   "date": "2026-10-17",
+   "mode": "sat",
+   "daily_asof": "2026-10-16",
+   "market_asof": "2026-10-16",
+   "title": "기술주 급락 뒤 유가와 금리가 월요일 변수",
+   "summary": "금요일 장 마감 이후 새로 확인된 큰 충격은 없고, 브렌트유 고공행진과 연준 회의 전 침묵 구간, 기술주 약세가 월요일 시가의 관건입니다. 일요일 저녁 원유 시장 재개가 첫 신호입니다.",
+   "falsify": "월요일 시가에 브렌트유가 105달러 아래로 내려오고 美10년물이 5.0% 아래로 내려가면 이 경계 판단을 다시 봐야 합니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 74,
+   "stage": "새로운 논리 탄생",
+   "items": 4,
+   "sig": {
+    "cape": [
+     41.01,
+     "red"
+    ],
+    "bi": [
+     236.3,
+     "red"
+    ],
+    "fg": [
+     31,
+     "yellow"
+    ],
+    "aaii": [
+     41.6,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.99,
+     "green"
+    ],
+    "spread": [
+     0.35,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "After tech rout, oil and yields set Monday's tone",
+    "summary": "No major new shock has emerged since Friday's close, but elevated Brent crude, the Fed's pre-meeting quiet period and weak tech stocks are the keys for Monday's open. The Sunday evening reopening of oil trading is the first signal.",
+    "falsify": "If Brent falls below $105 and the US 10-year yield drops below 5.0% at Monday's open, this cautious read would need a fresh look.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-11",
    "mode": "sun",
