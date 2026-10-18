@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-17",
+ "updated": "2026-10-18",
  "reports": [
+  {
+   "date": "2026-10-18",
+   "mode": "sun",
+   "daily_asof": "2026-10-16",
+   "market_asof": "2026-10-16",
+   "title": "기술주 급락 뒤 맞는 빅테크 실적 주간, 유가와 금리가 변수",
+   "summary": "지난주 기술주가 크게 밀린 가운데, 다음 주는 넷플릭스(화)와 메타, 테슬라, IBM, 텍사스인스트루먼츠, 램리서치(수) 실적이 낙폭 확대와 반등을 가를 시험대입니다. 연준 블랙아웃 기간이라 정책 발언이 없어 유가와 10년물 금리가 방향을 정할 수 있습니다.",
+   "falsify": "VIX 30 돌파와 AAII 약세 50% 초과가 함께 나오면 주의 판정을 위험으로 다시 봐야 하고, 반대로 CAPE 32 하회나 공포탐욕 55 상회와 AAII 약세 35% 하회가 겹치면 완화 쪽으로 다시 봐야 합니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 74,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     41.01,
+     "red"
+    ],
+    "bi": [
+     236.3,
+     "red"
+    ],
+    "fg": [
+     31,
+     "yellow"
+    ],
+    "aaii": [
+     41.6,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.99,
+     "green"
+    ],
+    "spread": [
+     0.35,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Big tech earnings after a sharp tech selloff, with oil and yields as swing factors",
+    "summary": "Tech fell hard last week, and Netflix (Tue) plus Meta, Tesla, IBM, Texas Instruments and Lam Research (Wed) will test whether the slide deepens or eases. With the Fed in its blackout period and no policy speakers, oil and the 10-year yield may set direction.",
+    "falsify": "VIX above 30 together with AAII bears above 50% would call for upgrading Caution to Danger, while CAPE below 32, or Fear & Greed above 55 with AAII bears below 35%, would call for a more relaxed reading.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-17",
    "mode": "sat",
