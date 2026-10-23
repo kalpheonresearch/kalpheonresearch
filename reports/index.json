@@ -3,19 +3,19 @@
  "reports": [
   {
    "date": "2026-10-22",
-   "score": 50,
+   "score": 57,
    "level": "주의",
-   "p": 73,
+   "p": 71,
    "stage": "새로운 논리 탄생",
    "vix": 19.03,
-   "fg": 31,
+   "fg": 19,
    "y10": 4.96,
-   "verdict": "밸류에이션은 과열이지만 심리는 아직 공포권이라 신호가 엇갈립니다. Kalpheon Index는 50점으로 주의 단계이고 사이클 위치 P는 73.1입니다.",
-   "falsify": "CAPE가 32 아래로 내려가거나 공포탐욕지수가 55를 넘고 AAII 약세가 35% 아래로 내려가면 이 판정은 틀린 것입니다.",
+   "verdict": "밸류에이션은 과열인데 심리까지 공포권으로 내려와 신호가 엇갈립니다. Kalpheon Index는 57점으로 주의 단계이고 사이클 위치 P는 70.7%입니다.",
+   "falsify": "CAPE가 32 아래로 내려가거나 공포탐욕지수가 55를 넘고 AAII 약세가 35% 아래로 내려가면 이 판정은 틀린 것입니다. 반대로 VIX 30 돌파와 AAII 약세 50% 초과가 겹치면 위험 단계 격상을 검토합니다.",
    "asof": "2026-10-22",
    "counts": [
-    2,
     3,
+    2,
     2
    ],
    "sig": {
@@ -28,8 +28,8 @@
      "red"
     ],
     "fg": [
-     31,
-     "yellow"
+     19,
+     "red"
     ],
     "aaii": [
      45.8,
@@ -56,8 +56,8 @@
    "en": {
     "level": "Caution",
     "stage": "New Paradigm",
-    "verdict": "Valuations are stretched but sentiment is already fearful, so the signals disagree. The Kalpheon Index is 50, in the Caution stage, and Cycle Position (P) is 73.1.",
-    "falsify": "This read is wrong if CAPE falls below 32, or if the Fear & Greed Index rises above 55 while AAII bears drop below 35%.",
+    "verdict": "Valuations are stretched while sentiment has dropped into fear, so the signals disagree. The Kalpheon Index is 57, in the Caution stage, and Cycle Position P is 70.7%.",
+    "falsify": "This assessment is wrong if CAPE falls below 32, or if the Fear & Greed Index rises above 55 while AAII bears fall below 35%. A VIX break above 30 combined with AAII bears above 50% would put a Danger upgrade on the table.",
     "stale": [
      "MOVE",
      "MOVE change"

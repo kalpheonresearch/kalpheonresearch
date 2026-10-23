@@ -2,19 +2,19 @@
  "name": "Kalpheon Index",
  "date": "2026-10-22",
  "market_asof": "2026-10-22",
- "score": 50,
+ "score": 57,
  "scale": "0-100 (higher = more warning signals)",
  "zone": "caution",
  "level": {
   "ko": "주의",
   "en": "Caution"
  },
- "cycle_position_pct": 73,
+ "cycle_position_pct": 71,
  "stage": {
   "ko": "새로운 논리 탄생",
   "en": "New Paradigm"
  },
- "change_vs_previous": -7,
+ "change_vs_previous": 0,
  "signals": {
   "cape": {
    "value": 41.08,
@@ -25,8 +25,8 @@
    "status": "red"
   },
   "fg": {
-   "value": 31,
-   "status": "yellow"
+   "value": 19,
+   "status": "red"
   },
   "aaii": {
    "value": 45.8,
@@ -46,8 +46,8 @@
   }
  },
  "counts": {
-  "red": 2,
-  "yellow": 3,
+  "red": 3,
+  "yellow": 2,
   "green": 2
  },
  "urls": {
