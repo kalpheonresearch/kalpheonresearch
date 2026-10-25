@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-18",
+ "updated": "2026-10-24",
  "reports": [
+  {
+   "date": "2026-10-24",
+   "mode": "sat",
+   "daily_asof": "2026-10-23",
+   "market_asof": "2026-10-23",
+   "title": "호르무즈 긴장 속 유가 고점, 캐나다 관세 조정",
+   "summary": "주말에도 이란과 호르무즈 해협을 둘러싼 상반된 발언이 이어졌고, 미국은 10월 30일부터 적용되는 캐나다 관세 대상 품목을 조정했습니다. 월요일 시가는 유가와 에너지 업종 반응이 가장 큰 변수입니다.",
+   "falsify": "월요일 장 시작 후 브렌트유가 직전 종가 대비 3% 넘게 하락하고 VIX가 20 아래를 유지하면 지정학 위험이 시가를 흔든다는 판단은 틀린 것입니다.",
+   "score": 57,
+   "level": "주의",
+   "p": 71,
+   "stage": "새로운 논리 탄생",
+   "items": 2,
+   "sig": {
+    "cape": [
+     40.36,
+     "red"
+    ],
+    "bi": [
+     234.2,
+     "red"
+    ],
+    "fg": [
+     21,
+     "red"
+    ],
+    "aaii": [
+     45.8,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.45,
+     "green"
+    ],
+    "spread": [
+     0.31,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Oil near highs on Hormuz tension, Canada tariff list adjusted",
+    "summary": "Conflicting statements on Iran and the Strait of Hormuz continued over the weekend, and the US adjusted the list of Canadian goods facing tariffs from October 30. Oil and energy shares are the biggest swing factor for Monday's open.",
+    "falsify": "If Brent falls more than 3% from Friday's close after the Monday open while VIX stays below 20, the view that geopolitical risk is driving the open is wrong.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-18",
    "mode": "sun",
