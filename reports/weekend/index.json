@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "reports": [
+  {
+   "date": "2026-10-25",
+   "mode": "sun",
+   "daily_asof": "2026-10-23",
+   "market_asof": "2026-10-23",
+   "title": "Fed 동결 확인과 유가 충격 사이, 빅테크 실적의 한 주",
+   "summary": "주말 사이 후티의 사우디 석유시설 공격 주장이 나왔지만 트럼프 대통령이 일요일 이란 공격은 없다고 밝히면서 유가는 반락했고 S&P 500 선물은 소폭 오름세입니다. 이번 주는 수요일 FOMC와 알파벳, 마이크로소프트 실적, 목요일 PCE와 GDP가 월요일 이후 방향을 좌우합니다.",
+   "falsify": "VIX가 20을 넘고 AAII 약세가 50%를 넘으면 위험 단계 격상을 검토해야 하고, 반대로 공포탐욕지수가 55를 넘으면서 AAII 약세가 35% 아래로 내려가면 이 판단은 틀린 것입니다.",
+   "score": 57,
+   "level": "주의",
+   "p": 71,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     40.36,
+     "red"
+    ],
+    "bi": [
+     234.2,
+     "red"
+    ],
+    "fg": [
+     21,
+     "red"
+    ],
+    "aaii": [
+     45.8,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.45,
+     "green"
+    ],
+    "spread": [
+     0.31,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Between a Fed hold and an oil shock, a big-tech earnings week",
+    "summary": "Over the weekend the Houthis claimed attacks on Saudi oil sites, but President Trump said there would be no strike on Iran on Sunday, so oil eased and S&P 500 futures are slightly higher. This week, Wednesday's FOMC, Alphabet and Microsoft earnings, and Thursday's PCE and GDP will set the direction beyond Monday.",
+    "falsify": "If VIX rises above 20 while AAII bears exceed 50%, an upgrade to Danger comes under review, and conversely this view is wrong if the Fear & Greed Index rises above 55 while AAII bears fall below 35%.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-24",
    "mode": "sat",
