@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-25",
+ "updated": "2026-10-31",
  "reports": [
+  {
+   "date": "2026-10-31",
+   "mode": "sat",
+   "daily_asof": "2026-10-30",
+   "market_asof": "2026-10-30",
+   "title": "기술주 급락 여운과 12월 인상 경계",
+   "summary": "주말 동안 시장을 새로 뒤집을 소식은 확인되지 않았고, 금요일 기술주 급락과 연준 인상 베팅이 월요일 시가의 핵심 변수로 남아 있습니다.",
+   "falsify": "월요일 시가에서 나스닥 선물이 금요일 종가 대비 1% 넘게 반등하고 VIX가 19 아래로 내려오면 이번 매도 부담 판단이 틀렸다는 신호입니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 74,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     40.88,
+     "red"
+    ],
+    "bi": [
+     234.5,
+     "red"
+    ],
+    "fg": [
+     35,
+     "yellow"
+    ],
+    "aaii": [
+     41.4,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.42,
+     "green"
+    ],
+    "spread": [
+     0.38,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Tech rout hangover and December hike worries",
+    "summary": "No new weekend story that overturns the picture was confirmed; Friday's tech rout and rate-hike bets remain the main drivers for Monday's open.",
+    "falsify": "If Nasdaq futures rebound more than 1% from Friday's close at Monday's open and the VIX drops below 19, the call for lingering selling pressure was wrong.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-25",
    "mode": "sun",
