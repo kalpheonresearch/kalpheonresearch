@@ -1,6 +1,57 @@
 {
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "reports": [
+  {
+   "date": "2026-11-01",
+   "mode": "sun",
+   "daily_asof": "2026-10-30",
+   "market_asof": "2026-10-30",
+   "title": "중간선거, 국채 리펀딩, 고용보고서가 몰린 AI 조정장의 한 주",
+   "summary": "주말 사이 이란 협상 지속과 유가 하락으로 일요일 저녁 선물은 반등했지만, 이번 주는 중간선거(화), 재무부 분기 리펀딩(수), 10월 고용보고서(금)가 한꺼번에 몰려 변동성 확대에 대비해야 합니다. 직전 거래일까지 Kalpheon Index는 5거래일 연속 50점(주의)이고 P는 74.0입니다.",
+   "falsify": "WTI가 105달러를 다시 넘고 VIX가 20을 웃돌면 유가 하락과 선물 반등을 우호적으로 보는 이번 해석이 틀렸다는 신호입니다.",
+   "score": 50,
+   "level": "주의",
+   "p": 74,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     40.88,
+     "red"
+    ],
+    "bi": [
+     234.5,
+     "red"
+    ],
+    "fg": [
+     35,
+     "yellow"
+    ],
+    "aaii": [
+     41.4,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.42,
+     "green"
+    ],
+    "spread": [
+     0.38,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Midterms, Treasury refunding and the jobs report collide in an AI-driven pullback",
+    "summary": "Talks with Iran continued and oil fell over the weekend, lifting US stock futures Sunday evening, but the midterm elections (Tue), the Treasury quarterly refunding (Wed) and the October jobs report (Fri) all land this week, so volatility risk is elevated. As of the last trading day, the Kalpheon Index has sat at 50 (Caution) for five straight sessions and P is 74.0.",
+    "falsify": "If WTI climbs back above $105 and the VIX moves above 20, this favorable reading of lower oil and rebounding futures would be wrong.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-10-31",
    "mode": "sat",
