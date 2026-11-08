@@ -1,6 +1,57 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-07",
  "reports": [
+  {
+   "date": "2026-11-07",
+   "mode": "sat",
+   "daily_asof": "2026-11-06",
+   "market_asof": "2026-11-06",
+   "title": "주말 동안 시가를 흔들 새 소식은 확인되지 않음",
+   "summary": "월요일 시가에 영향을 줄 새 소식 없음. 금요일 AI 관련주 반등 마감 이후 확인된 신규 악재나 호재가 없어 직전 데일리 리포트의 판단을 그대로 유지합니다.",
+   "falsify": "일요일 밤 선물이 금요일 종가 대비 1% 넘게 갈라지거나 VIX가 25 위에서 30을 넘어서면 이 판단이 틀린 것입니다.",
+   "score": 64,
+   "level": "주의",
+   "p": 69,
+   "stage": "새로운 논리 탄생",
+   "items": 0,
+   "sig": {
+    "cape": [
+     38.91,
+     "red"
+    ],
+    "bi": [
+     228.8,
+     "red"
+    ],
+    "fg": [
+     20,
+     "red"
+    ],
+    "aaii": [
+     48.4,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     25.64,
+     "yellow"
+    ],
+    "spread": [
+     0.32,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "No confirmed new catalysts for Monday's open",
+    "summary": "No new developments likely to affect Monday's open. Nothing new has been confirmed since Friday's rebound in AI stocks, so the view in the latest daily report stands.",
+    "falsify": "If Sunday night futures move more than 1% from Friday's close, or VIX climbs from above 25 to over 30, this view was wrong.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-11-01",
    "mode": "sun",
