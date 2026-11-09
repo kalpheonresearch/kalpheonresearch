@@ -1,6 +1,57 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-08",
  "reports": [
+  {
+   "date": "2026-11-08",
+   "mode": "sun",
+   "daily_asof": "2026-11-06",
+   "market_asof": "2026-11-06",
+   "title": "10월 CPI와 10년물 입찰이 겹친 화요일, 금리 인상 경계 속 AI 조정장의 시험대",
+   "summary": "주말에 시가를 뒤집을 새 소식은 확인되지 않았고, 금요일 강한 고용 이후 12월 금리 인상 기대와 이란 협상 불확실성이 이어지고 있습니다. 이번 주는 화요일 10월 CPI와 10년물 입찰이 한꺼번에 몰려 있어 변동성 확대에 대비해야 합니다. 직전 거래일 기준 Kalpheon Index는 64점(주의), P는 68.6%입니다.",
+   "falsify": "VIX가 30을 넘고 10년물이 5.0%를 웃돌면 현재의 신호가 엇갈린 주의 단계라는 판단이 틀리고, 긴축 충격으로 위험 신호가 한 방향으로 모이기 시작했다는 뜻입니다.",
+   "score": 64,
+   "level": "주의",
+   "p": 69,
+   "stage": "새로운 논리 탄생",
+   "items": 2,
+   "sig": {
+    "cape": [
+     38.91,
+     "red"
+    ],
+    "bi": [
+     228.8,
+     "red"
+    ],
+    "fg": [
+     20,
+     "red"
+    ],
+    "aaii": [
+     48.4,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     25.64,
+     "yellow"
+    ],
+    "spread": [
+     0.32,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "CPI and a 10-year auction on the same Tuesday test the AI pullback under rate-hike worries",
+    "summary": "No confirmed weekend news is likely to overturn Monday's open, but December rate-hike bets after Friday's strong jobs data and Iran talk uncertainty remain. October CPI and the 10-year auction both land on Tuesday, so be ready for wider swings. As of the latest trading day, the Kalpheon Index is 64 (Caution) and Cycle Position (P) is 68.6%.",
+    "falsify": "If VIX rises above 30 and the 10-year yield tops 5.0%, the view of a mixed-signal Caution stage is wrong and risk signals are starting to line up in one direction under a tightening shock.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-11-07",
    "mode": "sat",
