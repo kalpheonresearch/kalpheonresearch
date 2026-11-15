@@ -1,6 +1,57 @@
 {
- "updated": "2026-11-08",
+ "updated": "2026-11-14",
  "reports": [
+  {
+   "date": "2026-11-14",
+   "mode": "sat",
+   "daily_asof": "2026-11-13",
+   "market_asof": "2026-11-13",
+   "title": "12월 금리 인상 베팅이 커진 채 맞는 월요일",
+   "summary": "주말 동안 비트코인이 6만 4천 달러 부근까지 밀렸고 12월 금리 인상 확률이 높게 반영되어 있어, 월요일 시가는 금리 민감 자산 중심으로 변동성이 커질 수 있습니다.",
+   "falsify": "월요일 시가에 10년물 금리가 금요일 종가보다 10bp 이상 하락하고 비트코인이 7만 달러를 회복하면 이 위험 판단은 틀린 것입니다.",
+   "score": 57,
+   "level": "주의",
+   "p": 73,
+   "stage": "새로운 논리 탄생",
+   "items": 4,
+   "sig": {
+    "cape": [
+     40.09,
+     "red"
+    ],
+    "bi": [
+     227.5,
+     "red"
+    ],
+    "fg": [
+     39,
+     "yellow"
+    ],
+    "aaii": [
+     51.4,
+     "red"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.3,
+     "green"
+    ],
+    "spread": [
+     0.28,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "Entering Monday with December hike bets rising",
+    "summary": "Bitcoin slid toward $64,000 over the weekend and a December rate hike is priced in heavily, so Monday's open may bring larger swings in rate-sensitive assets.",
+    "falsify": "If the 10-year yield opens at least 10bp below Friday's close and bitcoin recovers $70,000, this risk read is wrong.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-11-08",
    "mode": "sun",
