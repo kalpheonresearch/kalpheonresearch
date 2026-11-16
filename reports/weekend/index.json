@@ -1,6 +1,57 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-15",
  "reports": [
+  {
+   "date": "2026-11-15",
+   "mode": "sun",
+   "daily_asof": "2026-11-13",
+   "market_asof": "2026-11-13",
+   "title": "금리 인상 베팅 속에서 엔비디아와 FOMC 의사록을 맞는 한 주",
+   "summary": "지난주 물가 지표와 연준 인사 발언으로 2년물 금리가 약 2년 만에 가장 큰 주간 상승을 기록할 전망입니다. 이번 주는 소매판매, 엔비디아 실적, FOMC 의사록, 앤트로픽 상장 등이 한꺼번에 몰려 있습니다.",
+   "falsify": "10년물이 5.0% 아래로 내려가고 공포탐욕지수가 55를 넘으면 금리 부담이 커진다는 이번 주 판단은 틀린 것입니다.",
+   "score": 57,
+   "level": "주의",
+   "p": 73,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     40.09,
+     "red"
+    ],
+    "bi": [
+     227.5,
+     "red"
+    ],
+    "fg": [
+     39,
+     "yellow"
+    ],
+    "aaii": [
+     51.4,
+     "red"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     19.3,
+     "green"
+    ],
+    "spread": [
+     0.28,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "A week of rate-hike bets, Nvidia earnings and the FOMC minutes",
+    "summary": "Hot inflation data and hawkish Fed remarks pushed the 2-year yield toward its biggest weekly rise in about two years. This week stacks retail sales, Nvidia earnings, the FOMC minutes and the Anthropic listing together.",
+    "falsify": "If the 10-year falls below 5.0% and Fear & Greed rises above 55, this week's view that rate pressure is building is wrong.",
+    "level": "Caution",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-11-14",
    "mode": "sat",
