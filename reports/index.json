@@ -1,6 +1,67 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "reports": [
+  {
+   "date": "2026-11-17",
+   "score": 71,
+   "level": "위험",
+   "p": 69,
+   "stage": "새로운 논리 탄생",
+   "vix": 26.06,
+   "fg": 25,
+   "y10": 5.1,
+   "verdict": "비싼 가격과 커진 공포가 한꺼번에 경고를 켜고 있습니다. Kalpheon Index는 71점, 사이클 위치 P는 69.0%로 위험 단계에 들어섰고 점수는 7점 올랐습니다.",
+   "falsify": "공포탐욕 55 상회와 AAII 약세 35% 하회가 함께 나오거나, CAPE 32 하회와 버핏지표 200% 하회가 동시에 나오면 이 판정은 틀린 것입니다.",
+   "asof": "2026-11-17",
+   "counts": [
+    4,
+    2,
+    1
+   ],
+   "sig": {
+    "cape": [
+     39.16,
+     "red"
+    ],
+    "bi": [
+     229.3,
+     "red"
+    ],
+    "fg": [
+     25,
+     "red"
+    ],
+    "aaii": [
+     51.4,
+     "red"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     26.06,
+     "yellow"
+    ],
+    "spread": [
+     0.32,
+     "green"
+    ]
+   },
+   "stale": [
+    "RUSSELL"
+   ],
+   "og": true,
+   "en": {
+    "level": "Danger",
+    "stage": "New Paradigm",
+    "verdict": "Rich prices and rising fear are lighting up warnings together. The Kalpheon Index is 71 and Cycle Position (P) is 69.0%, so the Danger stage has begun and the score rose 7 points.",
+    "falsify": "This call is wrong if Fear & Greed rises above 55 while AAII bears drop below 35%, or if CAPE falls below 32 together with the Buffett Indicator below 200%.",
+    "stale": [
+     "RUSSELL"
+    ]
+   }
+  },
   {
    "date": "2026-11-16",
    "score": 64,
@@ -857,58 +918,16 @@
    "vix": 16.91,
    "fg": 36,
    "y10": 5.05,
-   "verdict": "밸류에이션은 과열이지만 심리는 아직 공포권이라 신호가 엇갈립니다. Kalpheon Index는 50점으로 주의 단계이고 사이클 위치 P는 74.1%입니다.",
-   "falsify": "CAPE가 32 아래로 내려가거나 공포탐욕지수가 55를 넘고 AAII 약세가 35% 아래로 내려가면 이 판정은 틀린 것입니다. 반대로 VIX 30 돌파와 AAII 약세 50% 초과가 겹치면 위험 단계 격상을 검토합니다.",
    "asof": "2026-10-28",
    "counts": [
     2,
     3,
     2
    ],
-   "sig": {
-    "cape": [
-     41.04,
-     "red"
-    ],
-    "bi": [
-     233.0,
-     "red"
-    ],
-    "fg": [
-     36,
-     "yellow"
-    ],
-    "aaii": [
-     45.8,
-     "yellow"
-    ],
-    "odte": [
-     63,
-     "yellow"
-    ],
-    "vix": [
-     16.91,
-     "green"
-    ],
-    "spread": [
-     0.38,
-     "green"
-    ]
-   },
-   "stale": [
-    "MOVE",
-    "MOVE 등락"
-   ],
    "og": true,
    "en": {
     "level": "Caution",
-    "stage": "New Paradigm",
-    "verdict": "Valuations are stretched but sentiment is still fearful, so the signals disagree. The Kalpheon Index is 50, in the Caution stage, and Cycle Position P is 74.1%.",
-    "falsify": "This assessment is wrong if CAPE falls below 32, or if the Fear & Greed Index rises above 55 while AAII bears drop below 35%. Conversely, a VIX move above 30 combined with AAII bears above 50% would put an upgrade to Danger under review.",
-    "stale": [
-     "MOVE",
-     "MOVE change"
-    ]
+    "stage": "New Paradigm"
    }
   },
   {
