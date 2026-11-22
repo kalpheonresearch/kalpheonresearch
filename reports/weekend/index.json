@@ -1,6 +1,57 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-21",
  "reports": [
+  {
+   "date": "2026-11-21",
+   "mode": "sat",
+   "daily_asof": "2026-11-20",
+   "market_asof": "2026-11-20",
+   "title": "AI 매물 충격과 금리 인상 경계 속 맞는 월요일",
+   "summary": "금요일 종가 이후 시장을 안심시킬 새 소식은 확인되지 않았고, 금요일의 기술주 급락과 12월 금리 인상 경계가 그대로 월요일 시가로 이어질 수 있습니다.",
+   "falsify": "월요일 시가에 나스닥 선물이 금요일 종가 대비 2% 이상 반등하고 VIX가 30 아래로 내려오면 이 위험 판단은 틀린 것입니다.",
+   "score": 71,
+   "level": "위험",
+   "p": 67,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     37.86,
+     "red"
+    ],
+    "bi": [
+     221.3,
+     "red"
+    ],
+    "fg": [
+     18,
+     "red"
+    ],
+    "aaii": [
+     42.2,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     35.89,
+     "red"
+    ],
+    "spread": [
+     0.29,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "A Monday open facing an AI selloff and rate-hike worries",
+    "summary": "No news confirmed since Friday's close eases the pressure, so Friday's tech rout and the December rate-hike worries may carry straight into Monday's open.",
+    "falsify": "If Nasdaq futures rebound 2% or more from Friday's close at Monday's open and VIX drops below 30, this risk view is wrong.",
+    "level": "Danger",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-11-15",
    "mode": "sun",
