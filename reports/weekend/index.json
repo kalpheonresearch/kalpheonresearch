@@ -1,6 +1,57 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "reports": [
+  {
+   "date": "2026-11-22",
+   "mode": "sun",
+   "daily_asof": "2026-11-20",
+   "market_asof": "2026-11-20",
+   "title": "AI 매도세가 추수감사절 주간 PCE와 연준 인상 경로를 만난다",
+   "summary": "금요일 S&P 500이 7거래일 연속 하락하며 6,910.39로 마감했고 VIX는 35.89까지 올랐다. 이번 주는 수요일 PCE와 GDP 수정치, 목요일 휴장, 금요일 조기 마감이 겹쳐 변동성이 커지기 쉬운 구조다.",
+   "falsify": "Kalpheon Index가 66점 이하로 내려오거나 VIX가 30 아래로 돌아오고 공포탐욕이 55를 넘으면 이번 위험 판정은 틀린 것이다.",
+   "score": 71,
+   "level": "위험",
+   "p": 67,
+   "stage": "새로운 논리 탄생",
+   "items": 3,
+   "sig": {
+    "cape": [
+     37.86,
+     "red"
+    ],
+    "bi": [
+     221.3,
+     "red"
+    ],
+    "fg": [
+     18,
+     "red"
+    ],
+    "aaii": [
+     42.2,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     35.89,
+     "red"
+    ],
+    "spread": [
+     0.29,
+     "green"
+    ]
+   },
+   "en": {
+    "title": "AI selloff meets PCE and the Fed's hiking path in Thanksgiving week",
+    "summary": "The S&P 500 fell for a seventh straight session on Friday to 6,910.39 and the VIX rose to 35.89. Wednesday's PCE and GDP revision, Thursday's closure and Friday's early close make this week prone to sharp swings.",
+    "falsify": "This Danger call is wrong if the Kalpheon Index falls to 66 or lower, or if the VIX drops back below 30 while Fear & Greed rises above 55.",
+    "level": "Danger",
+    "stage": "New Paradigm"
+   }
+  },
   {
    "date": "2026-11-21",
    "mode": "sat",
