@@ -1,6 +1,73 @@
 {
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "reports": [
+  {
+   "date": "2026-11-26",
+   "score": 64,
+   "level": "주의",
+   "p": 69,
+   "stage": "새로운 논리 탄생",
+   "vix": 28.29,
+   "fg": 15,
+   "y10": 4.85,
+   "verdict": "밸류에이션은 과열인데 심리는 극단적 공포에 머물러 신호가 엇갈립니다. Kalpheon Index는 64점, 사이클 위치 P는 68.7%로 주의 단계이며 위험 경계선인 67점까지 3점 남았습니다.",
+   "falsify": "Kalpheon Index가 67점 이상으로 올라가거나, VIX 20 하회와 공포탐욕 55 상회가 함께 나오면 이 판정은 틀린 것입니다.",
+   "asof": "2026-11-25",
+   "counts": [
+    3,
+    3,
+    1
+   ],
+   "sig": {
+    "cape": [
+     39.37,
+     "red"
+    ],
+    "bi": [
+     217,
+     "red"
+    ],
+    "fg": [
+     15,
+     "red"
+    ],
+    "aaii": [
+     45.4,
+     "yellow"
+    ],
+    "odte": [
+     63,
+     "yellow"
+    ],
+    "vix": [
+     28.29,
+     "yellow"
+    ],
+    "spread": [
+     0.24,
+     "green"
+    ]
+   },
+   "stale": [
+    "GOLD",
+    "MOVE",
+    "MOVE 등락",
+    "RUSSELL"
+   ],
+   "og": true,
+   "en": {
+    "level": "Caution",
+    "stage": "New Paradigm",
+    "verdict": "Valuations are stretched but sentiment remains in extreme fear, so the signals disagree. The Kalpheon Index is 64 and Cycle Position (P) is 68.7%, in the Caution stage and 3 points below the Danger threshold of 67.",
+    "falsify": "This call is wrong if the Kalpheon Index rises to 67 or higher, or if the VIX falls below 20 while Fear & Greed rises above 55.",
+    "stale": [
+     "GOLD",
+     "MOVE",
+     "MOVE change",
+     "RUSSELL"
+    ]
+   }
+  },
   {
    "date": "2026-11-25",
    "score": 64,
@@ -855,62 +922,16 @@
    "vix": 25.64,
    "fg": 20,
    "y10": 4.86,
-   "verdict": "밸류에이션은 과열인데 심리는 공포권이라 신호가 엇갈립니다. Kalpheon Index는 64점으로 주의 단계이고 사이클 위치 P는 68.6%입니다.",
-   "falsify": "CAPE가 32를 밑돌고 버핏지표가 200% 아래로 내려오면 과열 판정이 틀린 것이고, VIX가 20 아래로 돌아오고 공포탐욕지수가 50을 넘으면 이번 급락이 일시적 충격에 그친 것입니다.",
    "asof": "2026-11-06",
    "counts": [
     3,
     3,
     1
    ],
-   "sig": {
-    "cape": [
-     38.91,
-     "red"
-    ],
-    "bi": [
-     228.8,
-     "red"
-    ],
-    "fg": [
-     20,
-     "red"
-    ],
-    "aaii": [
-     48.4,
-     "yellow"
-    ],
-    "odte": [
-     63,
-     "yellow"
-    ],
-    "vix": [
-     25.64,
-     "yellow"
-    ],
-    "spread": [
-     0.32,
-     "green"
-    ]
-   },
-   "stale": [
-    "10Y-2Y 스프레드",
-    "MOVE",
-    "MOVE 등락",
-    "공포탐욕지수"
-   ],
    "og": true,
    "en": {
     "level": "Caution",
-    "stage": "New Paradigm",
-    "verdict": "Valuations are stretched but sentiment is fearful, so the signals disagree. The Kalpheon Index is 64 in the Caution stage and Cycle Position (P) is 68.6%.",
-    "falsify": "A CAPE below 32 with a Buffett Indicator under 200% would show the overheating call was wrong, while VIX back below 20 with Fear & Greed above 50 would show this drop was only a passing shock.",
-    "stale": [
-     "10Y-2Y spread",
-     "Fear & Greed Index",
-     "MOVE",
-     "MOVE change"
-    ]
+    "stage": "New Paradigm"
    }
   },
   {
